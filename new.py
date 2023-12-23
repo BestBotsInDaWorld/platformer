@@ -16,6 +16,25 @@ clock = pygame.time.Clock()
 
 all_sprites = pygame.sprite.Group()
 hero_group = pygame.sprite.Group()
+tile_group = pygame.sprite.Group()
+background = pygame.sprite.Group()
+tiles = []
+
+
+class Tile(pygame.sprite.Sprite):
+    def __init__(self, tile, x, y):
+        super().__init__(tile_group)
+        path = f"Background\{tile}.png"
+        self.x = x
+        self.y = y
+        self.image = load_image(path)
+        self.rect = pygame.Rect(0, 0, 50, 50)
+        self.rect = self.rect.move(x, y)
+        self.image = pygame.transform.scale(self.image, (50, 50))
+
+    def update(self, *args):
+        self.x, self.y = self.x - 50, self.y + 50
+        self.rect.move(self.x, self.y)
 
 
 class Hero(pygame.sprite.Sprite):
@@ -59,13 +78,11 @@ class Hero(pygame.sprite.Sprite):
                 cycle.append(frame)
         return cycle
 
-
     def set_image(self, direction, action):
         if self.direction == 'right':
             self.image = self.frames_forward[action][self.cur_frame]
         else:
             self.image = self.frames_backwards[action][self.cur_frame]
-
 
     def update(self, *args):
         scancode: pygame.key.ScancodeWrapper = args[0]
@@ -141,7 +158,9 @@ class Hero(pygame.sprite.Sprite):
 
 dragon = Hero("Mask Dude", 50, 50)
 
-running = True
+
+running = False
+start = True
 
 
 def terminate():
@@ -150,34 +169,91 @@ def terminate():
 
 
 def start_screen():
-    intro_text = ["ЗАСТАВКА", "",
-                  "Правила игры",
-                  "Если в правилах несколько строк,",
-                  "приходится выводить их построчно"]
-
-    fon = pygame.transform.scale(load_image('fon.jpg'), (WIDTH, HEIGHT))  # фон с размерами окна
-    screen.blit(fon, (0, 0))
+    global running, start
+    buttons = pygame.sprite.Group()
+    string_group = pygame.sprite.Group()
+    intro_text = ["Play", "",
+                  "Settings",
+                  "Exit"]
     font = pygame.font.Font(None, 30)
     text_coord = 50
-    for line in intro_text:
-        string_rendered = font.render(line, 1, pygame.Color('black'))  # текст, ..., цвет текста
-        intro_rect = string_rendered.get_rect()  # прямоугольник для строки
-        text_coord += 10
-        intro_rect.y = text_coord
-        intro_rect.x = 10
-        text_coord += intro_rect.height
+
+    play = pygame.sprite.Sprite()
+    settings = pygame.sprite.Sprite()
+    quitButton = pygame.sprite.Sprite()
+
+    play.image = load_image(rf"menu\buttons\play.png")
+    play.image = pygame.transform.scale(play.image, (75, 75))
+    rectPlay = pygame.Rect(WIDTH//2 - 200, HEIGHT // 2 - 150, 100, 100)
+    coordPlay = (WIDTH//2 - 50, HEIGHT // 2 - 150, 100, 100)
+    play.rect = rectPlay
+    buttons.add(play)
+
+    settings.image = load_image(rf"menu\buttons\settings.png")
+    settings.image = pygame.transform.scale(settings.image, (75, 75))
+    rectSetting = pygame.Rect(WIDTH // 2 - 200, HEIGHT // 2 - 50, 100, 100)
+    settings.rect = rectSetting
+    buttons.add(settings)
+
+    quitButton.image = load_image(rf"menu\buttons\close.png")
+    quitButton.image = pygame.transform.scale(quitButton.image, (75, 75))
+
+    rectQuit = pygame.Rect(WIDTH // 2 - 200, HEIGHT // 2 + 50, 100, 100)
+    quitButton.rect = rectQuit
+    buttons.add(quitButton)
+
+    print(coordPlay[:2])
+    print(coordPlay[2:])
+    colorsForBack = ["Blue", "Pink", "Purple"]
+    currentColor = 0
+
+
+
+    for i in range(0, 800, 50):
+        for j in range(0, 800, 50):
+            currentColor += 1
+            if currentColor > 2:
+                currentColor = 0
+            print()
+            Tile(colorsForBack[currentColor], i, j)
+
+    while start:
+
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN and coordPlay[0] <= pygame.mouse.get_pos()[0] <= coordPlay[2] \
+                    and coordPlay[1] <= pygame.mouse.get_pos()[1] <= coordPlay[3]:
+                print("go")
+                running = True
+                return  # начинаем игру
+            elif pygame.mouse.get_pos() == rectQuit:
+                terminate()
+            elif event.type == pygame.QUIT:
+                terminate()
+        tile_group.draw(screen)
+        buttons.draw(screen)
+        string_rendered = font.render("play", 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 - 125
+        intro_rect.x = WIDTH // 2 - 100
         screen.blit(string_rendered, intro_rect)
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                terminate()
-            elif event.type == pygame.KEYDOWN or \
-                    event.type == pygame.MOUSEBUTTONDOWN:
-                return  # начинаем игру
+        string_rendered = font.render("settings", 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 - 25
+        intro_rect.x = WIDTH // 2 - 100
+        screen.blit(string_rendered, intro_rect)
+
+        string_rendered = font.render("exit", 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 + 75
+        intro_rect.x = WIDTH // 2 - 100
+        screen.blit(string_rendered, intro_rect)
         pygame.display.flip()
         clock.tick(FPS)
 
+
+if start:
+    start_screen()
 
 while running:
     for event in pygame.event.get():
@@ -187,7 +263,6 @@ while running:
     hero_group.update(pygame.key.get_pressed())
     all_sprites.draw(screen)
     pygame.display.flip()
-
     clock.tick(FPS)
 
 pygame.quit()

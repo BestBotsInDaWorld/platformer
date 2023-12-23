@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="new">
-      <change afterPath="$PROJECT_DIR$/copyfrom/data/desktop.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/data/dragon_sheet8x2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/data/star.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/data/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/data/bomb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/data/boom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/data/creature.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/data/error.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/copyfrom/hero_moving/surface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/platformer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/platformer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +24,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -52,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/pythonprojects/platformer/data/Main Characters/Mask Dude",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
