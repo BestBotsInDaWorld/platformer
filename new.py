@@ -32,15 +32,15 @@ class Tile(pygame.sprite.Sprite):
         self.rect = self.rect.move(x, y)
         self.image = pygame.transform.scale(self.image, (50, 50))
 
-    def update(self, *args):
-        self.x -= 50
-        self.y += 50
-        self.rect.move_ip(-50, 50)
+    def move(self, dx, dy):
+        self.rect.x += dx
+        self.rect.y += dy
 
-    def update(self, *args):
-        self.x, self.y = self.x - 50, self.y + 50
-        self.rect.move(self.x, self.y)
-
+        if self.rect.right >= WIDTH or self.rect.bottom >= HEIGHT:
+            new_x = WIDTH // 2 - self.x * 2.5
+            new_y = HEIGHT // 2 - self.y * 2.5
+            self.rect.x = new_x
+            self.rect.y = new_y
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self, character, x, y):
@@ -168,6 +168,11 @@ running = False
 start = True
 
 
+def animate_background(pixels):
+    for pixel in pixels:
+        pixel.move(1, 1)
+
+
 def terminate():
     pygame.quit()
     sys.exit()
@@ -220,7 +225,7 @@ def start_screen():
             if currentColor > 2:
                 currentColor = 0
             tile = Tile(colorsForBack[currentColor], i, j)
-            tile_group.add(tile)
+            tiles.append(tile)
 
     while start:
         for event in pygame.event.get():
@@ -233,8 +238,8 @@ def start_screen():
                     terminate()
             elif event.type == pygame.QUIT:
                 terminate()
-        tile_group.update()
-        tile_group.draw(screen)
+        background.draw(screen)
+        animate_background(tiles)
         buttons.draw(screen)
 
         string_rendered = font.render("play", 1, pygame.Color('black'))
