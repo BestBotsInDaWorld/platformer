@@ -23,14 +23,19 @@ tiles = []
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, tile, x, y):
-        super().__init__(tile_group)
-        path = f"Background\{tile}.png"
+        super().__init__(tile_group, background)
+        path = rf"Background\{tile}.png"
         self.x = x
         self.y = y
         self.image = load_image(path)
         self.rect = pygame.Rect(0, 0, 50, 50)
         self.rect = self.rect.move(x, y)
         self.image = pygame.transform.scale(self.image, (50, 50))
+
+    def update(self, *args):
+        self.x -= 50
+        self.y += 50
+        self.rect.move_ip(-50, 50)
 
     def update(self, *args):
         self.x, self.y = self.x - 50, self.y + 50
@@ -170,7 +175,9 @@ def terminate():
 
 def start_screen():
     global running, start
+
     buttons = pygame.sprite.Group()
+    tile_group = pygame.sprite.Group()
     string_group = pygame.sprite.Group()
     intro_text = ["Play", "",
                   "Settings",
@@ -207,30 +214,29 @@ def start_screen():
     colorsForBack = ["Blue", "Pink", "Purple"]
     currentColor = 0
 
-
-
     for i in range(0, 800, 50):
         for j in range(0, 800, 50):
             currentColor += 1
             if currentColor > 2:
                 currentColor = 0
-            print()
-            Tile(colorsForBack[currentColor], i, j)
+            tile = Tile(colorsForBack[currentColor], i, j)
+            tile_group.add(tile)
 
     while start:
-
         for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN and coordPlay[0] <= pygame.mouse.get_pos()[0] <= coordPlay[2] \
-                    and coordPlay[1] <= pygame.mouse.get_pos()[1] <= coordPlay[3]:
-                print("go")
-                running = True
-                return  # начинаем игру
-            elif pygame.mouse.get_pos() == rectQuit:
-                terminate()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if rectPlay.collidepoint(event.pos):
+                    print("go")
+                    running = True
+                    return
+                elif rectQuit.collidepoint(event.pos):
+                    terminate()
             elif event.type == pygame.QUIT:
                 terminate()
+        tile_group.update()
         tile_group.draw(screen)
         buttons.draw(screen)
+
         string_rendered = font.render("play", 1, pygame.Color('black'))
         intro_rect = string_rendered.get_rect()
         intro_rect.top = HEIGHT // 2 - 125
@@ -248,6 +254,7 @@ def start_screen():
         intro_rect.top = HEIGHT // 2 + 75
         intro_rect.x = WIDTH // 2 - 100
         screen.blit(string_rendered, intro_rect)
+
         pygame.display.flip()
         clock.tick(FPS)
 
