@@ -32,13 +32,9 @@ class Tile(pygame.sprite.Sprite):
 
     def move(self, dx, dy):
         if self.rect.x >= WIDTH or self.rect.y >= HEIGHT:
-            new_x = self.rect.x - WIDTH
-            new_y = self.rect.y - HEIGHT
-            self.rect.x = new_x
-            self.rect.y = new_y
+            self.rect.x = self.rect.x - WIDTH - 50
         else:
             self.rect.x += 1
-            self.rect.y += 1
 
 
 class Hero(pygame.sprite.Sprite):
@@ -181,13 +177,7 @@ def start_screen():
     global running, start
 
     buttons = pygame.sprite.Group()
-    tile_group = pygame.sprite.Group()
-    string_group = pygame.sprite.Group()
-    intro_text = ["Play", "",
-                  "Settings",
-                  "Exit"]
     font = pygame.font.Font(None, 30)
-    text_coord = 50
 
     play = pygame.sprite.Sprite()
     settings = pygame.sprite.Sprite()
@@ -196,7 +186,6 @@ def start_screen():
     play.image = load_image(rf"menu\buttons\play.png")
     play.image = pygame.transform.scale(play.image, (75, 75))
     rectPlay = pygame.Rect(WIDTH//2 - 200, HEIGHT // 2 - 150, 100, 100)
-    coordPlay = (WIDTH//2 - 50, HEIGHT // 2 - 150, 100, 100)
     play.rect = rectPlay
     buttons.add(play)
 
