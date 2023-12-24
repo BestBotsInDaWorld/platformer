@@ -1,6 +1,6 @@
 import os
 import pygame
-
+import sys
 
 def load_image(name, color_key=None):
     fullname = os.path.join('data', name)
@@ -16,3 +16,8 @@ def load_image(name, color_key=None):
         image.set_colorkey(color_key)
 
     return image
+
+
+def terminate():
+    pygame.quit()
+    sys.exit()

@@ -1,42 +1,22 @@
-import  sys
 from useful_funcs import *
-from menu import start_screen
-
+from settings import *
+from menu import *
 
 pygame.init()
-
-FPS = 60
-WIDTH = 800
-HEIGHT = 600
-GRAVITY = 0.25
-MAX_JUMP_HEIGHT = 80
-RESISTANCE = 0.25
-screen = pygame.display.set_mode((WIDTH, HEIGHT))  # экран
-clock = pygame.time.Clock()
-
 all_sprites = pygame.sprite.Group()
 hero_group = pygame.sprite.Group()
-tile_group = pygame.sprite.Group()
-background = pygame.sprite.Group()
-tiles = []
+block_group = pygame.sprite.Group()
+block_names = ([f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]] +
+              [f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]])
+block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in block_names}
 
 
-class Tile(pygame.sprite.Sprite):
-    def __init__(self, tile, x, y):
-        super().__init__(tile_group, background)
-        path = rf"Background\{tile}.png"
-        self.x = x
-        self.y = y
-        self.image = load_image(path)
-        self.rect = pygame.Rect(0, 0, 50, 50)
-        self.rect = self.rect.move(x, y)
-        self.image = pygame.transform.scale(self.image, (50, 50))
-
-    def move(self, dx, dy):
-        if self.rect.x >= WIDTH or self.rect.y >= HEIGHT:
-            self.rect.x = self.rect.x - WIDTH - 50
-        else:
-            self.rect.x += 1
+class Block(pygame.sprite.Sprite):
+    def __init__(self, block_type, pos_x, pos_y):
+        super().__init__(block_group, all_sprites)
+        self.image = block_images[block_type]  # строка с названием
+        self.rect = self.image.get_rect().move(
+            pos_x, pos_y)  # получаем левый топ коорд холста и получаем передвинутый
 
 
 class Hero(pygame.sprite.Sprite):
@@ -64,6 +44,7 @@ class Hero(pygame.sprite.Sprite):
         self.jump_number = 0
         self.jump_increase = 0
         self.cur_jump_height = 0
+        self.on_ground = False
 
         self.cur_frame = 0
         self.image = self.frames_forward["Run"][self.cur_frame]
@@ -86,16 +67,44 @@ class Hero(pygame.sprite.Sprite):
         else:
             self.image = self.frames_backwards[action][self.cur_frame]
 
+
+    def move_with_collision(self):
+        self.rect = self.rect.move(self.dx, 0)
+        for block in block_group:
+            if self.rect.colliderect(block.rect):
+                if self.dx > 0:
+                    self.rect.x = block.rect.left - self.rect.width
+                else:
+                    self.rect.x = block.rect.right
+                self.dx = 0
+        self.rect = self.rect.move(0, self.dy)
+        for block in block_group:
+            if self.rect.colliderect(block.rect):
+                if self.dy > 0:
+                    self.rect.y = block.rect.top - self.rect.height
+                    self.on_ground = True
+                else:
+                    self.rect.y = block.rect.bottom
+                    self.cur_jump_height = MAX_JUMP_HEIGHT
+                self.dy = 0
+        self.on_ground = False
+        underground_rect = self.rect.move(0, 1)
+        for block in block_group:
+            if underground_rect.colliderect(block.rect):
+                self.on_ground = True
+                break
+
+
     def update(self, *args):
         scancode: pygame.key.ScancodeWrapper = args[0]
 
         has_resistance = 1
         has_gravity = 1
 
-        if scancode[pygame.K_DOWN]:
+        if scancode[KEY_BINDS["KEY_DOWN"]]:
             self.dy += 0.1
 
-        if scancode[pygame.K_UP]:
+        if scancode[KEY_BINDS["KEY_UP"]]:
             self.jump_number = max(1, self.jump_number)
             if self.cur_jump_height != MAX_JUMP_HEIGHT and not (not self.jump_increase and self.cur_jump_height > 0):
                 self.jump_increase = True
@@ -108,19 +117,20 @@ class Hero(pygame.sprite.Sprite):
                     self.cur_jump_height = 0
         else:
             self.jump_increase = False
-        if scancode[pygame.K_RIGHT]:
+
+        if scancode[KEY_BINDS["KEY_RIGHT"]]:
             self.direction = 'right'
-            if not self.jump_number:
-                self.dx = min(5.0, self.dx + 0.1)
+            if self.on_ground:
+                self.dx = min(5.0, self.dx + 0.15)
             else:
                 self.dx = min(5.0, max(1.0, self.dx + 0.1))
             if self.dx >= 0:
                 has_resistance = 0
 
-        if scancode[pygame.K_LEFT]:
+        if scancode[KEY_BINDS["KEY_LEFT"]]:
             self.direction = 'left'
-            if not self.jump_number:
-                self.dx = max(-5.0, self.dx - 0.1)
+            if self.on_ground:
+                self.dx = max(-5.0, self.dx - 0.15)
             else:
                 self.dx = max(-5.0, min(-1.0, self.dx - 0.1))
             if self.dx <= 0:
@@ -135,17 +145,21 @@ class Hero(pygame.sprite.Sprite):
         if has_gravity:
             self.dy = min(5.0, self.dy + GRAVITY)
 
-        if self.rect.top == HEIGHT - self.rect.height:  # заменить на коллизию снизу
+        self.move_with_collision()
+
+        if self.on_ground:
             self.dy = min(self.dy, 0)
             self.cur_jump_height = 0
             self.jump_number = 0
 
         if self.dy < 0:
+            self.on_ground = False
             if self.jump_number == 1:
                 self.action = "Jump"
             else:
                 self.action = "Double Jump"
         elif self.dy > 0:
+            self.on_ground = False
             self.action = "Fall"
         elif self.dx != 0:
             self.action = "Run"
@@ -154,21 +168,42 @@ class Hero(pygame.sprite.Sprite):
 
         self.cur_frame = (self.cur_frame + 1) % len(self.frames_forward[self.action])
         self.set_image(self.direction, self.action)
-        self.rect = self.rect.move(self.dx, self.dy)
-        self.rect.top = min(HEIGHT - self.rect.height, self.rect.top)
+
+
+class Camera:
+    # зададим начальный сдвиг камеры
+    def __init__(self):
+        self.dx = 0
+        self.dy = 0
+
+    # сдвинуть объект obj на смещение камеры
+    def apply(self, obj):
+        obj.rect.x += self.dx
+        obj.rect.y += self.dy
+
+    # позиционировать камеру на объекте target
+    def update(self, target):
+        self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6)
+        self.dy = -(target.rect.y + target.rect.h // 2 - HEIGHT // 1.5)
 
 
 dragon = Hero("Mask Dude", 50, 50)
+for i in range(20):
+    block = Block("Autumn Big", 0 + i * 48, 500)
 
+from random import randint
+for i in range(20):
+    block = Block("Fantasy Big", randint(0, 740), randint(0, 540))
 
-running = False
-start = True
+running = True
 
-
-if start:
-    start_screen()
+start_screen()
 
 while running:
+    camera = Camera()
+    camera.update(dragon)
+    for sprite in all_sprites:
+        camera.apply(sprite)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

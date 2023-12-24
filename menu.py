@@ -1,20 +1,38 @@
 import pygame
 import sys
-from imports import Tile, tiles, clock, WIDTH, HEIGHT, load_image, background, screen, FPS, start
+from useful_funcs import load_image, terminate
+from settings import clock, WIDTH, HEIGHT, screen, FPS
 
+
+tile_group = pygame.sprite.Group()
+background = pygame.sprite.Group()
+tiles = []
 
 def animate_background(pixels):
     for pixel in pixels:
         pixel.move(1, 1)
 
 
-def terminate():
-    pygame.quit()
-    sys.exit()
-
-
 colorsForBack = ["Pink", "Purple", "Blue", "Yellow", "Gray"]
 currentColor = 0
+
+class Tile(pygame.sprite.Sprite):
+    def __init__(self, tile, x, y):
+        super().__init__(tile_group, background)
+        path = rf"Background\{tile}.png"
+        self.x = x
+        self.y = y
+        self.image = load_image(path)
+        self.rect = pygame.Rect(0, 0, 50, 50)
+        self.rect = self.rect.move(x, y)
+        self.image = pygame.transform.scale(self.image, (50, 50))
+
+    def move(self, dx, dy):
+        if self.rect.x >= WIDTH or self.rect.y >= HEIGHT:
+            self.rect.x = self.rect.x - WIDTH - 50
+        else:
+            self.rect.x += 1
+
 
 for i in range(0, 1600, 50):
     for j in range(0, 1600, 50):
@@ -26,8 +44,6 @@ for i in range(0, 1600, 50):
 
 
 def start_screen():
-    global running, start
-
     buttons = pygame.sprite.Group()
     font = pygame.font.Font(None, 30)
 
@@ -54,12 +70,10 @@ def start_screen():
     quitButton.rect = rectQuit
     buttons.add(quitButton)
 
-    while start:
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if rectPlay.collidepoint(event.pos):
-                    print("go")
-                    running = True
                     return
                 elif rectQuit.collidepoint(event.pos):
                     terminate()
@@ -69,19 +83,19 @@ def start_screen():
         animate_background(tiles)
         buttons.draw(screen)
 
-        string_rendered = font.render("play", 1, pygame.Color('black'))
+        string_rendered = font.render("Начать", 1, pygame.Color('black'))
         intro_rect = string_rendered.get_rect()
         intro_rect.top = HEIGHT // 2 - 125
         intro_rect.x = WIDTH // 2 - 100
         screen.blit(string_rendered, intro_rect)
 
-        string_rendered = font.render("settings", 1, pygame.Color('black'))
+        string_rendered = font.render("Настройки", 1, pygame.Color('black'))
         intro_rect = string_rendered.get_rect()
         intro_rect.top = HEIGHT // 2 - 25
         intro_rect.x = WIDTH // 2 - 100
         screen.blit(string_rendered, intro_rect)
 
-        string_rendered = font.render("exit", 1, pygame.Color('black'))
+        string_rendered = font.render("Выход", 1, pygame.Color('black'))
         intro_rect = string_rendered.get_rect()
         intro_rect.top = HEIGHT // 2 + 75
         intro_rect.x = WIDTH // 2 - 100
