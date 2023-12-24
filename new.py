@@ -1,6 +1,4 @@
-import os
-import sys
-import pygame
+import  sys
 from useful_funcs import *
 
 pygame.init()
@@ -33,14 +31,15 @@ class Tile(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (50, 50))
 
     def move(self, dx, dy):
-        self.rect.x += dx
-        self.rect.y += dy
-
-        if self.rect.right >= WIDTH or self.rect.bottom >= HEIGHT:
-            new_x = WIDTH // 2 - self.x * 2.5
-            new_y = HEIGHT // 2 - self.y * 2.5
+        if self.rect.x >= WIDTH or self.rect.y >= HEIGHT:
+            new_x = self.rect.x - WIDTH
+            new_y = self.rect.y - HEIGHT
             self.rect.x = new_x
             self.rect.y = new_y
+        else:
+            self.rect.x += 1
+            self.rect.y += 1
+
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self, character, x, y):
@@ -214,13 +213,11 @@ def start_screen():
     quitButton.rect = rectQuit
     buttons.add(quitButton)
 
-    print(coordPlay[:2])
-    print(coordPlay[2:])
     colorsForBack = ["Blue", "Pink", "Purple"]
     currentColor = 0
 
-    for i in range(0, 800, 50):
-        for j in range(0, 800, 50):
+    for i in range(0, 1600, 50):
+        for j in range(0, 1600, 50):
             currentColor += 1
             if currentColor > 2:
                 currentColor = 0
