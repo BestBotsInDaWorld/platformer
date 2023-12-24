@@ -163,6 +163,7 @@ running = False
 start = True
 
 
+
 def animate_background(pixels):
     for pixel in pixels:
         pixel.move(1, 1)
@@ -172,6 +173,17 @@ def terminate():
     pygame.quit()
     sys.exit()
 
+
+colorsForBack = ["Pink", "Purple", "Blue", "Yellow", "Gray"]
+currentColor = 0
+
+for i in range(0, 1600, 50):
+    for j in range(0, 1600, 50):
+        currentColor += 1
+        if currentColor > 4:
+            currentColor = 0
+        tile = Tile(colorsForBack[currentColor], i, j)
+        tiles.append(tile)
 
 def start_screen():
     global running, start
@@ -202,16 +214,7 @@ def start_screen():
     quitButton.rect = rectQuit
     buttons.add(quitButton)
 
-    colorsForBack = ["Blue", "Pink", "Purple"]
-    currentColor = 0
 
-    for i in range(0, 1600, 50):
-        for j in range(0, 1600, 50):
-            currentColor += 1
-            if currentColor > 2:
-                currentColor = 0
-            tile = Tile(colorsForBack[currentColor], i, j)
-            tiles.append(tile)
 
     while start:
         for event in pygame.event.get():
