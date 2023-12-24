@@ -1,6 +1,6 @@
 import pygame
 import sys
-from new import Tile, tiles, load_image, WIDTH, HEIGHT, screen, clock, FPS, background
+from imports import Tile, tiles, clock, WIDTH, HEIGHT, load_image, background, screen, FPS, start
 
 
 def animate_background(pixels):
