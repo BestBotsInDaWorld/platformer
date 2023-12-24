@@ -1,25 +1,6 @@
-from useful_funcs import *
+import pygame
 import sys
-from new import Tile, start
-
-
-pygame.init()
-
-FPS = 60
-WIDTH = 800
-HEIGHT = 600
-GRAVITY = 0.25
-MAX_JUMP_HEIGHT = 80
-RESISTANCE = 0.25
-screen = pygame.display.set_mode((WIDTH, HEIGHT))  # экран
-clock = pygame.time.Clock()
-
-
-all_sprites = pygame.sprite.Group()
-hero_group = pygame.sprite.Group()
-tile_group = pygame.sprite.Group()
-background = pygame.sprite.Group()
-tiles = []
+from new import Tile, tiles, load_image, WIDTH, HEIGHT, screen, clock, FPS, background
 
 
 def animate_background(pixels):
@@ -32,7 +13,21 @@ def terminate():
     sys.exit()
 
 
+colorsForBack = ["Pink", "Purple", "Blue", "Yellow", "Gray"]
+currentColor = 0
+
+for i in range(0, 1600, 50):
+    for j in range(0, 1600, 50):
+        currentColor += 1
+        if currentColor > 4:
+            currentColor = 0
+        tile = Tile(colorsForBack[currentColor], i, j)
+        tiles.append(tile)
+
+
 def start_screen():
+    global running, start
+
     buttons = pygame.sprite.Group()
     font = pygame.font.Font(None, 30)
 
@@ -58,17 +53,6 @@ def start_screen():
     rectQuit = pygame.Rect(WIDTH // 2 - 200, HEIGHT // 2 + 50, 100, 100)
     quitButton.rect = rectQuit
     buttons.add(quitButton)
-
-    colorsForBack = ["Blue", "Pink", "Purple"]
-    currentColor = 0
-
-    for i in range(0, 1600, 50):
-        for j in range(0, 1600, 50):
-            currentColor += 1
-            if currentColor > 2:
-                currentColor = 0
-            tile = Tile(colorsForBack[currentColor], i, j)
-            tiles.append(tile)
 
     while start:
         for event in pygame.event.get():
