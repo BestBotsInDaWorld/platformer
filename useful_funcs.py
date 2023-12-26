@@ -2,6 +2,7 @@ import os
 import pygame
 import sys
 
+
 def load_image(name, color_key=None):
     fullname = os.path.join('data', name)
     try:
@@ -16,6 +17,24 @@ def load_image(name, color_key=None):
         image.set_colorkey(color_key)
 
     return image
+
+
+def load_ost(name):
+    fullname = os.path.join(r'data\Osts', name)
+    pygame.mixer.music.load(fullname)
+    pygame.mixer.music.play()
+
+
+def cut_sheet(sheet, columns, rows):
+    rect = pygame.Rect(0, 0, sheet.get_width() // columns, sheet.get_height() // rows)
+    cycle = []
+    for j in range(rows):
+        for i in range(columns):
+            frame_location = (rect.w * i, rect.h * j)
+            frame = sheet.subsurface(pygame.Rect(frame_location, rect.size))
+            frame.set_colorkey(frame.get_at((0, 0)))
+            cycle.append(frame)
+    return cycle
 
 
 def terminate():
