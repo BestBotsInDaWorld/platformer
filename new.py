@@ -2,6 +2,8 @@ from useful_funcs import *
 from settings import *
 from menu import *
 from traps import *
+from set_settings import set_setting
+
 
 pygame.init()
 hero_group = pygame.sprite.Group()
@@ -225,22 +227,26 @@ for i in range(20):
 
 running = True
 
-start_screen()
-load_ost("ost_1.mp3")
-while running:
-    camera = Camera()
-    camera.update(dragon)
-    for sprite in all_sprites:
-        camera.apply(sprite)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill(pygame.Color("orange"))
-    trap_group.update()
-    hero_group.update(pygame.key.get_pressed())
-    all_sprites.draw(screen)
-    hero_group.draw(screen)
-    pygame.display.flip()
-    clock.tick(FPS)
 
+while True:
+    start = start_screen()
+    if start:
+        load_ost("ost_1.mp3")
+        while running:
+            camera = Camera()
+            camera.update(dragon)
+            for sprite in all_sprites:
+                camera.apply(sprite)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            screen.fill(pygame.Color("orange"))
+            trap_group.update()
+            hero_group.update(pygame.key.get_pressed())
+            all_sprites.draw(screen)
+            hero_group.draw(screen)
+            pygame.display.flip()
+            clock.tick(FPS)
+    elif start is None:
+        set_setting()
 pygame.quit()

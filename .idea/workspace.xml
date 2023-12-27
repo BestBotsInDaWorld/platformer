@@ -4,49 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
-      <change afterPath="$PROJECT_DIR$/data/Osts/ost_1.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/traps.py" afterDir="false" />
+    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="ыуеештп">
+      <change afterPath="$PROJECT_DIR$/data/Menu/Buttons/Arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imports.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/key_binds" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/set_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_12_2023_12_28__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_12_2023_12_28__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_0_57__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_0_57__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_14_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_14_03__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_21_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_21_39__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_22_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_22_11__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_23_02__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_12_2023_23_02__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Hit (18x18).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Idle (18x18).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/HitSide (22x22).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/HitTop (22x22).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/Part 1 (22x22).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/Part 2 (22x22).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Falling Platforms/Off.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Falling Platforms/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Falling Platforms/On (32x10).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/Off.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Fan/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/On (24x8).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/Hit (16x32).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/Off.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Fire/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/On (16x32).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Platforms/Brown On (32x8).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Platforms/Grey Off.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Platforms/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Platforms/Grey On (32x8).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Blink (42x42).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Bottom Hit (42x42).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Left Hit (42x42).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Right Hit (42x42).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Top Hit (42x42).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Saw/Off.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Saw/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Saw/On (38x38).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Blink (54x52).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Bottom Hit (54x52).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Left Hit (54x52).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Right Hit (54x52).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Top Hit (54x52).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spiked Ball/Chain.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spiked Ball/Chain.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spiked Ball/Spiked Ball.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spiked Ball/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spikes/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spikes/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Trampoline/Jump (28x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/useful_funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/useful_funcs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,55 +53,28 @@
     &quot;Python.dragon.executor&quot;: &quot;Run&quot;,
     &quot;Python.new.executor&quot;: &quot;Run&quot;,
     &quot;Python.particles.executor&quot;: &quot;Run&quot;,
-    &quot;Python.start.executor&quot;: &quot;Run&quot;,
-    &quot;Python.traps.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/pythonprojects/platformer/new.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Даниил/Documents/GitHub/platformer/data/Menu/Buttons&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\pythonprojects\platformer\data\Osts" />
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Menu\Buttons" />
       <recent name="C:\pythonprojects\platformer\data\Main Characters\Mask Dude" />
       <recent name="C:\pythonprojects\platformer\copyfrom" />
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\pythonprojects\platformer\data\Osts" />
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Menu\Buttons" />
       <recent name="C:\pythonprojects\platformer\data\Background" />
       <recent name="C:\pythonprojects\platformer\data" />
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\data\Main Characters\Virtual Guy" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="start" type="PythonConfigurationType" factoryName="Python">
-      <module name="platformer" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -190,15 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1703420930643</updated>
     </task>
-    <task id="LOCAL-00007" summary="fon">
-      <option name="closed" value="true" />
-      <created>1703427537615</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1703427537615</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
