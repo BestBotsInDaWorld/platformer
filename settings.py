@@ -8,10 +8,10 @@ def get_keys():
         keys = f.split()
         # Преобразование каждого значения в объект типа pygame
 
-        down = getattr(pygame, keys[0])
-        down = pygame.key.key_code(keys[0][2:])
-        up = getattr(pygame, keys[1])
-        up = pygame.key.key_code(keys[1][2:])
+        up = getattr(pygame, keys[0])
+        up = pygame.key.key_code(keys[0][2:])
+        down = getattr(pygame, keys[1])
+        down = pygame.key.key_code(keys[1][2:])
         right = getattr(pygame, keys[2])
         right = pygame.key.key_code(keys[2][2:])
         left = getattr(pygame, keys[3])
@@ -19,8 +19,8 @@ def get_keys():
 
         # Создание словаря с преобразованными значениями
         binds = {
-            "KEY_DOWN": down,
             "KEY_UP": up,
+            "KEY_DOWN": down,
             "KEY_RIGHT": right,
             "KEY_LEFT": left,
         }

@@ -57,7 +57,6 @@ def set_settings(*args):
     to_lobby_rect = pygame.Rect(WIDTH - 100, HEIGHT - 100, 100, 100)
     to_lobby.rect = to_lobby_rect
     buttons.add(to_lobby)
-    print(to_lobby.rect)
 
     while True:
         for event in pygame.event.get():

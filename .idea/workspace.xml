@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
-      <change afterPath="$PROJECT_DIR$/background.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Traps/Spiked Ball/On.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/key_bindings.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheet_cuts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a.py" beforeDir="false" afterPath="$PROJECT_DIR$/a.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Menu/Buttons/Back.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Menu/Buttons/Arrow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spikes/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spike/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Spikes/d.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spike/d.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
