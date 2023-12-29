@@ -253,9 +253,8 @@ for i in range(20):
 
 running = True
 
-print(KEY_BINDINGS)
-set_settings()
 KEY_BINDINGS = get_keys()
+set_settings()
 load_ost("ost_1.mp3")
 
 while running:
