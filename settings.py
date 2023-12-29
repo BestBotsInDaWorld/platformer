@@ -5,20 +5,21 @@ from useful_funcs import *
 pygame.init()
 
 KEY_BINDS = {}
+
+
 with open("key_binds", "r") as f:
     f = f.read()
     keys = f.split()
     # Преобразование каждого значения в объект типа pygame
 
     KEY_UP = getattr(pygame, keys[0])
-    KEY_UP = pygame.key.key_code(keys[0][2:])
 
+    KEY_UP = pygame.key.key_code(keys[0][2:])
     KEY_DOWN = getattr(pygame, keys[1])
     KEY_DOWN = pygame.key.key_code(keys[1][2:])
     KEY_LEFT = getattr(pygame, keys[2])
     KEY_LEFT = pygame.key.key_code(keys[2][2:])
     KEY_RIGHT = getattr(pygame, keys[3])
-    KEY_RIGHT = pygame.key.key_code(keys[3][2:])
 
     # Создание словаря с преобразованными значениями
     KEY_BINDS = {

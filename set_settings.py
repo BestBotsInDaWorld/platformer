@@ -49,12 +49,32 @@ for i in range(0, 1600, 50):
 
 def save_setting():
     with open("key_binds", "w") as f:
-        print(KEY_BINDS)
         f.write(f'{KEY_BINDS["KEY_UP"]}\n{KEY_BINDS["KEY_DOWN"]}\n{KEY_BINDS["KEY_LEFT"]}\n{KEY_BINDS["KEY_RIGHT"]}')
+
+
+# def update_setting():
+#     global KEY_BINDS
+#     with open("key_binds", "r") as f:
+#         f = f.read()
+#         keys = f.split()
+#         # Преобразование каждого значения в объект типа pygame
+#         KEY_UP = pygame.key.key_code(keys[0][2:])
+#         KEY_DOWN = pygame.key.key_code(keys[1][2:])
+#         KEY_LEFT = pygame.key.key_code(keys[2][2:])
+#         KEY_RIGHT = pygame.key.key_code(keys[3][2:])
+#
+#         # Создание словаря с преобразованными значениями
+#         KEY_BINDS = {
+#             "KEY_UP": KEY_UP,
+#             "KEY_DOWN": KEY_DOWN,
+#             "KEY_LEFT": KEY_LEFT,
+#             "KEY_RIGHT": KEY_RIGHT
+#         }
 
 
 def set_setting(*args):
     global selected_button, menu_active, start
+    font = pygame.font.Font(None, 30)
 
     key_up = pygame.sprite.Sprite()
     key_down = pygame.sprite.Sprite()
@@ -63,30 +83,30 @@ def set_setting(*args):
     to_lobby = pygame.sprite.Sprite()
     buttons = pygame.sprite.Group()
 
-    key_up.image = load_image(rf"menu\buttons\arrow.png")
+    key_up.image = load_image(rf"menu\buttons\back.png")
     key_up.image = pygame.transform.scale(key_up.image, (75, 75))
-    key_up.image = pygame.transform.rotate(key_up.image, 90)
-    rectKey_up = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 200, 100, 100)
+    key_up.image = pygame.transform.rotate(key_up.image, 270)
+    rectKey_up = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 - 200, 100, 100)
     key_up.rect = rectKey_up
     buttons.add(key_up)
 
-    key_down.image = load_image(rf"menu\buttons\arrow.png")
+    key_down.image = load_image(rf"menu\buttons\back.png")
     key_down.image = pygame.transform.scale(key_down.image, (75, 75))
-    key_down.image = pygame.transform.rotate(key_down.image, 270)
-    rectKey_down = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 100, 100, 100)
+    key_down.image = pygame.transform.rotate(key_down.image, 90)
+    rectKey_down = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 - 100, 100, 100)
     key_down.rect = rectKey_down
     buttons.add(key_down)
 
-    key_left.image = load_image(rf"menu\buttons\arrow.png")
+    key_left.image = load_image(rf"menu\buttons\back.png")
     key_left.image = pygame.transform.scale(key_left.image, (75, 75))
-    key_left.image = pygame.transform.rotate(key_left.image, 180)
-    rectKey_left = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2, 100, 100)
+    rectKey_left = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2, 100, 100)
     key_left.rect = rectKey_left
     buttons.add(key_left)
 
-    key_right.image = load_image(rf"menu\buttons\arrow.png")
+    key_right.image = load_image(rf"menu\buttons\back.png")
     key_right.image = pygame.transform.scale(key_right.image, (75, 75))
-    rectKey_right = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 100, 100, 100)
+    key_right.image = pygame.transform.rotate(key_right.image, 180)
+    rectKey_right = pygame.Rect(WIDTH // 2 - 150, HEIGHT // 2 + 100, 100, 100)
     key_right.rect = rectKey_right
     buttons.add(key_right)
 
@@ -100,8 +120,7 @@ def set_setting(*args):
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and menu_active and selected_button:
                 key = pygame.key.name(event.key)
-                print(key)
-                if key == "down" or key == "up" or key == "left" or key == "right":
+                if key == "down" or key == "left" or key == "right" or key == "up":
                     key = key.upper()
                 if selected_button == 'KEY_UP':
                     KEY_BINDS['KEY_UP'] = f"K_{key}"
@@ -131,12 +150,41 @@ def set_setting(*args):
                         menu_active = True
                         selected_button = 'KEY_RIGHT'
                     elif to_lobby.rect.collidepoint(mouse_pos):
-                        return
+                        return None
             elif event.type == pygame.QUIT:
                 terminate()
         background.draw(screen)
         animate_background(tiles)
         buttons.draw(screen)
+        for elem, val in KEY_BINDS.items():
+            if str(val).isdigit():
+                KEY_BINDS[elem] = f'K_{pygame.key.name(val)}'
+            if KEY_BINDS[elem][2:] == "up" or KEY_BINDS[elem][2:] == "down" or KEY_BINDS[elem][2:] == "left" or KEY_BINDS[elem][2:] == "right":
+                KEY_BINDS[elem] = f"K_{KEY_BINDS[elem][2:].upper()}"
+
+        string_rendered = font.render(KEY_BINDS["KEY_UP"], 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 - 175
+        intro_rect.x = WIDTH // 2
+        screen.blit(string_rendered, intro_rect)
+
+        string_rendered = font.render(KEY_BINDS["KEY_DOWN"], 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 - 75
+        intro_rect.x = WIDTH // 2
+        screen.blit(string_rendered, intro_rect)
+
+        string_rendered = font.render(KEY_BINDS["KEY_LEFT"], 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top = HEIGHT // 2 + 25
+        intro_rect.x = WIDTH // 2
+        screen.blit(string_rendered, intro_rect)
+
+        string_rendered = font.render(KEY_BINDS["KEY_RIGHT"], 1, pygame.Color('black'))
+        intro_rect = string_rendered.get_rect()
+        intro_rect.top =  HEIGHT // 2 + 125
+        intro_rect.x = WIDTH // 2
+        screen.blit(string_rendered, intro_rect)
 
         pygame.display.flip()
         clock.tick(FPS)

@@ -5,6 +5,8 @@ from traps import *
 from set_settings import set_setting
 
 
+
+
 pygame.init()
 hero_group = pygame.sprite.Group()
 block_group = pygame.sprite.Group()
@@ -140,7 +142,6 @@ class Hero(pygame.sprite.Sprite):
 
         has_resistance = 1
         has_gravity = 1
-
         if scancode[KEY_BINDS["KEY_DOWN"]]:
             self.dy += 1
 
@@ -233,6 +234,22 @@ while True:
     if start:
         load_ost("ost_1.mp3")
         while running:
+            with open("key_binds", "r") as f:
+                f = f.read()
+                keys = f.split()
+                # Преобразование каждого значения в объект типа pygame
+                KEY_UP = pygame.key.key_code(keys[0][2:])
+                KEY_DOWN = pygame.key.key_code(keys[1][2:])
+                KEY_LEFT = pygame.key.key_code(keys[2][2:])
+                KEY_RIGHT = pygame.key.key_code(keys[3][2:])
+
+                # Создание словаря с преобразованными значениями
+                KEY_BINDS = {
+                    "KEY_UP": KEY_UP,
+                    "KEY_DOWN": KEY_DOWN,
+                    "KEY_LEFT": KEY_LEFT,
+                    "KEY_RIGHT": KEY_RIGHT
+                }
             camera = Camera()
             camera.update(dragon)
             for sprite in all_sprites:
