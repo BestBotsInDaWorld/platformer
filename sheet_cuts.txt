@@ -1,0 +1,5 @@
+Saw;Idle;1;1
+Saw;On;8;1
+Spike;Idle;1;1
+Spiked Ball;Idle;1;1
+Spiked Ball;On;8;1

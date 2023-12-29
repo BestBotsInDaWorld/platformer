@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="setting">
+      <change afterPath="$PROJECT_DIR$/background.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Traps/Spiked Ball/On.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/key_bindings.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheet_cuts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.py" beforeDir="false" afterPath="$PROJECT_DIR$/a.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Menu/Buttons/Arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Menu/Buttons/Arrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Menu/Buttons/Back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spikes/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spike/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spikes/d.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Spike/d.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imports.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/key_binds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/set_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/set_settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/set_settings.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,26 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.a.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dragon.executor&quot;: &quot;Run&quot;,
-    &quot;Python.new.executor&quot;: &quot;Run&quot;,
-    &quot;Python.particles.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Даниил/Documents/GitHub/platformer/data/Menu/Buttons&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.a.executor": "Run",
+    "Python.dragon.executor": "Run",
+    "Python.new.executor": "Run",
+    "Python.particles.executor": "Run",
+    "Python.start.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Rebasing master",
+    "last_opened_file_path": "C:/pythonprojects/platformer/data/Menu/Buttons",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\pythonprojects\platformer\data\Menu\Buttons" />
       <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Menu\Buttons" />
       <recent name="C:\pythonprojects\platformer\data\Main Characters\Mask Dude" />
       <recent name="C:\pythonprojects\platformer\copyfrom" />
       <recent name="C:\pythonprojects\platformer" />
-      <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Menu\Buttons" />
@@ -65,6 +80,31 @@
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\data\Main Characters\Virtual Guy" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="PythonConfigurationType" factoryName="Python">
+      <module name="platformer" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

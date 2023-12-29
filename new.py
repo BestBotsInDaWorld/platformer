@@ -2,10 +2,7 @@ from useful_funcs import *
 from settings import *
 from menu import *
 from traps import *
-from set_settings import set_setting
-
-
-
+from config_change import set_settings
 
 pygame.init()
 hero_group = pygame.sprite.Group()
@@ -57,7 +54,14 @@ class Hero(pygame.sprite.Sprite):
 
         self.cur_frame = 0
         self.image = self.frames_forward["Run"][self.cur_frame]
-        self.rect = self.image.get_rect().move(pos_x, pos_y)
+        self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
+        self.mask = pygame.mask.from_surface(self.image)
+
+    def check_masks(self, other):
+        if self.rect.colliderect(other.rect):
+            if pygame.sprite.collide_mask(self, other):
+                return True
+        return False
 
     def set_image(self):
 
@@ -86,66 +90,77 @@ class Hero(pygame.sprite.Sprite):
 
     def move_with_collision(self):
         self.rect = self.rect.move(self.dx, 0)
-
+        cur_hit = False
         for block in block_group:
             if self.rect.colliderect(block.rect):
-                if self.dx > 0:
-                    self.rect.x = block.rect.left - self.rect.width
-                else:
-                    self.rect.x = block.rect.right
+                self.change_collision_x(block)
                 self.dx = 0
 
         for trap in trap_group:
-            if self.rect.colliderect(trap.rect):
-                if trap.check_hit(self) == 'Hit' and not self.invincible:  # TODO пофиксить шарики с шипами
-                    self.hp -= 1
-                    self.invincible = IFRAMES
-                if self.dx > 0 or self.direction == 'right':
-                    self.rect.x = trap.rect.left - self.rect.width
-                else:
-                    self.rect.x = trap.rect.right
-                self.dx = -(self.dx)
+            if self.check_masks(trap):
+                if trap.hit_type == 'Static_Hit':
+                    self.damage_try()
+                    self.change_collision_x(trap)
+                    self.dx = -(self.dx)
+                elif trap.hit_type == 'Through_Hit':
+                    if self.damage_try():
+                        cur_hit = True
+                        self.dx = -(self.dx)
+                elif not trap.check_hit(self):
+                    self.change_collision_x(trap)
 
         self.rect = self.rect.move(0, self.dy)
 
         for block in block_group:
             if self.rect.colliderect(block.rect):
-                if self.dy > 0:
-                    self.rect.y = block.rect.top - self.rect.height
-                    self.on_ground = True
-                else:
-                    self.rect.y = block.rect.bottom
-                    self.cur_jump_height = MAX_JUMP_HEIGHT
+                self.change_collision_y(block)
                 self.dy = 0
 
         for trap in trap_group:
-            if self.rect.colliderect(trap.rect):
-                if trap.check_hit(self) == 'Hit' and not self.invincible:
-                    self.hp -= 1
-                    self.invincible = IFRAMES
-                if self.dy > 0:
-                    self.rect.y = trap.rect.top - self.rect.height
-                else:
-                    self.rect.y = trap.rect.bottom
-                self.cur_jump_height = MAX_JUMP_HEIGHT
-                self.dy = -(self.dy)
+            if self.check_masks(trap):
+                if trap.hit_type == 'Static_Hit':
+                    self.damage_try()
+                    self.change_collision_y(trap)
+                    self.dy = -(self.dy)
+                    self.cur_jump_height = MAX_JUMP_HEIGHT
+                elif trap.hit_type == 'Through_Hit':
+                    if self.damage_try() or cur_hit:
+                        self.dy = -(self.dy)
+                        self.cur_jump_height = MAX_JUMP_HEIGHT
+                elif not trap.check_hit(self):
+                    self.change_collision_x(trap)
 
-        self.on_ground = False
-        underground_rect = self.rect.move(0, 1)
-        for block in block_group:
-            if underground_rect.colliderect(block.rect):
-                self.on_ground = True
-                break
+    def damage_try(self):
+        if not self.invincible:
+            self.hp -= 1
+            self.invincible = IFRAMES
+            return True
+        return False
+
+    def change_collision_x(self, object):
+        if self.dx > 0:
+            self.rect.x = object.rect.left - self.rect.width
+        else:
+            self.rect.x = object.rect.right
+
+    def change_collision_y(self, object):
+        if self.dy > 0:
+            self.rect.y = object.rect.top - self.rect.height
+        else:
+            self.rect.y = object.rect.bottom
+        self.cur_jump_height = MAX_JUMP_HEIGHT
 
     def update(self, *args):
         scancode: pygame.key.ScancodeWrapper = args[0]
 
+
         has_resistance = 1
         has_gravity = 1
-        if scancode[KEY_BINDS["KEY_DOWN"]]:
+
+        if scancode[KEY_BINDINGS["KEY_DOWN"]]:
             self.dy += 1
 
-        if scancode[KEY_BINDS["KEY_UP"]]:
+        if scancode[KEY_BINDINGS["KEY_UP"]]:
             self.jump_number = max(1, self.jump_number)
             if self.cur_jump_height != MAX_JUMP_HEIGHT and not (not self.jump_increase and self.cur_jump_height > 0):
                 self.jump_increase = True
@@ -159,7 +174,7 @@ class Hero(pygame.sprite.Sprite):
         else:
             self.jump_increase = False
 
-        if scancode[KEY_BINDS["KEY_RIGHT"]]:
+        if scancode[KEY_BINDINGS["KEY_RIGHT"]]:
             self.direction = 'right'
             if self.on_ground:
                 self.dx = min(MAX_DX, self.dx + GROUND_DX)
@@ -168,7 +183,7 @@ class Hero(pygame.sprite.Sprite):
             if self.dx >= 0:
                 has_resistance = 0
 
-        if scancode[KEY_BINDS["KEY_LEFT"]]:
+        if scancode[KEY_BINDINGS["KEY_LEFT"]]:
             self.direction = 'left'
             if self.on_ground:
                 self.dx = max(-MAX_DX, self.dx - GROUND_DX)
@@ -188,82 +203,75 @@ class Hero(pygame.sprite.Sprite):
 
         self.move_with_collision()
 
+        fall_without_jump = True if self.on_ground and not self.jump_number else False
+        self.on_ground = False
+        underground_rect = self.rect.move(0, 1)
+        for block in block_group:  # TODO стояние на платформах
+            if underground_rect.colliderect(block.rect):
+                self.on_ground = True
+                fall_without_jump = False
+                break
+        if fall_without_jump:
+            self.cur_jump_height = MAX_JUMP_HEIGHT
+
         if self.on_ground:
             self.dy = min(self.dy, 0)
             self.cur_jump_height = 0
             self.jump_number = 0
-
-        if self.dy != 0:
-            self.on_ground = False
 
         self.set_image()
         self.invincible = max(0, self.invincible - 1)
 
 
 class Camera:
-    # зададим начальный сдвиг камеры
     def __init__(self):
         self.dx = 0
         self.dy = 0
 
-    # сдвинуть объект obj на смещение камеры
     def apply(self, obj):
         obj.rect.x += self.dx
         obj.rect.y += self.dy
 
-    # позиционировать камеру на объекте target
     def update(self, target):
-        self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6)
-        self.dy = -(target.rect.y + target.rect.h // 2 - HEIGHT // 1.5)
+        self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6 -
+                    min(WIDTH // 6, abs(start_point.left - target.rect.left)))
+        start_point.x += self.dx
+        self.dy = -(target.rect.y + target.rect.h // 2 - HEIGHT // 1.2)
+        start_point.y += self.dy
 
 
 dragon = Hero("Mask Dude", 50, 50)
-for i in range(20):
-    block = Block("Autumn Big", 0 + i * 48, 500)
-
-from random import randint
+start_point = pygame.Rect(0, HEIGHT, 1, 1)
 
 for i in range(20):
-    block = SpikedBall(randint(0, 740), randint(0, 540), length=200, traectory=(0.5, 0.5))
+    block = Block("Autumn Big", 0 + i * 48, 400)
+
+from random import randint, random
+
+for i in range(20):
+    block = SpikedBall(randint(0, 740), randint(0, 300), traectory=(1, 1), velocity=0.5, delay=0, length=200)
 
 running = True
 
+print(KEY_BINDINGS)
+set_settings()
+KEY_BINDINGS = get_keys()
+load_ost("ost_1.mp3")
 
-while True:
-    start = start_screen()
-    if start:
-        load_ost("ost_1.mp3")
-        while running:
-            with open("key_binds", "r") as f:
-                f = f.read()
-                keys = f.split()
-                # Преобразование каждого значения в объект типа pygame
-                KEY_UP = pygame.key.key_code(keys[0][2:])
-                KEY_DOWN = pygame.key.key_code(keys[1][2:])
-                KEY_LEFT = pygame.key.key_code(keys[2][2:])
-                KEY_RIGHT = pygame.key.key_code(keys[3][2:])
+while running:
+    camera = Camera()
+    camera.update(dragon)
+    for sprite in all_sprites:
+        camera.apply(sprite)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    screen.fill(pygame.Color("orange"))
+    trap_group.update()
+    hero_group.update(pygame.key.get_pressed())
+    all_sprites.draw(screen)
+    hero_group.draw(screen)
+    pygame.display.flip()
+    clock.tick(FPS)
 
-                # Создание словаря с преобразованными значениями
-                KEY_BINDS = {
-                    "KEY_UP": KEY_UP,
-                    "KEY_DOWN": KEY_DOWN,
-                    "KEY_LEFT": KEY_LEFT,
-                    "KEY_RIGHT": KEY_RIGHT
-                }
-            camera = Camera()
-            camera.update(dragon)
-            for sprite in all_sprites:
-                camera.apply(sprite)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-            screen.fill(pygame.Color("orange"))
-            trap_group.update()
-            hero_group.update(pygame.key.get_pressed())
-            all_sprites.draw(screen)
-            hero_group.draw(screen)
-            pygame.display.flip()
-            clock.tick(FPS)
-    elif start is None:
-        set_setting()
 pygame.quit()
