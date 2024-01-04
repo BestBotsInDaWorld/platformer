@@ -3,6 +3,8 @@ from settings import *
 from menu import *
 from traps import *
 from config_change import set_settings
+from create_level import create_level
+
 
 pygame.init()
 hero_group = pygame.sprite.Group()
@@ -253,7 +255,7 @@ for i in range(20):
 
 running = True
 
-set_settings()
+create_level()
 KEY_BINDINGS = get_keys()
 load_ost("ost_1.mp3")
 
