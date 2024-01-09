@@ -1,6 +1,7 @@
 from background import *
 from settings import KEY_BINDINGS, screen, FPS, clock
 from useful_funcs import terminate
+import os
 
 menu_active = False
 selected_button = None

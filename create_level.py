@@ -1,7 +1,7 @@
 import pygame
 from settings import clock, screen, FPS, WIDTH, HEIGHT, all_sprites
 from background import animate_background, tiles, load_image, background, gen_background
-
+import os
 
 start_point = pygame.Rect(0, HEIGHT, 1, 1)
 
@@ -110,8 +110,17 @@ def create_level():
 
                     else:    # Проверяем, что выбранный блок не ниже верхней точки оставшихся блоков
                         if selected_block is not None and y < 550:
-                            block_group.add(Block(selected_block, x, y))
-                            level_save.append((selected_block, x, y))
+                            # Проверяем пересечение с уже существующими блоками
+                            is_intersecting = False
+                            new_block_rect = pygame.Rect(x, y, 40, 40)
+                            for block in block_group:
+                                if block.rect.colliderect(new_block_rect):
+                                    is_intersecting = True
+                                    break
+
+                            if not is_intersecting:
+                                block_group.add(Block(selected_block, x, y))
+                                level_save.append((selected_block, x, y))
 
                 elif event.button == 3:  # Правая кнопка мыши
                     x, y = event.pos
@@ -133,10 +142,14 @@ def create_level():
 
 def save_level():
     # Сохранение уровня в файл
-    level_file = open("lvl1.txt", "w")
+    folder_path = "levels"
+    file_count = sum([len(files) for _, _, files in os.walk(folder_path)])
+    level_path = f'levels/lvl{file_count + 1}.txt'
+    level_file = open(level_path, "w")
     for block in level_save:
         block_type, x, y = block
         level_file.write(f"{block_type} {x} {y}\n")
     level_file.close()
+
 
 create_level()
