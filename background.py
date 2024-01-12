@@ -13,6 +13,7 @@ def animate_background(tiles):
 
 bg_colors = ["Pink", "Purple", "Blue", "Yellow", "Gray"]
 
+
 class Tile(pygame.sprite.Sprite):
     def __init__(self, tile, x, y):
         super().__init__(tile_group, background)

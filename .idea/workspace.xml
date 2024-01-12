@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="constructor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.py" beforeDir="false" afterPath="$PROJECT_DIR$/background.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +59,8 @@
       <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\levels" />
       <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Menu\Buttons" />
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\levels" />
       <recent name="C:\pythonprojects\platformer\data\Background" />
       <recent name="C:\pythonprojects\platformer\data" />
       <recent name="C:\pythonprojects\platformer" />
@@ -145,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704514517840</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="constructor">
+      <created>1704797581490</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704797581490</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

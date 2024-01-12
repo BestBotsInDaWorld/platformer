@@ -255,7 +255,7 @@ for i in range(20):
 
 running = True
 
-create_level()
+
 KEY_BINDINGS = get_keys()
 load_ost("ost_1.mp3")
 

@@ -56,13 +56,22 @@ def create_level():
     block_sur = []
     save_button = pygame.sprite.Sprite()
     eye = pygame.sprite.Sprite()
+    quit_button = pygame.sprite.Sprite()
+    surf = pygame.Surface((800, 200))  # при создании передается размер
+    surf.fill((255, 255, 255))
 
-    save_button.image = load_image(rf"menu\buttons\play.png")
+    save_button.image = load_image(rf"menu\buttons\save_button.png")
     save_button.image = pygame.transform.scale(save_button.image, (60, 60))
-    save_rect = pygame.Rect(WIDTH - 100, HEIGHT - 105, 100, 100)
+    save_rect = pygame.Rect(WIDTH - 100, HEIGHT - 100, 100, 100)
     save_button.rect = save_rect
     buttons.add(save_button)
     block_name = []
+
+    quit_button.image = load_image(rf"menu\buttons\close.png")
+    quit_button.image = pygame.transform.scale(quit_button.image, (50, 50))
+    quit_rect = pygame.Rect(0, 0, 100, 100)
+    quit_button.rect = quit_rect
+    buttons.add(quit_button)
 
     eye.image = load_image(rf"menu\buttons\play.png")
     eye.image = pygame.transform.scale(save_button.image, (60, 60))
@@ -71,7 +80,7 @@ def create_level():
     all_sprites.add(eye)
 
     for i in range(6):
-        block = [Block(block_names[i], (800 - 50 * 7) // 2 + i * 55, 500), block_names[i]]
+        block = [Block(block_names[i], (800 - 50 * 7) // 2 + i * 55, 525), block_names[i]]
         block_sur.append(block[0])
         block_name.append(block[1])
         blocks.add(block_sur)
@@ -80,6 +89,7 @@ def create_level():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     # Передвижение вправо
@@ -95,9 +105,12 @@ def create_level():
                     camera.dy -= 1
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
+
                 if event.button == 1:  # Левая кнопка мыши
                     x, y = event.pos
                     curr = 0
+                    if quit_rect.collidepoint(event.pos):
+                        return
                     if save_rect.collidepoint(x, y):
                         save_level()
                         return
@@ -131,11 +144,14 @@ def create_level():
                             break
 
         screen.fill(pygame.Color("orange"))
-        all_sprites.draw(screen)
+
         block_group.draw(screen)
         for sprite in block_group:
             camera.apply(sprite)
-        camera.apply(save_button)
+        screen.blit(surf, (0, 500))
+        blocks.draw(screen)
+        buttons.draw(screen)
+
         pygame.display.flip()
         clock.tick(FPS)
 
