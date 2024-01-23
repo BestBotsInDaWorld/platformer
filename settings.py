@@ -27,7 +27,7 @@ def get_keys():
         return binds
 
 
-KEY_BINDINGS = get_keys()
+KEY_BINDINGS = {}
 FPS = 60
 WIDTH = 800
 HEIGHT = 600
@@ -39,8 +39,11 @@ MAX_DY = 5.0
 MAX_JUMP_HEIGHT = 80
 RESISTANCE = 0.25
 IFRAMES = 20
+CONSTUCTOR_CAMERA_X = 5
+CONSTUCTOR_CAMERA_Y = 5
 screen = pygame.display.set_mode((WIDTH, HEIGHT))  # экран
 clock = pygame.time.Clock()
+
 all_sprites = pygame.sprite.Group()
-
-
+trap_group = pygame.sprite.Group()
+block_group = pygame.sprite.Group()

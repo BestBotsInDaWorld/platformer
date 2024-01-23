@@ -1,26 +1,12 @@
+from create_level import create_level
 from useful_funcs import *
 from settings import *
 from menu import *
 from traps import *
+from blocks import Block
 from config_change import set_settings
-
 pygame.init()
 hero_group = pygame.sprite.Group()
-block_group = pygame.sprite.Group()
-block_names = ([f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]] +
-               [f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]])
-block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in block_names}
-
-enemy_names = []
-
-
-class Block(pygame.sprite.Sprite):
-    def __init__(self, block_type, pos_x, pos_y):
-        super().__init__(block_group, all_sprites)
-        self.image = block_images[block_type]  # строка с названием
-        self.rect = self.image.get_rect().move(
-            pos_x, pos_y)  # получаем левый топ коорд холста и получаем передвинутый
-
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self, character, pos_x, pos_y):
@@ -106,8 +92,13 @@ class Hero(pygame.sprite.Sprite):
                     if self.damage_try():
                         cur_hit = True
                         self.dx = -(self.dx)
-                elif not trap.check_hit(self):
-                    self.change_collision_x(trap)
+                elif trap.hit_type == "Special":
+                    trap.special_behaviour(self)
+                trap.check_destruction()
+            elif not trap.hit_type and self.rect.colliderect(trap.rect):
+                self.change_collision_x(trap)
+                self.dx = 0
+
 
         self.rect = self.rect.move(0, self.dy)
 
@@ -117,18 +108,22 @@ class Hero(pygame.sprite.Sprite):
                 self.dy = 0
 
         for trap in trap_group:
-            if self.check_masks(trap):
+            if self.check_masks(trap) and trap.hit_type:
                 if trap.hit_type == 'Static_Hit':
                     self.damage_try()
                     self.change_collision_y(trap)
                     self.dy = -(self.dy)
                     self.cur_jump_height = MAX_JUMP_HEIGHT
                 elif trap.hit_type == 'Through_Hit':
-                    if self.damage_try() or cur_hit:
+                    if self.damage_try() or cur_hit:  # под неуязвимостью не отталкивает
                         self.dy = -(self.dy)
                         self.cur_jump_height = MAX_JUMP_HEIGHT
-                elif not trap.check_hit(self):
-                    self.change_collision_x(trap)
+                trap.check_destruction()
+
+            elif self.rect.colliderect(trap.rect) and not trap.hit_type:
+                self.change_collision_y(trap)
+                self.dy = 0
+
 
     def damage_try(self):
         if not self.invincible:
@@ -138,13 +133,13 @@ class Hero(pygame.sprite.Sprite):
         return False
 
     def change_collision_x(self, object):
-        if self.dx > 0:
+        if self.rect.left < object.rect.left:
             self.rect.x = object.rect.left - self.rect.width
         else:
             self.rect.x = object.rect.right
 
     def change_collision_y(self, object):
-        if self.dy > 0:
+        if self.rect.top < object.rect.top:
             self.rect.y = object.rect.top - self.rect.height
         else:
             self.rect.y = object.rect.bottom
@@ -177,18 +172,30 @@ class Hero(pygame.sprite.Sprite):
         if scancode[KEY_BINDINGS["KEY_RIGHT"]]:
             self.direction = 'right'
             if self.on_ground:
-                self.dx = min(MAX_DX, self.dx + GROUND_DX)
+                if self.dx <= MAX_DX:  # не действуют трамплины и т.д.
+                    self.dx = min(MAX_DX, self.dx + GROUND_DX)
+                else:
+                    self.dx = min(MAX_DX * 2, self.dx + GROUND_DX)
             else:
-                self.dx = min(MAX_DX, max(1.0, self.dx + AIR_DX))
+                if self.dx <= MAX_DX:
+                    self.dx = min(MAX_DX, max(1.0, self.dx + AIR_DX))
+                else:
+                    self.dx = min(MAX_DX * 2, self.dx + AIR_DX)
             if self.dx >= 0:
                 has_resistance = 0
 
         if scancode[KEY_BINDINGS["KEY_LEFT"]]:
             self.direction = 'left'
             if self.on_ground:
-                self.dx = max(-MAX_DX, self.dx - GROUND_DX)
+                if self.dx >= -MAX_DX:
+                    self.dx = max(-MAX_DX, self.dx - GROUND_DX)
+                else:
+                    self.dx = max(-MAX_DX * 2, self.dx - GROUND_DX)
             else:
-                self.dx = max(-MAX_DX, min(-1.0, self.dx - AIR_DX))
+                if self.dx >= -MAX_DX:
+                    self.dx = max(-MAX_DX, min(-1.0, self.dx - AIR_DX))
+                else:
+                    self.dx = max(-MAX_DX * 2, self.dx - AIR_DX)
             if self.dx <= 0:
                 has_resistance = 0
 
@@ -206,8 +213,13 @@ class Hero(pygame.sprite.Sprite):
         fall_without_jump = True if self.on_ground and not self.jump_number else False
         self.on_ground = False
         underground_rect = self.rect.move(0, 1)
-        for block in block_group:  # TODO стояние на платформах
+        for block in block_group:  # проверка остановки на блоке
             if underground_rect.colliderect(block.rect):
+                self.on_ground = True
+                fall_without_jump = False
+                break
+        for trap in trap_group:  # проверка остановки на платформах/неактивных ловушках
+            if trap.fix_standing(self):
                 self.on_ground = True
                 fall_without_jump = False
                 break
@@ -244,16 +256,19 @@ dragon = Hero("Mask Dude", 50, 50)
 start_point = pygame.Rect(0, HEIGHT, 1, 1)
 
 for i in range(20):
-    block = Block("Autumn Big", 0 + i * 48, 400)
+    block = Block.Block("Autumn Big", 0 + i * 48, 400)
 
-from random import randint, random
+from random import randint, choice
 
-for i in range(20):
-    block = SpikedBall(randint(0, 740), randint(0, 300), traectory=(1, 1), velocity=0.5, delay=0, length=200)
+#  for i in range(20):
+#     block = SpikedBall(randint(0, 740), randint(0, 300), traectory=(1, 1), velocity=0.5, before_start=0, length=200)
+#  for i in range(20):
+#      block = DartTrap(randint(0, 740), randint(0, 300), direction="Up")
+#  for i in range(5):
+#      block = FallingPlatform.FallingPlatform(randint(0, 740), randint(0, 300), traectory=(0.5, 0.5), velocity=2)
 
+create_level()
 running = True
-
-set_settings()
 KEY_BINDINGS = get_keys()
 load_ost("ost_1.mp3")
 
@@ -266,8 +281,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     screen.fill(pygame.Color("orange"))
-    trap_group.update()
     hero_group.update(pygame.key.get_pressed())
+    trap_group.update(hero=dragon, blocks=block_group)
     all_sprites.draw(screen)
     hero_group.draw(screen)
     pygame.display.flip()

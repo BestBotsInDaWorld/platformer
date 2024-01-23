@@ -3,3 +3,24 @@ Saw;On;8;1
 Spike;Idle;1;1
 Spiked Ball;Idle;1;1
 Spiked Ball;On;8;1
+Dart Trap;Idle;1;1
+Dart Trap;All Directions;1;1
+Arrow;Idle;1;1
+Arrow;All Directions;1;1
+Fire Maker;Idle;1;1
+Fire Maker;Hit;4;1
+Fire Maker;On;3;1
+Fire;Idle;1;1
+Fire;On;3;1
+Platform;Idle;1;1
+Platform;Grey On;8;1
+Platform;Brown Off;1;1
+Platform;Brown On;8;1
+Trampoline;Idle;1;1
+Trampoline;All Directions;1;1
+Trampoline;All Directions On;8;1
+Jump Refresher;Idle;1;1
+Jump Refresher;On;10;1
+Jump Refresher;Hit;4;1
+Falling Platform;Idle;1;1
+Falling Platform;On;4;1

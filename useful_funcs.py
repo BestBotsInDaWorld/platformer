@@ -3,8 +3,11 @@ import pygame
 import sys
 
 
-def load_image(name, color_key=None):
-    fullname = os.path.join('data', name)
+def load_image(name, color_key=None, parent_dir=""):
+    if parent_dir:
+        fullname = rf"{parent_dir}\data\{name}"
+    else:
+        fullname = os.path.abspath(rf"data\{name}")
     try:
         image = pygame.image.load(fullname).convert()
     except pygame.error as message:
