@@ -5,12 +5,14 @@ tile_group = pygame.sprite.Group()
 background = pygame.sprite.Group()
 tiles = []
 
+
 def animate_background(tiles):
     for tile in tiles:
         tile.move()
 
 
 bg_colors = ["Pink", "Purple", "Blue", "Yellow", "Gray"]
+
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, tile, x, y):
