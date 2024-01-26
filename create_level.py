@@ -4,6 +4,7 @@ from background import animate_background, tiles, load_image, background, gen_ba
 from tkinter import Tk
 import os
 
+
 blocks = pygame.sprite.Group()
 start_point = pygame.Rect(0, HEIGHT, 1, 1)
 monitor_info = Tk()
@@ -16,9 +17,13 @@ class Camera:
         self.dx = 0
         self.dy = 0
 
-    def apply(self, obj):
-        obj.rect.x += self.dx
-        obj.rect.y += self.dy
+    def apply(self, obj, obj_type="sprite"):
+        if obj_type == "sprite":
+            obj.rect.x += self.dx
+            obj.rect.y += self.dy
+        else:
+            obj.x += self.dx
+            obj.y += self.dy
 
     def update(self, target):
         self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6 -
@@ -51,21 +56,33 @@ camera = Camera()
 
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, sprite_type, pos_x, pos_y):
+    def __init__(self, sprite_type, pos_x, pos_y, isBlock, withBack):
         super().__init__(blocks)
-        self.image = block_images[sprite_type]  # строка с названием
-        self.rect = self.image.get_rect().move(
-            pos_x, pos_y)
+
+        if isBlock:
+            self.image = block_images[sprite_type]  # строка с названием
+        else:
+            self.image = trap_images[sprite_type]
+        if withBack:
+            self.image.set_colorkey(self.image.get_at((0, 0)))
+
+        self.rect = self.image.get_rect()
+        self.rect.centerx = pos_x + 30
+        self.rect.centery = pos_y + 100
 
     def scroll(self, vector):
         self.rect = self.rect.move(vector, 0)
 
 
 class Unit(pygame.sprite.Sprite):
-    def __init__(self, block_type, pos_x, pos_y):
+    def __init__(self, block_type, pos_x, pos_y, isBlock):
         super().__init__(block_group)
-        self.image = block_images[block_type]  # строка с названием
+        if isBlock:
+            self.image = block_images[block_type]  # строка с названием
+        else:
+            self.image = trap_images[block_type]
         self.block_type = block_type
+
         self.rect = self.image.get_rect().move(
             pos_x, pos_y)
 
@@ -76,13 +93,20 @@ block_names = ([f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade",
                [f"{name} Small" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]])
 block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in block_names}
 
-# Функция отрисовки уровня
 
+folder_path = 'data\Traps'  # путь к папке Traps
+subfolders = os.listdir(folder_path)
+folders = [f"{path}\idle.png" for path in subfolders]
+trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
+
+# Функция отрисовки уровня
 
 
 # Создание уровня
 level_save = []
 selected_block = None
+
+contructor_start_point = pygame.Rect(0, 0, 1, 1)
 
 # быстрая установка блока: клик на границы спрайта, три положения по высоте по бокам и одно наверху и внизу
 def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x: int, y: int) -> None:
@@ -108,9 +132,11 @@ def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x:
     else:
         new_block_rect.y = colliding_block.rect.y + colliding_block.rect.height
 
+
 def create_level():
     global selected_block, level_save, blocks, camera
     gen_background()
+    names_blocks_n_traps = block_names + folders
     curr_block = 1
     buttons = pygame.sprite.Group()
     blocks = pygame.sprite.Group()
@@ -128,18 +154,6 @@ def create_level():
     block_sur = []
     block_name = []
 
-    for i in range(6):
-        block = [Button(block_names[i], (800 - 50 * 7) // 2 + i * 55, 525), block_names[i]]
-        block_sur.append(block[0])
-        block_name.append(block[1])
-        blocks.draw(screen)
-
-    for i in range(6):
-        block = [Button(block_names[i + 6], (800 - 48 * 7) // 2 + i * 55 + 800, 535), block_names[i + 6]]
-        block_sur.append(block[0])
-        block_name.append(block[1])
-        blocks.draw(screen)
-
     next.image = load_image(rf"menu\buttons\play.png")
     next.image = pygame.transform.scale(next.image, (50, 50))
     next_rect = pygame.Rect(575, 525, 100, 100)
@@ -152,6 +166,38 @@ def create_level():
     prev_rect = pygame.Rect(150, 525, 50, 50)
     prev.rect = prev_rect
     buttons.add(prev)
+
+
+
+    current_screen = 0
+    block_x = 50
+    block_y = 525
+
+    for i in range(12):
+        if i >= 6:
+            current_screen = 475
+        block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
+                                 block_y)
+        block = [Button(block_names[i], block_rect.x, block_rect.y, True, False), block_names[i]]
+        block_sur.append(block[0])
+        block_name.append(block[1])
+        blocks.draw(screen)
+    current_screen = 1600
+
+    for i in range(len(folders)):
+        if i >= 6:
+            current_screen = 2050
+        if i >= 12:
+            current_screen = 2550
+        block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
+                             block_y)
+        block = [Button(folders[i], block_rect.x, block_rect.y, False, True), folders[i]]
+
+        block_sur.append(block[0])
+        block_name.append(block[1])
+        blocks.draw(screen)
+
+
 
     save_button.image = load_image(rf"menu\buttons\save.png")
     save_button.image = pygame.transform.scale(save_button.image, (100, 50))
@@ -198,17 +244,27 @@ def create_level():
 
                     for block in blocks: # Проверяем, был ли клик на блоке
                         if block.rect.collidepoint(x, y):
-                            selected_block = block_names[curr]
-                            select = True
+                            selected_block = names_blocks_n_traps[curr]
                             break
                         curr += 1
 
                     else:
                         if selected_block is not None:
-                            if selected_block.split()[-1] == "Small":
-                                new_block_rect = pygame.Rect(x, y, 32, 32)
+                            isBlock = True
+                            width_block, height_block = 0, 0
+                            if r"idle.png" in selected_block:
+                                isBlock = False
+                                rect = load_image(f'Traps\{selected_block}')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
                             else:
-                                new_block_rect = pygame.Rect(x, y, 48, 48)
+                                rect = load_image(f'Terrain\Square Blocks\{selected_block}.png')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+
+
+
+
+                            new_block_rect = pygame.Rect(x, y, width_block, height_block)
+
                             for block in block_group:  # добавление выравненного блока по нажатию на границы соседа
                                 if block.rect.collidepoint(event.pos):
                                     block_allign(new_block_rect, block, x, y)
@@ -218,10 +274,9 @@ def create_level():
                                     break
                             else:
                                 alligned_x, alligned_y = new_block_rect.x, new_block_rect.y
-                                new_unit = Unit(selected_block, alligned_x, alligned_y)
+                                new_unit = Unit(selected_block, alligned_x, alligned_y, isBlock)
                                 block_group.add(new_unit)
                                 level_save.append(new_unit)
-
                 elif event.button == 3:  # Правая кнопка мыши
                     x, y = event.pos
                     for block in block_group:
@@ -233,7 +288,7 @@ def create_level():
         block_group.draw(screen)
         for sprite in block_group:
             camera.apply(sprite)
-
+        camera.apply(contructor_start_point, obj_type='rect')
         screen.blit(surf, (0, 500))
         blocks.draw(screen)
         buttons.draw(screen)
@@ -248,8 +303,9 @@ def save_level():
     file_count = sum([len(files) for _, _, files in os.walk(folder_path)])
     level_path = f'levels/lvl{file_count + 1}.txt'
     level_file = open(level_path, "w")
+    abs_x, abs_y = contructor_start_point.x, contructor_start_point.y
     for unit in level_save:
-        block_type, x, y = unit.block_type, unit.rect.x, unit.rect.y
+        block_type, x, y = unit.block_type, unit.rect.x - abs_x, unit.rect.y - abs_y
         level_file.write(f"{block_type} {x} {y}\n")
     level_file.close()
 

@@ -27,7 +27,12 @@ def get_keys():
         return binds
 
 
-KEY_BINDINGS = {}
+KEY_BINDINGS = {
+    "KEY_UP": pygame.K_UP,
+    "KEY_DOWN": pygame.K_DOWN,
+    "KEY_RIGHT": pygame.K_RIGHT,
+    "KEY_LEFT": pygame.K_LEFT,
+}
 FPS = 60
 WIDTH = 800
 HEIGHT = 600
@@ -37,6 +42,7 @@ AIR_DX = 0.1
 MAX_DX = 5.0
 MAX_DY = 5.0
 MAX_JUMP_HEIGHT = 80
+ENEMY_DEFEAT_BOUNCE = 3
 RESISTANCE = 0.25
 IFRAMES = 20
 CONSTUCTOR_CAMERA_X = 5
@@ -47,3 +53,5 @@ clock = pygame.time.Clock()
 all_sprites = pygame.sprite.Group()
 trap_group = pygame.sprite.Group()
 block_group = pygame.sprite.Group()
+enemy_group = pygame.sprite.Group()
+hero_group = pygame.sprite.Group()

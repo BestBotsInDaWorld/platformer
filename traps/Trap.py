@@ -5,31 +5,32 @@ from settings import all_sprites, trap_group, WIDTH, HEIGHT
 from useful_funcs import load_image, cut_sheet
 
 # ссылки на изображения ловушек
-parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+
 trap_images = {key: dict(map(lambda x: (x.split(".")[0], rf"Traps\{key}\{x}"),
                              os.listdir(rf"data\Traps\{key}")))
                for key in os.listdir(rf"data\Traps")}
-with open(rf"sheet_cuts.txt", "r") as image_file:
+
+with open(rf"trap_sheet_cuts.txt", "r") as image_file:
     for line in image_file.readlines():
         line = line.strip().split(";")
         if line[1] == "All Directions":
             for direction in ["Left", "Right", "Up", "Down"]:
-                trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction],
-                                                            parent_dir=""), int(line[2]), int(line[3]))
+                trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction]),
+                                                            int(line[2]), int(line[3]))
         elif line[1] == "All Directions On":
             for direction in ["Left On", "Right On", "Up On", "Down On"]:
                 if direction == "Left On" or direction == "Right On":
-                    trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction],
-                                                                parent_dir=""), int(line[3]), int(line[2]))
+                    trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction]),
+                                                                int(line[3]), int(line[2]))
                 else:
-                    trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction],
-                                                                parent_dir=""), int(line[2]), int(line[3]))
+                    trap_images[line[0]][direction] = cut_sheet(load_image(trap_images[line[0]][direction]),
+                                                                int(line[2]), int(line[3]))
 
                 if "Left" in direction or "Down" in direction:
                     trap_images[line[0]][direction].reverse()
         else:
-            trap_images[line[0]][line[1]] = cut_sheet(load_image(trap_images[line[0]][line[1]],
-                                                        parent_dir=""), int(line[2]), int(line[3]))
+            trap_images[line[0]][line[1]] = cut_sheet(load_image(trap_images[line[0]][line[1]],),
+                                                      int(line[2]), int(line[3]))
 
 
 # TODO прописывать в sheet_cuts спрайты
@@ -42,7 +43,8 @@ class Trap(pygame.sprite.Sprite):
         self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
         self.cur_frame = 0
         self.hit_type = False
-
+        self.dx = 0
+        self.dy = 0
         self.frequency = 1
 
     def animation(self, animation_sprites='On'):  # On по умолчанию
