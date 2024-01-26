@@ -39,7 +39,7 @@ class Hero(pygame.sprite.Sprite):
         self.frames_forward = {"Run": self.cut_sheet(load_image(path + "Run.png"), 12, 1),
                                "Fall": self.cut_sheet(load_image(path + "Fall.png"), 1, 1),
                                "Hit": self.cut_sheet(load_image(path + "On.png"), 7, 1),
-                               "Idle": self.cut_sheet(load_image(path + "Idle.png"), 11, 1),
+                               "Idle": self.cut_sheet(load_image(path + "Normal.png"), 11, 1),
                                "Jump": self.cut_sheet(load_image(path + "Jump.png"), 1, 1),
                                "Double Jump": self.cut_sheet(load_image(path + "Double Jump.png"), 6, 1)}
         self.frames_backwards = {key: [pygame.transform.flip(self.frames_forward[key][i], True, False)

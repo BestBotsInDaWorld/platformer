@@ -4,17 +4,131 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="constructor">
+    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
+      <change afterPath="$PROJECT_DIR$/enemies/Plant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enemies/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enemy_sheet_cuts.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hero/Hero.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hero/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/Block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/copyfrom/boom them all/surface.py" beforeDir="false" afterPath="$PROJECT_DIR$/copyfrom/boom them all/surface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Down.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Down.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Left.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Right.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Up.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Up.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Dart Trap/Idle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fire/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/On.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fire/On.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/AngryPig/Hit 1 (36x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/AngryPig/Hit 2 (36x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/AngryPig/Idle (36x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/AngryPig/Run (36x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/AngryPig/Walk (36x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bat/Ceiling In (46x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bat/Ceiling Out (46x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bat/Flying (46x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bat/Hit (46x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bat/Idle (46x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bee/Attack (36x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bee/Bullet Pieces.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bee/Bullet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bee/Hit (36x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Bee/Idle (36x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/BlueBird/Flying (32x32).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Blue Bird/Flying (32x32).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/BlueBird/Hit (32x32).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Blue Bird/Hit (32x32).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Chameleon/Attack (84x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Chameleon/Hit (84x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Chameleon/Idle (84x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Chameleon/Run (84x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Duck/Fall (36x36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Duck/Hit (36x36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Duck/Idle (36x36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Duck/Jump (36x36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Duck/Jump Anticipation (36x36).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/FatBird/Fall (40x48).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Fat Bird/Fall (40x48).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/FatBird/Ground (40x48).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Fat Bird/Ground (40x48).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/FatBird/Hit (40x48).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Fat Bird/Hit (40x48).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/FatBird/Idle (40x48).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Fat Bird/Idle (40x48).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Mushroom/Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Mushroom/Idle (32x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Mushroom/Run (32x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Plant/Attack (44x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Plant/Bullet Pieces.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Plant/Bullet.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Plant Bullet/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Plant/Hit (44x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Plant/Idle (44x42).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Radish/Hit (30x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Radish/Idle 1 (30x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Radish/Idle 2 (30x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Radish/Leafs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Radish/Run (30x38).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rino/Hit (52x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rino/Hit Wall (52x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rino/Idle (52x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rino/Run (52x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock1_Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock1_Idle (38x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock1_Run (38x34).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock2_Hit (32x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock2_Idle (32x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock2_Run (32x28).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock3_Hit (22x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock3_Idle (22x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Rocks/Rock3_Run (22x18).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Slime/Hit (44x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Slime/Idle-Run (44x30).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Slime/Particles (62x16).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Hit (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Idle (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Shell Idle (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Shell Top Hit (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Shell Wall Hit (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Snail without shell.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Snail/Walk (38x24).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Attack (64x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Bullet Pieces.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Bullet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Hit (64x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Idle (64x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Trunk/Run (64x32).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Turtle/Hit (44x26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Turtle/Idle 1 (44x26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Turtle/Idle 2 (44x26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Turtle/Spikes in (44x26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Enemies/Turtle/Spikes out (44x26).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/HitSide.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/HitTop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/Part 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Blocks/Part 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Dart Trap/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Dart Trap/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/On.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Blink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Bottom Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Left Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Right Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Rock Head/Top Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Ice Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Mud Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Sand Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Blink.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Bottom Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Left Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Right Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Spike Head/Top Hit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/AngryPig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sheet_cuts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/trap_sheet_cuts.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/FallingPlatform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FallingPlatform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/Platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Platform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/Trap.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trap.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +159,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.Trap.executor&quot;: &quot;Run&quot;,
     &quot;Python.a.executor&quot;: &quot;Run&quot;,
     &quot;Python.base.executor&quot;: &quot;Run&quot;,
     &quot;Python.create_level.executor&quot;: &quot;Run&quot;,
@@ -71,16 +186,17 @@
       <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Traps\Dart Trap" />
-      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Terrain" />
-      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Other" />
+      <recent name="C:\pythonprojects\platformer\data\Enemies\PlantBullet" />
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\traps" />
+      <recent name="C:\pythonprojects\platformer\data\Traps\Spiked Ball" />
+      <recent name="C:\pythonprojects\platformer\data\Osts" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="PythonConfigurationType" factoryName="Python">
       <module name="platformer" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -201,21 +317,29 @@
       <option name="project" value="LOCAL" />
       <updated>1703841074301</updated>
     </task>
-    <task id="LOCAL-00012" summary="constructor">
-      <created>1706176385458</created>
+    <task id="LOCAL-00012" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706021031172</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1706176385458</updated>
+      <updated>1706021031172</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706021063168</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1706021063168</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
     <MESSAGE value="trash" />
     <MESSAGE value="fon" />
-    <MESSAGE value="constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="fon" />
   </component>
 </project>

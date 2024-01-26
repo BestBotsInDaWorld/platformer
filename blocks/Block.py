@@ -12,3 +12,5 @@ class Block(pygame.sprite.Sprite):
         self.image = block_images[block_type]  # строка с названием
         self.rect = self.image.get_rect().move(
             pos_x, pos_y)  # получаем левый топ коорд холста и получаем передвинутый
+        self.dx = 0
+        self.dy = 0

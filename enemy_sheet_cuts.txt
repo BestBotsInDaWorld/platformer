@@ -1,0 +1,11 @@
+Plant;Idle;1;1
+Plant;Normal;11;1
+Plant;Attack;8;1
+Plant;Hit;5;1
+Plant Bullet;Idle;1;1
+Plant Bullet;Moving;8;1
+Angry Pig;Idle;1;1
+Angry Pig;Hit;5;1
+Angry Pig;Walk;16;1
+Angry Pig;Run;12;1
+Angry Pig;Normal;9;1

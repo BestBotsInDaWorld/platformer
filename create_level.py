@@ -17,9 +17,13 @@ class Camera:
         self.dx = 0
         self.dy = 0
 
-    def apply(self, obj):
-        obj.rect.x += self.dx
-        obj.rect.y += self.dy
+    def apply(self, obj, obj_type="sprite"):
+        if obj_type == "sprite":
+            obj.rect.x += self.dx
+            obj.rect.y += self.dy
+        else:
+            obj.x += self.dx
+            obj.y += self.dy
 
     def update(self, target):
         self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6 -
@@ -102,6 +106,7 @@ trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
 level_save = []
 selected_block = None
 
+contructor_start_point = pygame.Rect(0, 0, 1, 1)
 
 # быстрая установка блока: клик на границы спрайта, три положения по высоте по бокам и одно наверху и внизу
 def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x: int, y: int) -> None:
@@ -272,7 +277,6 @@ def create_level():
                                 new_unit = Unit(selected_block, alligned_x, alligned_y, isBlock)
                                 block_group.add(new_unit)
                                 level_save.append(new_unit)
-                                level_save.append(new_unit)
                 elif event.button == 3:  # Правая кнопка мыши
                     x, y = event.pos
                     for block in block_group:
@@ -284,7 +288,7 @@ def create_level():
         block_group.draw(screen)
         for sprite in block_group:
             camera.apply(sprite)
-
+        camera.apply(contructor_start_point, obj_type='rect')
         screen.blit(surf, (0, 500))
         blocks.draw(screen)
         buttons.draw(screen)
@@ -299,8 +303,9 @@ def save_level():
     file_count = sum([len(files) for _, _, files in os.walk(folder_path)])
     level_path = f'levels/lvl{file_count + 1}.txt'
     level_file = open(level_path, "w")
+    abs_x, abs_y = contructor_start_point.x, contructor_start_point.y
     for unit in level_save:
-        block_type, x, y = unit.block_type, unit.rect.x, unit.rect.y
+        block_type, x, y = unit.block_type, unit.rect.x - abs_x, unit.rect.y - abs_y
         level_file.write(f"{block_type} {x} {y}\n")
     level_file.close()
 
