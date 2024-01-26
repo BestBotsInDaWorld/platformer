@@ -7,10 +7,14 @@
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="constructor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Ice Particle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Idle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Mud Particle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Traps/Sand Mud Ice/Sand Particle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Down.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Down.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Left.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Right.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Right.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Arrow/Up.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Terrain/Arrow/Up.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Dart Trap/Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fire/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fire/On.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fire/On.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +71,11 @@
       <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Traps\Dart Trap" />
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Terrain" />
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Other" />
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\traps" />
-      <recent name="C:\pythonprojects\platformer\data\Traps\Spiked Ball" />
-      <recent name="C:\pythonprojects\platformer\data\Osts" />
-      <recent name="C:\pythonprojects\platformer\data\Background" />
     </key>
   </component>
   <component name="RunManager">
@@ -197,13 +201,21 @@
       <option name="project" value="LOCAL" />
       <updated>1703841074301</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="constructor">
+      <created>1706176385458</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1706176385458</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
     <MESSAGE value="trash" />
     <MESSAGE value="fon" />
-    <option name="LAST_COMMIT_MESSAGE" value="fon" />
+    <MESSAGE value="constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="constructor" />
   </component>
 </project>

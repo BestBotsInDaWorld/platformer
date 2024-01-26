@@ -52,7 +52,7 @@ camera = Camera()
 
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, sprite_type, pos_x, pos_y, isBlock, withBack, block_rect):
+    def __init__(self, sprite_type, pos_x, pos_y, isBlock, withBack):
         super().__init__(blocks)
 
         if isBlock:
@@ -61,6 +61,7 @@ class Button(pygame.sprite.Sprite):
             self.image = trap_images[sprite_type]
         if withBack:
             self.image.set_colorkey(self.image.get_at((0, 0)))
+
         self.rect = self.image.get_rect()
         self.rect.centerx = pos_x + 30
         self.rect.centery = pos_y + 100
@@ -77,6 +78,7 @@ class Unit(pygame.sprite.Sprite):
         else:
             self.image = trap_images[block_type]
         self.block_type = block_type
+
         self.rect = self.image.get_rect().move(
             pos_x, pos_y)
 
@@ -99,6 +101,7 @@ trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
 # Создание уровня
 level_save = []
 selected_block = None
+
 
 # быстрая установка блока: клик на границы спрайта, три положения по высоте по бокам и одно наверху и внизу
 def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x: int, y: int) -> None:
@@ -123,6 +126,7 @@ def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x:
         new_block_rect.y = colliding_block.rect.y - new_block_rect.height
     else:
         new_block_rect.y = colliding_block.rect.y + colliding_block.rect.height
+
 
 def create_level():
     global selected_block, level_save, blocks, camera
@@ -169,7 +173,7 @@ def create_level():
             current_screen = 475
         block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
                                  block_y)
-        block = [Button(block_names[i], block_rect.x, block_rect.y, True, False, block_rect), block_names[i]]
+        block = [Button(block_names[i], block_rect.x, block_rect.y, True, False), block_names[i]]
         block_sur.append(block[0])
         block_name.append(block[1])
         blocks.draw(screen)
@@ -177,12 +181,13 @@ def create_level():
 
     for i in range(len(folders)):
         if i >= 6:
-            current_screen = 2000
+            current_screen = 2050
         if i >= 12:
             current_screen = 2550
         block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
-                                 block_y)
-        block = [Button(folders[i], block_rect.x, block_rect.y, False, True, block_rect), folders[i]]
+                             block_y)
+        block = [Button(folders[i], block_rect.x, block_rect.y, False, True), folders[i]]
+
         block_sur.append(block[0])
         block_name.append(block[1])
         blocks.draw(screen)
@@ -241,12 +246,17 @@ def create_level():
                     else:
                         if selected_block is not None:
                             isBlock = True
+                            width_block, height_block = 0, 0
                             if r"idle.png" in selected_block:
                                 isBlock = False
-                            width_block, height_block = 0, 0
-                            for block in block_group:
-                                if block.rect.collidepoint(event.pos):
-                                    width_block, height_block = block.rect.width, block.rect.height
+                                rect = load_image(f'Traps\{selected_block}')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+                            else:
+                                rect = load_image(f'Terrain\Square Blocks\{selected_block}.png')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+
+
+
 
                             new_block_rect = pygame.Rect(x, y, width_block, height_block)
 
@@ -261,6 +271,7 @@ def create_level():
                                 alligned_x, alligned_y = new_block_rect.x, new_block_rect.y
                                 new_unit = Unit(selected_block, alligned_x, alligned_y, isBlock)
                                 block_group.add(new_unit)
+                                level_save.append(new_unit)
                                 level_save.append(new_unit)
                 elif event.button == 3:  # Правая кнопка мыши
                     x, y = event.pos
