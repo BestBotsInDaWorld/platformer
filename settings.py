@@ -4,6 +4,7 @@ import pygame
 
 pygame.init()
 
+
 def get_keys():
     with open("key_bindings.txt", "r") as f:
         f = f.read()
@@ -27,6 +28,20 @@ def get_keys():
             "KEY_LEFT": left,
         }
         return binds
+
+
+TRAPS_PARAMETES = {
+    "Dart Trap\idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
+    "Falling Platform\idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
+                 "length": 300, "before_fall": 90, "refresh_time": 300, "falling_time": 300},
+    "Fire Maker\idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
+    "Jump Refresher\idle.png": {"refresh_time": 300},
+    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
+    "Saw\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Spike\idle.png": {},
+    "Spiked Ball\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Trampoline\idle.png": {"direction": "Up", "bounce_speed": 10},
+}
 
 
 KEY_BINDINGS = {
