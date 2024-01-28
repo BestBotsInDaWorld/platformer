@@ -9,9 +9,9 @@ class Plant(Enemy):
         self.bullet_velocity = bullet_velocity
         self.shot_delay = shot_delay
         self.cur_shot_delay = 0
-        self.min_shot_range_x = min_shot_range_x
-        self.max_shot_range_x = max_shot_range_x
-        self.max_shot_range_y = max_shot_range_y
+        self.min_shot_range_x = min_shot_range_x * WIDTH_COEF
+        self.max_shot_range_x = max_shot_range_x * WIDTH_COEF
+        self.max_shot_range_y = max_shot_range_y * HEIGHT_COEF
         self.attacking = False
         self.shot_traectory = (0, 0)
         self.frequency = 3
@@ -22,6 +22,8 @@ class Plant(Enemy):
             return False
         if not self.alive:
             self.death()
+        elif not self.is_active:
+            pass
         elif self.attacking:
             self.animation('Attack')
             if self.cur_frame == 4 * self.frequency:
@@ -31,6 +33,7 @@ class Plant(Enemy):
                 else:
                     PlantBullet(self.rect.right - self.rect.width // 4, self.rect.y + self.rect.height // 3,
                                 self.bullet_velocity, self.shot_traectory)
+                sound_lib["plant_shot"].play()
             elif not self.cur_frame:
                 self.attacking = False
                 self.cur_frame = 0
@@ -71,18 +74,20 @@ class Plant(Enemy):
 
 class PlantBullet(Enemy):
     def __init__(self, pos_x, pos_y, bullet_velocity, shot_traectory):
-        super().__init__("Plant Bullet", pos_x, pos_y)
+        super().__init__("Plant Bullet", pos_x, pos_y, precise_coords=True)
         self.bullet_velocity = bullet_velocity
-        self.shot_traectory = shot_traectory
+        self.shot_traectory = (shot_traectory[0] * WIDTH_COEF, shot_traectory[1] * HEIGHT_COEF)
 
     def update(self, **kwargs):
         self.animation('Moving')
         hero, blocks = kwargs["hero"], kwargs["blocks"]
         self.rect = self.rect.move(self.shot_traectory[0] * self.bullet_velocity,
                                    self.shot_traectory[1] * self.bullet_velocity)
+        if self.check_self_hit(hero):
+            self.kill()
         if abs(self.rect.x - hero.rect.x) > WIDTH * 2 or abs(self.rect.y - hero.rect.y) > HEIGHT * 2:
             self.kill()
-        for block in blocks:
+        for block in nearest_blocks:
             if self.rect.colliderect(block.rect):
                 self.kill()
 

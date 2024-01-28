@@ -1,38 +1,31 @@
 from enemies.Enemy import *
 
 
-class AngryPig(Enemy):
-    def __init__(self, pos_x, pos_y, velocity=2, targeting_range=300, dash_multiplier=3):
-        super().__init__("Angry Pig", pos_x, pos_y)
+class Bunny(Enemy):
+    def __init__(self, pos_x, pos_y, velocity=2, targeting_range=300, max_dy=5, jump_dy=7, target_jump=50):
+        super().__init__("Bunny", pos_x, pos_y)
         self.dx = -velocity * WIDTH_COEF
         self.walk_velocity = velocity * WIDTH_COEF
-        self.dash_multiplier = dash_multiplier
-        self.running = False
-        self.cooldown = False
+        self.jump_dy = jump_dy * HEIGHT_COEF
+        self.target_jump = target_jump * HEIGHT_COEF
+        self.max_dy = max_dy * HEIGHT_COEF
+        self.jumping = False
         self.targeting_range = targeting_range * WIDTH_COEF
 
     def update(self, **kwargs):
-        if not self.on_ground:
-            self.fall()
-            return False
         hero = kwargs['hero']
         if not self.alive:
             self.death()
+        elif not self.on_ground:
+            self.fall()
         elif not self.is_active:
             pass
-        elif self.cooldown:
-            self.frequency = 4
-            self.animation('Normal')
-            if not self.cur_frame:
-                self.cooldown = False
-                self.frequency = 2
-
-        elif not self.running:
+        elif not self.jumping:
             if self.direction == 'left':
                 self.dx = -abs(self.dx)
             else:
                 self.dx = abs(self.dx)
-            self.animation('Walk')
+            self.animation('Run')
             self.rect = self.rect.move(self.dx, 0)
             if self.check_self_hit(hero):
                 return False
@@ -55,21 +48,23 @@ class AngryPig(Enemy):
                 self.direction = 'left' if self.direction == 'right' else 'right'
                 self.on_ground = True
             if (abs(self.rect.x - hero.rect.x) <= self.targeting_range and
-                    abs(self.rect.y - hero.rect.y) <= self.rect.height):
+                    self.target_jump <= self.rect.y - hero.rect.y <= HEIGHT):
                 if (self.direction == 'left' and hero.rect.x < self.rect.x) or (
                         self.direction == 'right' and hero.rect.x > self.rect.x):
-                    self.running = True
+                    self.jumping = True
+                    sound_lib["bunny_jump"].play()
+                    self.dy = -self.jump_dy
                     self.cur_frame = 0
-                    sound_lib["pig_dash"].play()
         else:
             if self.direction == 'left':
-                self.dx = -abs(self.walk_velocity * self.dash_multiplier)
+                self.dx = -abs(self.dx)
             else:
-                self.dx = abs(self.walk_velocity * self.dash_multiplier)
-            self.animation('Run')
+                self.dx = abs(self.dx)
+            if self.dy > 0:
+                self.animation('Jump')
+            else:
+                self.animation('Fall')
             self.rect = self.rect.move(self.dx, 0)
-            if self.check_self_hit(hero):
-                return False
             for block in nearest_blocks:
                 if self.rect.colliderect(block.rect):
                     if self.rect.right > block.rect.right:
@@ -78,23 +73,18 @@ class AngryPig(Enemy):
                     else:
                         self.direction = 'left'
                         self.rect.x = block.rect.left - self.rect.width
-                    self.dx = self.walk_velocity
-                    self.running = False
-                    sound_lib["pig_dash_stop"].play()
-                    self.cooldown = True
-                    self.cur_frame = 0
-                    break
-            underground_rect = self.rect.move(-self.rect.width if self.dx < 0 else self.rect.width, 1)
-            self.on_ground = False
+                break
+            self.rect = self.rect.move(0, self.dy)
+            if self.check_self_hit(hero):
+                return False
+            self.dy = min(self.dy + GRAVITY, self.max_dy)
             for block in nearest_blocks:
-                if underground_rect.colliderect(block.rect):
-                    self.on_ground = True
+                if self.rect.colliderect(block.rect):
+                    if self.rect.top < block.rect.top:
+                        self.rect.y = block.rect.top - self.rect.height
+                        self.jumping = False
+                        self.cur_frame = 0
+                        self.dy = 0
+                    else:
+                        self.rect.y = block.rect.bottom
                     break
-            if not self.on_ground:
-                self.direction = 'left' if self.direction == 'right' else 'right'
-                self.dx = self.walk_velocity
-                self.cur_frame = 0
-                self.running = False
-                sound_lib["pig_dash_stop"].play()
-                self.on_ground = True
-                self.cooldown = True

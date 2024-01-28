@@ -1,7 +1,7 @@
 import pygame
 import os
 from math import hypot
-from settings import all_sprites, trap_group, WIDTH, HEIGHT
+from settings import all_sprites, trap_group, nearest_blocks, WIDTH, HEIGHT, sound_lib, WIDTH_COEF, HEIGHT_COEF
 from useful_funcs import load_image, cut_sheet
 
 # ссылки на изображения ловушек
@@ -35,17 +35,21 @@ with open(rf"trap_sheet_cuts.txt", "r") as image_file:
 
 # TODO прописывать в sheet_cuts спрайты
 class Trap(pygame.sprite.Sprite):
-    def __init__(self, trap_type, pos_x, pos_y):
+    def __init__(self, trap_type, pos_x, pos_y, precise_coords=False):
         super().__init__(trap_group, all_sprites)
         self.frames = trap_images[trap_type]
         self.image = self.frames["Idle"][0]
         self.mask = pygame.mask.from_surface(self.image)
-        self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
+        if not precise_coords:
+            self.rect: pygame.Rect = self.image.get_rect().move(pos_x * WIDTH_COEF, pos_y * HEIGHT_COEF)
+        else:
+            self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
         self.cur_frame = 0
         self.hit_type = False
         self.dx = 0
         self.dy = 0
         self.frequency = 1
+        self.is_active = True
 
     def animation(self, animation_sprites='On'):  # On по умолчанию
         self.cur_frame = (self.cur_frame + 1) % (len(self.frames[animation_sprites]) * self.frequency)

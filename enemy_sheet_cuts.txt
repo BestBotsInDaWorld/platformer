@@ -9,3 +9,32 @@ Angry Pig;Hit;5;1
 Angry Pig;Walk;16;1
 Angry Pig;Run;12;1
 Angry Pig;Normal;9;1
+Blue Bird;Idle;1;1
+Blue Bird;Flying;9;1
+Blue Bird;Hit;5;1
+Bunny;Idle;1;1
+Bunny;Hit;5;1
+Bunny;Fall;1;1
+Bunny;Jump;1;1
+Bunny;Normal;8;1
+Bunny;Run;12;1
+Chicken;Hit;5;1
+Chicken;Idle;1;1
+Chicken;Normal;13;1
+Chicken;Run;14;1
+Ghost;Idle;1;1
+Ghost;Appear;4;1
+Ghost;Disappear;4;1
+Ghost;Ghost Particles;4;1
+Ghost;Hit;5;1
+Ghost;Normal;10;1
+Skull;Idle;1;1
+Skull;Hit;5;1
+Skull;Normal;8;1
+Skull;Recovery;8;1
+Skull;Shield Off;7;1
+Skull;Shield On;7;1
+Orange Particle;Idle;1;1
+Red Particle;Idle;1;1
+Orange Particle;Moving;8;1
+Red Particle;Moving;8;1

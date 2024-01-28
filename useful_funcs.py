@@ -1,6 +1,7 @@
 import os
 import pygame
 import sys
+from settings import WIDTH_COEF, HEIGHT_COEF, WIDTH, HEIGHT
 
 
 def load_image(name, color_key=None, parent_dir=""):
@@ -36,8 +37,16 @@ def cut_sheet(sheet, columns, rows):
             frame_location = (rect.w * i, rect.h * j)
             frame = sheet.subsurface(pygame.Rect(frame_location, rect.size))
             frame.set_colorkey(frame.get_at((0, 0)))
+            frame = pygame.transform.scale(frame, (rect.width * WIDTH_COEF, rect.height * HEIGHT_COEF))
             cycle.append(frame)
     return cycle
+
+
+
+def check_activity(object, hero):
+    if abs(object.rect.x - hero.rect.x) <= WIDTH * 2 and abs(object.rect.y - hero.rect.y) <= HEIGHT * 2:
+        return True
+    return False
 
 
 def terminate():

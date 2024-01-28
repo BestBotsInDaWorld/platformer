@@ -7,9 +7,19 @@ class FallingPlatform(Trap):
         super().__init__("Falling Platform", pos_x, pos_y)
         self.image = self.frames['On'][0]
 
-        self.edge = (pos_x, pos_y)
-        self.dx, self.dy = traectory[0] * velocity, traectory[1] * velocity
-        self.length = length
+        self.dx, self.dy = traectory[0] * velocity * WIDTH_COEF, traectory[1] * velocity * HEIGHT_COEF
+        if abs(self.dx) > abs(self.dy):
+            if self.dy == 0:
+                coef = 0
+            else:
+                coef = abs(self.dx / self.dy)
+            self.length = length * (1 / (coef + 1)) * WIDTH_COEF + length * (coef / (coef + 1)) * HEIGHT_COEF
+        else:
+            if self.dx == 0:
+                coef = 0
+            else:
+                coef = abs(self.dy / self.dx)
+            self.length = length * (coef / (coef + 1)) * WIDTH_COEF + length * (1 / (coef + 1)) * HEIGHT_COEF
         self.cur_way = 0
 
         self.hit_type = False
@@ -25,7 +35,6 @@ class FallingPlatform(Trap):
         self.standing_objects = []
 
     def update(self, **kwargs):
-
         if not self.before_start:
             if self.before_fall_cur != self.before_fall:
                 hero = kwargs['hero']
@@ -35,12 +44,11 @@ class FallingPlatform(Trap):
 
                 for object in self.standing_objects:
                     object.rect = object.rect.move(self.dx, self.dy)
-
-                self.rect = self.rect.move(0, self.dy)
+                copy_rect = self.rect.move(self.dx, self.dy)
+                self.cur_way += hypot(self.rect.right - copy_rect.right, self.rect.bottom - copy_rect.bottom)
+                self.rect = copy_rect
                 if self.rect.colliderect(hero.rect):
                     self.change_collision_y(hero)
-
-                self.cur_way += hypot(self.dx, self.dy)
                 if self.cur_way > self.length:
                     self.dx *= -1
                     self.dy *= -1

@@ -1,3 +1,5 @@
+import os
+from tkinter import Tk
 import pygame
 
 pygame.init()
@@ -33,17 +35,35 @@ KEY_BINDINGS = {
     "KEY_RIGHT": pygame.K_RIGHT,
     "KEY_LEFT": pygame.K_LEFT,
 }
+
+TRAPS_PARAMETES = {
+    "Dart Trap\idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
+    "Falling Platform\idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
+                 "length": 300, "before_fall": 90, "refresh_time": 300, "falling_time": 300},
+    "Fire Maker\idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
+    "Jump Refresher\idle.png": {"refresh_time": 300},
+    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
+    "Saw\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Spike\idle.png": {},
+    "Spiked Ball\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Trampoline\idle.png": {"direction": "Up", "bounce_speed": 10},
+}
+
+
 FPS = 60
+monitor_info = Tk()
 WIDTH = 800
 HEIGHT = 600
-GRAVITY = 0.25
-GROUND_DX = 0.15
-AIR_DX = 0.1
-MAX_DX = 5.0
-MAX_DY = 5.0
-MAX_JUMP_HEIGHT = 80
-ENEMY_DEFEAT_BOUNCE = 3
-RESISTANCE = 0.25
+WIDTH_COEF = WIDTH / 800
+HEIGHT_COEF = HEIGHT / 600
+GRAVITY = 0.25 * HEIGHT_COEF
+GROUND_DX = 0.15 * WIDTH_COEF
+AIR_DX = 0.1 * WIDTH_COEF
+MAX_DX = 5.0 * WIDTH_COEF
+MAX_DY = 6.0 * HEIGHT_COEF
+MAX_JUMP_HEIGHT = 80 * HEIGHT_COEF
+ENEMY_DEFEAT_BOUNCE = 4 * HEIGHT_COEF
+RESISTANCE = 0.25 * WIDTH_COEF
 IFRAMES = 20
 CONSTUCTOR_CAMERA_X = 5
 CONSTUCTOR_CAMERA_Y = 5
@@ -55,3 +75,12 @@ trap_group = pygame.sprite.Group()
 block_group = pygame.sprite.Group()
 enemy_group = pygame.sprite.Group()
 hero_group = pygame.sprite.Group()
+
+nearest_blocks = pygame.sprite.Group()
+nearest_traps = pygame.sprite.Group()
+nearest_enemies = pygame.sprite.Group()
+
+sound_lib = {
+    name.split('.')[0]: pygame.mixer.Sound(rf"data\\Sounds\\{name}")
+    for name in os.listdir(rf"data\\Sounds")
+}

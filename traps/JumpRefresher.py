@@ -26,3 +26,4 @@ class JumpRefresher(Trap):
             self.cur_frame = 0
             self.cur_refresh = 1
             self.hit_type = "Inactive"
+            sound_lib["jump_refresh"].play()

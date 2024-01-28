@@ -1,8 +1,8 @@
 import pygame
 from useful_funcs import load_image, cut_sheet
-from settings import (all_sprites, hero_group, block_group, trap_group, enemy_group,
+from settings import (all_sprites, hero_group, nearest_blocks, nearest_traps, nearest_enemies,
                       MAX_JUMP_HEIGHT, MAX_DX, MAX_DY, IFRAMES, GROUND_DX, AIR_DX, GRAVITY, KEY_BINDINGS, RESISTANCE,
-                      ENEMY_DEFEAT_BOUNCE)
+                      ENEMY_DEFEAT_BOUNCE, WIDTH_COEF, HEIGHT_COEF, sound_lib)
 
 
 class Hero(pygame.sprite.Sprite):
@@ -32,14 +32,16 @@ class Hero(pygame.sprite.Sprite):
         self.cur_jump_height = 0
         self.on_ground = False
         self.MAX_JUMP_HEIGHT = MAX_JUMP_HEIGHT
+        self.frequency = 1
 
         self.hp = 5
         self.invincible = 0
 
         self.cur_frame = 0
         self.image = self.frames_forward["Run"][self.cur_frame]
-        self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
+        self.rect: pygame.Rect = self.image.get_rect().move(pos_x * WIDTH_COEF, pos_y * HEIGHT_COEF)
         self.mask = pygame.mask.from_surface(self.image)
+        self.is_active = True
 
     def check_masks(self, other):
         if self.rect.colliderect(other.rect):
@@ -65,22 +67,22 @@ class Hero(pygame.sprite.Sprite):
         else:
             self.action = "Idle"
 
-        self.cur_frame %= len(self.frames_forward[self.action])
+        self.cur_frame %= len(self.frames_forward[self.action]) * self.frequency
         if self.direction == 'right':
-            self.image = self.frames_forward[self.action][self.cur_frame]
+            self.image = self.frames_forward[self.action][self.cur_frame // self.frequency]
         else:
-            self.image = self.frames_backwards[self.action][self.cur_frame]
+            self.image = self.frames_backwards[self.action][self.cur_frame // self.frequency]
         self.cur_frame += 1
 
     def move_with_collision(self):
         self.rect = self.rect.move(self.dx, 0)
         cur_hit = False
-        for block in block_group:
+        for block in nearest_blocks:
             if self.rect.colliderect(block.rect):
                 self.change_collision_x(block)
                 self.dx = 0
 
-        for trap in trap_group:
+        for trap in nearest_traps:
             if self.check_masks(trap):
                 if trap.hit_type == 'Static_Hit':
                     self.damage_try()
@@ -97,7 +99,7 @@ class Hero(pygame.sprite.Sprite):
                 self.change_collision_x(trap)
                 self.dx = 0
 
-        for enemy in enemy_group:
+        for enemy in nearest_enemies:
             if not enemy.alive:
                 continue
             if self.check_masks(enemy):
@@ -108,12 +110,12 @@ class Hero(pygame.sprite.Sprite):
 
         self.rect = self.rect.move(0, self.dy)
 
-        for block in block_group:
+        for block in nearest_blocks:
             if self.rect.colliderect(block.rect):
                 self.change_collision_y(block)
                 self.dy = 0
 
-        for trap in trap_group:
+        for trap in nearest_traps:
             if self.check_masks(trap) and trap.hit_type:
                 if trap.hit_type == 'Static_Hit':
                     self.damage_try()
@@ -130,11 +132,14 @@ class Hero(pygame.sprite.Sprite):
                 self.change_collision_y(trap)
                 self.dy = 0
 
-        for enemy in enemy_group:
-            if self.check_masks(enemy):
+        for enemy in nearest_enemies:
+            if not enemy.alive:
+                continue
+            elif self.check_masks(enemy):
                 state = enemy.check_hit(self)
                 if state == "Enemy_Damaged":
                     self.dy = -ENEMY_DEFEAT_BOUNCE
+                    self.jump_number = 1
                 elif state == "Hero_Damaged":
                     if self.damage_try() or cur_hit:
                         self.dy = -self.dy
@@ -143,6 +148,7 @@ class Hero(pygame.sprite.Sprite):
 
     def damage_try(self):
         if not self.invincible:
+            sound_lib["hero_hit"].play()
             self.hp -= 1
             self.invincible = IFRAMES
             return True
@@ -168,7 +174,7 @@ class Hero(pygame.sprite.Sprite):
         has_gravity = 1
 
         if scancode[KEY_BINDINGS["KEY_DOWN"]]:
-            self.dy += 1
+            self.dy += 1 * HEIGHT_COEF
 
         if scancode[KEY_BINDINGS["KEY_UP"]]:
             self.jump_number = max(1, self.jump_number)
@@ -193,7 +199,7 @@ class Hero(pygame.sprite.Sprite):
                     self.dx = min(MAX_DX * 2, self.dx + GROUND_DX)
             else:
                 if self.dx <= MAX_DX:
-                    self.dx = min(MAX_DX, max(1.0, self.dx + AIR_DX))
+                    self.dx = min(MAX_DX, max(1.0 * WIDTH_COEF, self.dx + AIR_DX))
                 else:
                     self.dx = min(MAX_DX * 2, self.dx + AIR_DX)
             if self.dx >= 0:
@@ -208,7 +214,7 @@ class Hero(pygame.sprite.Sprite):
                     self.dx = max(-MAX_DX * 2, self.dx - GROUND_DX)
             else:
                 if self.dx >= -MAX_DX:
-                    self.dx = max(-MAX_DX, min(-1.0, self.dx - AIR_DX))
+                    self.dx = max(-MAX_DX, min(-1.0 * WIDTH_COEF, self.dx - AIR_DX))
                 else:
                     self.dx = max(-MAX_DX * 2, self.dx - AIR_DX)
             if self.dx <= 0:
@@ -227,13 +233,13 @@ class Hero(pygame.sprite.Sprite):
 
         fall_without_jump = True if self.on_ground and not self.jump_number else False
         self.on_ground = False
-        underground_rect = self.rect.move(0, 1)
-        for block in block_group:  # проверка остановки на блоке
+        underground_rect = self.rect.move(0, 1 * WIDTH_COEF)
+        for block in nearest_blocks:  # проверка остановки на блоке
             if underground_rect.colliderect(block.rect):
                 self.on_ground = True
                 fall_without_jump = False
                 break
-        for trap in trap_group:  # проверка остановки на платформах/неактивных ловушках
+        for trap in nearest_traps:  # проверка остановки на платформах/неактивных ловушках
             if trap.fix_standing(self):
                 self.on_ground = True
                 fall_without_jump = False

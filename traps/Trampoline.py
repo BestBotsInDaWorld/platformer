@@ -5,7 +5,8 @@ class Trampoline(Trap):
     def __init__(self, pos_x, pos_y, direction="Up", bounce_speed=10):
         super().__init__("Trampoline", pos_x, pos_y)
         self.image = self.frames[f'{direction}'][0]
-        self.bounce_speed = bounce_speed
+        self.bounce_speed = bounce_speed * WIDTH_COEF if direction in ["Left",
+                                                                       "Right"] else bounce_speed * HEIGHT_COEF
         self.direction = direction
         self.activated = False
         self.frequency = 2
@@ -31,3 +32,4 @@ class Trampoline(Trap):
             object.dx += self.bounce_speed
         if hasattr(object, 'jump_number'):
             object.jump_number = min(object.jump_number, 1)
+        sound_lib["trampoline"].play()

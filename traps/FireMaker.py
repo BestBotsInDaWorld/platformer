@@ -12,9 +12,12 @@ class FireMaker(Trap):
         self.half_cycle = self.shot_delay + self.warning_time + self.warning_time
 
     def update(self, **kwargs):
+        hero = kwargs['hero']
         if not self.before_start:
             if self.shot_delay + self.warning_time <= self.cur_frame < self.half_cycle + self.damaging_time:
                 if self.shot_delay + self.warning_time == self.cur_frame:
+                    if abs(self.rect.x - hero.rect.x) <= WIDTH and abs(self.rect.y - hero.rect.y) <= HEIGHT:
+                        sound_lib["fire_on"].play()
                     Fire(self.rect.x, self.rect.y - self.rect.height, self.damaging_time)
                 self.animation('Damaging')
             elif self.shot_delay <= self.cur_frame < self.half_cycle + self.damaging_time + self.warning_time:
@@ -40,7 +43,6 @@ class FireMaker(Trap):
         else:
             self.image = self.frames['Idle'][0]
 
-
     def fix_standing(self, object):
         if object.rect.colliderect(self.rect.move(0, -1)):
             return True
@@ -48,12 +50,15 @@ class FireMaker(Trap):
 
 class Fire(Trap):
     def __init__(self, pos_x, pos_y, damaging_time=60):
-        super().__init__("Fire", pos_x, pos_y)
+        super().__init__("Fire", pos_x, pos_y, precise_coords=True)
         self.damaging_time = damaging_time * 2
         self.hit_type = 'Through_Hit'
 
     def update(self, **kwargs):
         if self.cur_frame == self.damaging_time:
+            hero = kwargs['hero']
+            if abs(self.rect.x - hero.rect.x) <= WIDTH and abs(self.rect.y - hero.rect.y) <= HEIGHT:
+                sound_lib["fire_off"].play()
             self.kill()
         if self.cur_frame < self.damaging_time // 2:
             self.image = self.frames['On'][self.cur_frame // (self.damaging_time // 3)]
