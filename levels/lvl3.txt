@@ -1,0 +1,2 @@
+End\Idle.png;325;357
+Start\Idle.png;389;357
