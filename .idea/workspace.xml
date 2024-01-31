@@ -4,101 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
-      <change afterPath="$PROJECT_DIR$/data/Traps/Fire/Idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Traps/Fire/On.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/BlueBird.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/Bunny.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/Chicken.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/Ghost.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enemies/Skull.py" afterDir="false" />
+    <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="constructor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/Block.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/Block.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Blue Bird/Flying (32x32).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Blue Bird/Hit (32x32).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Bunny/Hit (34x44).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Bunny/Idle (34x44).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Bunny/Run (34x44).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Chicken/Hit (32x34).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Chicken/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Chicken/Idle (32x34).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Chicken/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Chicken/Run (32x34).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Chicken/Run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Fat Bird/Fall (40x48).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Fat Bird/Ground (40x48).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Fat Bird/Hit (40x48).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Fat Bird/Idle (40x48).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Ghost/Appear (44x30).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Ghost/Appear.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Ghost/Desappear (44x30).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Ghost/Disappear.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Ghost/Gost Particles (48x16).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Ghost/Ghost Particles.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Ghost/Hit (44x30).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Ghost/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Ghost/Idle (44x30).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Ghost/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Hit (52x54).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Skull/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Hit Wall 1 (52x54).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Skull/Shield On.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Hit Wall 2 (52x54).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Skull/Shield Off.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Idle 1 (52x54).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Skull/Normal.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Idle 2 (52x54).png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Enemies/Skull/Recovery.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Orange Particle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Enemies/Skull/Red Particle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Appearing (96x96).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Desappearing (96x96).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Double Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Double Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Fall.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Fall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Run.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Wall Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Mask Dude/Wall Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Double Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Double Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Fall.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Fall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Run.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Wall Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Ninja Frog/Wall Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Double Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Double Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Fall.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Fall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Run.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Pink Man/Wall Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Pink Man/Wall Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Double Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Double Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Fall.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Fall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Hit.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Hit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Run.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Run.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Wall Jump.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Main Characters/Virtual Guy/Wall Jump.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Other/Fire/Idle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Other/Fire/On.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Terrain/Arrow/Down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Terrain/Arrow/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Traps/Arrow/Idle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Terrain/Arrow/Left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Terrain/Arrow/Right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Terrain/Arrow/Up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/AngryPig.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/AngryPig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Plant.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Plant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy_sheet_cuts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/enemy_sheet_cuts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hero/Hero.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero/Hero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/Idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fan/Idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Traps/Fan/On.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/Other/Fan/On.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl16.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/DartTrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/DartTrap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/FallingPlatform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FallingPlatform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/FireMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FireMaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/JumpRefresher.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/JumpRefresher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Platform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Saw.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Saw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/SpikedBall.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/SpikedBall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Trampoline.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trampoline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Trap.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/useful_funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/useful_funcs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,26 +42,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Trap.executor": "Run",
-    "Python.a.executor": "Run",
-    "Python.base.executor": "Run",
-    "Python.create_level.executor": "Run",
-    "Python.dragon.executor": "Run",
-    "Python.new.executor": "Run",
-    "Python.particles.executor": "Run",
-    "Python.settings.executor": "Run",
-    "Python.start.executor": "Run",
-    "Python.traps.executor": "Run",
-    "Python.useful_funcs.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/pythonprojects/platformer/new.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Trap.executor&quot;: &quot;Run&quot;,
+    &quot;Python.a.executor&quot;: &quot;Run&quot;,
+    &quot;Python.base.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_level.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dragon.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new.executor&quot;: &quot;Run&quot;,
+    &quot;Python.particles.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.start.executor&quot;: &quot;Run&quot;,
+    &quot;Python.traps.executor&quot;: &quot;Run&quot;,
+    &quot;Python.useful_funcs.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/pythonprojects/platformer/new.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\pythonprojects\platformer\data\Osts" />
@@ -156,17 +71,16 @@
       <recent name="C:\pythonprojects\platformer\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Даниил\Documents\GitHub\platformer\data\Other" />
       <recent name="C:\pythonprojects\platformer\data\Enemies\PlantBullet" />
       <recent name="C:\pythonprojects\platformer" />
       <recent name="C:\pythonprojects\platformer\traps" />
       <recent name="C:\pythonprojects\platformer\data\Traps\Spiked Ball" />
-      <recent name="C:\pythonprojects\platformer\data\Osts" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="PythonConfigurationType" factoryName="Python">
       <module name="platformer" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -303,23 +217,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706021063168</updated>
     </task>
-    <task id="LOCAL-00014" summary="fon">
-      <option name="closed" value="true" />
-      <created>1706265566325</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1706265566325</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fon">
-      <option name="closed" value="true" />
-      <created>1706265574058</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1706265574058</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

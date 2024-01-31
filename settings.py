@@ -36,8 +36,7 @@ TRAPS_PARAMETES = {
                  "length": 300, "before_fall": 90, "refresh_time": 300, "falling_time": 300},
     "Fire Maker\idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
     "Jump Refresher\idle.png": {"refresh_time": 300},
-    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
-    "Saw\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation": 'Brown'},
     "Spike\idle.png": {},
     "Spiked Ball\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
     "Trampoline\idle.png": {"direction": "Up", "bounce_speed": 10},
@@ -52,16 +51,16 @@ KEY_BINDINGS = {
 }
 
 TRAPS_PARAMETES = {
-    "Dart Trap\idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
-    "Falling Platform\idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
+    r"Dart Trap\Idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
+    r"Falling Platform\Idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
                  "length": 300, "before_fall": 90, "refresh_time": 300, "falling_time": 300},
-    "Fire Maker\idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
-    "Jump Refresher\idle.png": {"refresh_time": 300},
-    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
-    "Saw\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
-    "Spike\idle.png": {},
-    "Spiked Ball\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
-    "Trampoline\idle.png": {"direction": "Up", "bounce_speed": 10},
+    r"Fire Maker\Idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
+    r"Jump Refresher\Idle.png": {"refresh_time": 300},
+    r"Platform\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
+    r"Saw\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    r"Spike\Idle.png": {},
+    r"Spiked Ball\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    r"Trampoline\Idle.png": {"direction": "Up", "bounce_speed": 10},
 }
 
 

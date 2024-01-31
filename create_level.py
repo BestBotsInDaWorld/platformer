@@ -134,10 +134,19 @@ block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in 
 
 folder_path = 'data\Traps'  # путь к папке Traps
 subfolders = os.listdir(folder_path)
-folders = [f"{path}\idle.png" for path in subfolders]
-trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
+subfolders = [path for path in subfolders if path != "Fire" and path != "Arrow"]
+folders = [f"{path}\Idle.png" for path in subfolders]
 
-# Функция отрисовки уровня
+trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
+folder_path_enemies = 'data\Enemies'  # путь к папке Traps
+subfolders_enemies = os.listdir(folder_path_enemies)
+subfolders_enemies = [path for path in subfolders_enemies if path != "Orange Particle"
+                      and path != "Red Particle"]
+folders_enemies = [f"{path}\\Idle.png" for path in subfolders_enemies]
+
+enemies_images = {path: load_image(rf"Enemies\\{path}") for path in folders_enemies}
+block_images = block_images | enemies_images
+
 
 
 # Создание уровня
@@ -174,7 +183,7 @@ def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x:
 def create_level():
     global selected_block, level_save, blocks, camera
     gen_background()
-    names_blocks_n_traps = block_names + folders
+    names_blocks_n_traps = block_names + folders + folders_enemies
     buttons = pygame.sprite.Group()
     blocks = pygame.sprite.Group()
     save_button = pygame.sprite.Sprite()
@@ -216,12 +225,11 @@ def create_level():
         block_name.append(block[1])
         blocks.draw(screen)
     current_screen = 1600
-
+    print(folders)
     for i in range(len(folders)):
         if i >= 6:
             current_screen = 2050
-        if i >= 12:
-            current_screen = 2550
+
         block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
                              block_y)
         block = [Button(folders[i], block_rect.x, block_rect.y, False, True), folders[i]]
@@ -229,6 +237,19 @@ def create_level():
         block_sur.append(block[0])
         block_name.append(block[1])
         blocks.draw(screen)
+    current_screen = 3200
+    print(len(folders_enemies))
+    for i in range(len(folders_enemies)):
+        if i % 6 == 0 and i != 0:
+            current_screen += 450
+        block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
+                             block_y)
+        block = [Button(folders_enemies[i], block_rect.x, block_rect.y, True, True), folders_enemies[i]]
+
+        block_sur.append(block[0])
+        block_name.append(block[1])
+        blocks.draw(screen)
+
 
     save_button.image = load_image(rf"menu\buttons\save.png")
     save_button.image = pygame.transform.scale(save_button.image, (100, 50))
@@ -278,7 +299,8 @@ def create_level():
                     for block in blocks: # Проверяем, был ли клик на блоке
                         if block.rect.collidepoint(x, y):
                             selected_block = names_blocks_n_traps[curr]
-                            if "idle.png" in selected_block:
+                            print(selected_block)
+                            if selected_block in folders:
                                 selected_block_type = "Trap"
                             else:
                                 selected_block_type = "Block"
@@ -288,7 +310,10 @@ def create_level():
                         if selected_block is not None and can_add is True:
                             isBlock = True
                             width_block, height_block = 0, 0
-                            if r"idle.png" in selected_block:
+                            if selected_block_type == "Block" and r"Idle.png" in selected_block:
+                                rect = load_image(f'Enemies\{selected_block}')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+                            elif r"Idle.png" in selected_block:
                                 isBlock = False
                                 rect = load_image(f'Traps\{selected_block}')
                                 width_block, height_block = rect.get_rect().width, rect.get_rect().height
@@ -308,6 +333,7 @@ def create_level():
                             else:
                                 alligned_x, alligned_y = new_block_rect.x, new_block_rect.y
                                 if selected_block_type == "Trap":
+                                    print(TRAPS_PARAMETES)
                                     parameter = TRAPS_PARAMETES[selected_block]
                                     new_unit = Unit(selected_block, alligned_x, alligned_y,
                                                 isBlock, parameter)
@@ -351,7 +377,6 @@ def create_level():
         clock.tick(FPS)
 
 
-
 def save_level():
     # Сохранение уровня в файл
     folder_path = "levels"
@@ -360,8 +385,11 @@ def save_level():
     level_file = open(level_path, "w")
     abs_x, abs_y = contructor_start_point.x, contructor_start_point.y
     for unit in level_save:
-        block_type, x, y = unit.block_type, unit.rect.x - abs_x, unit.rect.y - abs_y
-        level_file.write(f"{block_type} {x} {y}\n")
+        block_name, block_type, x, y = unit.block_type, unit.isBlock, unit.rect.x - abs_x, unit.rect.y - abs_y
+        if block_type:
+            level_file.write(f"{block_name};{x};{y}\n")
+        else:
+            level_file.write(f"{block_name};{x};{y};{unit.parameters}\n")
     level_file.close()
 
 
