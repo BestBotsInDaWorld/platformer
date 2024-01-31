@@ -281,9 +281,9 @@ def create_level():
             if event.type == pygame.QUIT:
                 return 0
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_RETURN:
                     for block in block_group:
-                        if block.rect.collidepoint(parameter_change_coord) and not block.isBlock:
+                        if not block.isBlock:
                             block.save_parameter()
                             for field in input_fields:
                                 field.kill()
