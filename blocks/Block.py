@@ -2,7 +2,7 @@ import pygame
 from settings import block_group, all_sprites, WIDTH_COEF, HEIGHT_COEF
 from useful_funcs import load_image
 block_names = ([f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]] +
-               [f"{name} Big" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]])
+               [f"{name} Small" for name in ["Autumn", "Fantasy", "Grass", "Jade", "Stone", "Wood"]])
 block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in block_names}
 
 
