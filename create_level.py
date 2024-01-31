@@ -8,6 +8,7 @@ import pygame_gui
 
 # Создание менеджера интерфейса pygame_gui
 manager = pygame_gui.UIManager((800, 600))
+manager_coords = pygame_gui.UIManager((800, 600))
 
 # Создание поля ввода для каждого параметра ловушки
 
@@ -27,11 +28,11 @@ class Camera:
 
     def apply(self, obj, obj_type="sprite"):
         if obj_type == "sprite":
-            obj.rect.x += self.dx
-            obj.rect.y += self.dy
+            obj.rect.x += int(self.dx)
+            obj.rect.y += int(self.dy)
         else:
-            obj.x += self.dx
-            obj.y += self.dy
+            obj.x += int(self.dx)
+            obj.y += int(self.dy)
 
     def update(self, target):
         self.dx = -(target.rect.x + target.rect.w // 2 - WIDTH // 6 -
@@ -53,8 +54,8 @@ class Camera:
                 shift_x = 0
             elif abs(y - monitor_height_center) < HEIGHT // 2:
                 shift_y = 0
-            camera.dx = CONSTUCTOR_CAMERA_X * shift_x
-            camera.dy = CONSTUCTOR_CAMERA_Y * shift_y
+            camera.dx = CONSTUCTOR_CAMERA_X * 2 * shift_x
+            camera.dy = CONSTUCTOR_CAMERA_Y * 2 * shift_y
         else:
             camera.dx = 0
             camera.dy = 0
@@ -116,14 +117,11 @@ class Unit(pygame.sprite.Sprite):
         for key, value in self.parameters.items():
 
             self.parameters[key] = input_fields[curr].get_text()
-            print(self.parameters[key])
             if self.parameters[key].isdigit():
                 self.parameters[key] = int(self.parameters[key])
             elif "(" in self.parameters[key] and ")" in self.parameters[key]:
                 self.parameters[key] = eval(self.parameters[key])
             curr += 1
-        print(self.parameters)
-
 
 hero_group = pygame.sprite.Group()
 block_group = pygame.sprite.Group()
@@ -134,10 +132,23 @@ block_images = {key: load_image(rf"Terrain\Square Blocks\{key}.png") for key in 
 
 folder_path = 'data\Traps'  # путь к папке Traps
 subfolders = os.listdir(folder_path)
-folders = [f"{path}\idle.png" for path in subfolders]
-trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
+subfolders = [path for path in subfolders if path != "Fire" and path != "Arrow"]
+folders = [f"{path}\Idle.png" for path in subfolders]
 
-# Функция отрисовки уровня
+trap_images = {path: load_image(rf"Traps\{path}") for path in folders}
+folder_path_enemies = 'data\Enemies'  # путь к папке Enemies
+folder_path_special = 'data\Items\Checkpoints'
+subfolders_enemies = os.listdir(folder_path_enemies)
+subfolders_enemies = [path for path in subfolders_enemies if path != "Orange Particle"
+                      and path != "Red Particle"]
+subfolders_special = os.listdir(folder_path_special)
+folders_enemies = [f"{path}\\Idle.png" for path in subfolders_enemies]
+folders_special = [f"{path}\\Idle.png" for path in subfolders_special]
+
+enemies_images = {path: load_image(rf"Enemies\\{path}") for path in folders_enemies}
+special_images = {path: load_image(rf"Items\\Checkpoints\\{path}") for path in folders_special}
+block_images = block_images | enemies_images | special_images
+
 
 
 # Создание уровня
@@ -174,7 +185,7 @@ def block_allign(new_block_rect: pygame.rect, colliding_block: pygame.sprite, x:
 def create_level():
     global selected_block, level_save, blocks, camera
     gen_background()
-    names_blocks_n_traps = block_names + folders
+    names_blocks_n_traps = block_names + folders + folders_enemies + folders_special
     buttons = pygame.sprite.Group()
     blocks = pygame.sprite.Group()
     save_button = pygame.sprite.Sprite()
@@ -216,12 +227,10 @@ def create_level():
         block_name.append(block[1])
         blocks.draw(screen)
     current_screen = 1600
-
     for i in range(len(folders)):
         if i >= 6:
             current_screen = 2050
-        if i >= 12:
-            current_screen = 2550
+
         block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
                              block_y)
         block = [Button(folders[i], block_rect.x, block_rect.y, False, True), folders[i]]
@@ -229,6 +238,29 @@ def create_level():
         block_sur.append(block[0])
         block_name.append(block[1])
         blocks.draw(screen)
+    current_screen = 3200
+    for i in range(len(folders_enemies)):
+        if i % 6 == 0 and i != 0:
+            current_screen += 450
+        block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
+                             block_y)
+        block = [Button(folders_enemies[i], block_rect.x, block_rect.y, True, True), folders_enemies[i]]
+
+        block_sur.append(block[0])
+        block_name.append(block[1])
+        blocks.draw(screen)
+    current_screen = 4800
+    for i in range(len(folders_special)):
+        if i % 6 == 0 and i != 0:
+            current_screen += 450
+        block_rect = pygame.Rect((800 - block_x * 7) // 2 + i * (block_x + 5) + current_screen, block_y - 75, block_x,
+                             block_y)
+        block = [Button(folders_special[i], block_rect.x, block_rect.y, True, True), folders_special[i]]
+
+        block_sur.append(block[0])
+        block_name.append(block[1])
+        blocks.draw(screen)
+
 
     save_button.image = load_image(rf"menu\buttons\save.png")
     save_button.image = pygame.transform.scale(save_button.image, (100, 50))
@@ -245,6 +277,9 @@ def create_level():
 
     while True:
         camera.apply_mouse()
+        input_field_rect = pygame.Rect(600, 10, 200, 30)
+        input_field = pygame_gui.elements.UITextEntryLine(input_field_rect, manager=manager_coords)
+        input_field.set_text(str(f"x: {-contructor_start_point.x}, y: {-contructor_start_point.y + HEIGHT}"))
         for event in pygame.event.get():
             manager.process_events(event)
             if event.type == pygame.QUIT:
@@ -270,16 +305,22 @@ def create_level():
                     if next_rect.collidepoint(event.pos):
                         for sprite in block_sur:
                             sprite.scroll(-WIDTH)
+                        continue
 
                     if prev_rect.collidepoint(event.pos):
                         for sprite in block_sur:
                             sprite.scroll(WIDTH)
+                        continue
 
                     for block in blocks: # Проверяем, был ли клик на блоке
                         if block.rect.collidepoint(x, y):
                             selected_block = names_blocks_n_traps[curr]
-                            if "idle.png" in selected_block:
+                            if selected_block in folders:
                                 selected_block_type = "Trap"
+                            elif selected_block in folders_enemies:
+                                selected_block_type = "Enemy"
+                            elif selected_block in folders_special:
+                                selected_block_type = "Special"
                             else:
                                 selected_block_type = "Block"
                             break
@@ -287,10 +328,15 @@ def create_level():
                     else:
                         if selected_block is not None and can_add is True:
                             isBlock = True
-                            width_block, height_block = 0, 0
-                            if r"idle.png" in selected_block:
+                            if selected_block_type == "Enemy":
+                                rect = load_image(f'Enemies\{selected_block}')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+                            elif selected_block_type == "Trap":
                                 isBlock = False
                                 rect = load_image(f'Traps\{selected_block}')
+                                width_block, height_block = rect.get_rect().width, rect.get_rect().height
+                            elif selected_block_type == "Special":
+                                rect = load_image(f'Items\Checkpoints\{selected_block}')
                                 width_block, height_block = rect.get_rect().width, rect.get_rect().height
                             else:
                                 rect = load_image(f'Terrain\Square Blocks\{selected_block}.png')
@@ -337,19 +383,20 @@ def create_level():
 
         screen.blit(fon, (0, 0))
         manager.draw_ui(screen)
+        manager_coords.draw_ui(screen)
         # Обновление интерфейса pygame_gui
-        manager.update(1/60)
+        manager.update(1/30)
+        manager_coords.update(1/30)
         # Отрисовка интерфейса pygame_gui
-        block_group.draw(screen)
         for sprite in block_group:
             camera.apply(sprite)
         camera.apply(contructor_start_point, obj_type='rect')
+        block_group.draw(screen)
         screen.blit(surf, (0, 500))
         blocks.draw(screen)
         buttons.draw(screen)
         pygame.display.flip()
-        clock.tick(FPS)
-
+        clock.tick(30)
 
 
 def save_level():
@@ -360,9 +407,9 @@ def save_level():
     level_file = open(level_path, "w")
     abs_x, abs_y = contructor_start_point.x, contructor_start_point.y
     for unit in level_save:
-        block_type, x, y = unit.block_type, unit.rect.x - abs_x, unit.rect.y - abs_y
-        level_file.write(f"{block_type} {x} {y}\n")
+        block_name, block_type, x, y = unit.block_type, unit.isBlock, unit.rect.x - abs_x, unit.rect.y - abs_y
+        if block_type:
+            level_file.write(f"{block_name};{x};{y}\n")
+        else:
+            level_file.write(f"{block_name};{x};{y};{unit.parameters}\n")
     level_file.close()
-
-
-create_level()

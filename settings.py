@@ -52,16 +52,16 @@ KEY_BINDINGS = {
 }
 
 TRAPS_PARAMETES = {
-    "Dart Trap\idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
-    "Falling Platform\idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
+    "Dart Trap\Idle.png": {"direction": "Right", "arrow_velocity": 5, "before_start": 0, "shot_delay": 120},
+    "Falling Platform\Idle.png": {"traectory": (1, 0), "velocity": 1, "before_start": 0,
                  "length": 300, "before_fall": 90, "refresh_time": 300, "falling_time": 300},
-    "Fire Maker\idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
-    "Jump Refresher\idle.png": {"refresh_time": 300},
-    "Platform\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
-    "Saw\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
-    "Spike\idle.png": {},
-    "Spiked Ball\idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
-    "Trampoline\idle.png": {"direction": "Up", "bounce_speed": 10},
+    "Fire Maker\Idle.png": {"before_start": 0, "shot_delay": 60, "warning_time": 32, "damaging_time": 60},
+    "Jump Refresher\Idle.png": {"refresh_time": 300},
+    "Platform\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300, "variation" :'Brown'},
+    "Saw\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Spike\Idle.png": {},
+    "Spiked Ball\Idle.png": {"traectory": (1, 0), "velocity": 2, "before_start": 0, "length": 300},
+    "Trampoline\Idle.png": {"direction": "Up", "bounce_speed": 10},
 }
 
 
@@ -90,6 +90,8 @@ trap_group = pygame.sprite.Group()
 block_group = pygame.sprite.Group()
 enemy_group = pygame.sprite.Group()
 hero_group = pygame.sprite.Group()
+special_group = pygame.sprite.Group()
+background_group = pygame.sprite.Group()
 
 nearest_blocks = pygame.sprite.Group()
 nearest_traps = pygame.sprite.Group()

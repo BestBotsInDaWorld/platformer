@@ -1,0 +1,7 @@
+Checkpoint;Idle;1;1
+Checkpoint;Hit;26;1
+Checkpoint;Moving;10;1
+Start;Idle;1;1
+Start;Moving;17;1
+End;Idle;1;1
+End;Hit;8;1

@@ -1,6 +1,7 @@
 import pygame
-from settings import WIDTH, HEIGHT
-from useful_funcs import load_image
+import os
+from settings import WIDTH, HEIGHT, all_sprites, WIDTH_COEF, HEIGHT_COEF, background_group
+from useful_funcs import load_image, cut_sheet
 tile_group = pygame.sprite.Group()
 background = pygame.sprite.Group()
 tiles = []
@@ -39,3 +40,18 @@ def gen_background():
             current_color = (current_color + 1) % 5
             tile = Tile(bg_colors[current_color], i, j)
             tiles.append(tile)
+
+
+bg_images = {key.split(".")[0]: key for key in os.listdir(rf"data\Background")}
+for key in bg_images.keys():
+    bg_images[key] = load_image(rf"Background\{bg_images[key]}")
+
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, bg_name, pos_x, pos_y):
+        super().__init__(background_group, all_sprites)
+        image = bg_images[bg_name]  # строка с названием
+        copy_rect = image.get_rect()
+        self.image = pygame.transform.scale(image, (copy_rect.width * WIDTH_COEF, copy_rect.height * HEIGHT_COEF))
+        self.rect = self.image.get_rect().move(
+            pos_x * WIDTH_COEF, pos_y * HEIGHT_COEF)

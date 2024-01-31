@@ -43,6 +43,8 @@ class Hero(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.is_active = True
 
+        self.cur_checkpoint = 0
+
     def check_masks(self, other):
         if self.rect.colliderect(other.rect):
             if pygame.sprite.collide_mask(self, other):
@@ -103,9 +105,10 @@ class Hero(pygame.sprite.Sprite):
             if not enemy.alive:
                 continue
             if self.check_masks(enemy):
-                if self.damage_try():
-                    cur_hit = True
-                    self.dx = -self.dx
+                if enemy.check_hit(self, "horizontal") == "Hero_Damaged":
+                    if self.damage_try():
+                        cur_hit = True
+                        self.dx = -self.dx
                 enemy.check_destruction()
 
         self.rect = self.rect.move(0, self.dy)
@@ -136,7 +139,7 @@ class Hero(pygame.sprite.Sprite):
             if not enemy.alive:
                 continue
             elif self.check_masks(enemy):
-                state = enemy.check_hit(self)
+                state = enemy.check_hit(self, "vertical")
                 if state == "Enemy_Damaged":
                     self.dy = -ENEMY_DEFEAT_BOUNCE
                     self.jump_number = 1

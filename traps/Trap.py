@@ -10,6 +10,7 @@ trap_images = {key: dict(map(lambda x: (x.split(".")[0], rf"Traps\{key}\{x}"),
                              os.listdir(rf"data\Traps\{key}")))
                for key in os.listdir(rf"data\Traps")}
 
+
 with open(rf"trap_sheet_cuts.txt", "r") as image_file:
     for line in image_file.readlines():
         line = line.strip().split(";")

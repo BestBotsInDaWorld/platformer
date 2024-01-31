@@ -48,19 +48,21 @@ class Enemy(pygame.sprite.Sprite):
 
         self.is_active = True
 
-
-    def check_hit(self, hero):  # проверка удара по врагу при вертикальном перемещении перса
+    def check_hit(self, hero, direction="vertical"):  # проверка удара по врагу при вертикальном перемещении перса
         if self.alive:
             if not hero.invincible:
-                if hero.rect.top < self.rect.top:
-                    self.hp -= 1
-                    self.cur_frame = 0
-                    self.damaged = True
-                    if not self.hp:
-                        self.alive = False
-                    sound_lib["enemy_hit"].play()
-                    return "Enemy_Damaged"
-                else:
+                if direction == "vertical":
+                    if hero.rect.top < self.rect.top:
+                        self.hp -= 1
+                        self.cur_frame = 0
+                        self.damaged = True
+                        if not self.hp:
+                            self.alive = False
+                        sound_lib["enemy_hit"].play()
+                        return "Enemy_Damaged"
+                    else:
+                        return "Hero_Damaged"
+                elif direction == "horizontal":
                     return "Hero_Damaged"
             else:
                 self.hp -= 1
