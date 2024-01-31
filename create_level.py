@@ -8,6 +8,7 @@ import pygame_gui
 
 # Создание менеджера интерфейса pygame_gui
 manager = pygame_gui.UIManager((800, 600))
+manager_coords = pygame_gui.UIManager((800, 600))
 
 # Создание поля ввода для каждого параметра ловушки
 
@@ -276,6 +277,9 @@ def create_level():
 
     while True:
         camera.apply_mouse()
+        input_field_rect = pygame.Rect(600, 10, 200, 30)
+        input_field = pygame_gui.elements.UITextEntryLine(input_field_rect, manager=manager_coords)
+        input_field.set_text(str(f"x: {-contructor_start_point.x}, y: {-contructor_start_point.y + HEIGHT}"))
         for event in pygame.event.get():
             manager.process_events(event)
             if event.type == pygame.QUIT:
@@ -379,8 +383,10 @@ def create_level():
 
         screen.blit(fon, (0, 0))
         manager.draw_ui(screen)
+        manager_coords.draw_ui(screen)
         # Обновление интерфейса pygame_gui
-        manager.update(1/60)
+        manager.update(1/30)
+        manager_coords.update(1/30)
         # Отрисовка интерфейса pygame_gui
         for sprite in block_group:
             camera.apply(sprite)
@@ -390,7 +396,7 @@ def create_level():
         blocks.draw(screen)
         buttons.draw(screen)
         pygame.display.flip()
-        clock.tick(FPS)
+        clock.tick(30)
 
 
 def save_level():
@@ -407,4 +413,6 @@ def save_level():
         else:
             level_file.write(f"{block_name};{x};{y};{unit.parameters}\n")
     level_file.close()
+
+
 create_level()
