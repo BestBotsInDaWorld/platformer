@@ -34,19 +34,7 @@ pygame.init()
 hero = Hero("Ninja Frog", 0, 0)
 start_point = pygame.Rect(0, HEIGHT, 1, 1)
 
-Block("Autumn Big", 0, 350)
-Block("Autumn Big", 800, 350)
-for i in range(50):
-    block = Block("Autumn Big", 0 + i * 48, 400)
 
-
-
-from random import randint
-
-#  for i in range(20):
-#     block = SpikedBall(randint(0, 740), randint(0, 300), traectory=(1, 1), velocity=0.5, before_start=0, length=200)
-for i in range(1):
-    block = Skull(400, -270)
 KEY_BINDINGS = get_keys()
 
 
@@ -82,60 +70,61 @@ def upload_level(level_name):
             block = block.split(';')
             if block[0] in block_names:
                 block_group.add(Block(block[0], int(block[1]), int(block[2])))
-            elif block[0] == "Dart Trap\\Moving.png":
+            elif block[0] == "Dart Trap\\Idle.png":
                 param = eval(block[3])
-                block_group.add(DartTrap(int(block[1]), int(block[2]), param["direction"],
+                trap_group.add(DartTrap(int(block[1]), int(block[2]), param["direction"],
                                          param["arrow_velocity"], param["before_start"], param["shot_delay"]))
-            elif block[0] == "Falling Platform\\Moving.png":
+            elif block[0] == "Falling Platform\\Idle.png":
                 param = eval(block[3])
-                block_group.add(FallingPlatform(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
+                trap_group.add(FallingPlatform(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
                                                 param["before_start"], param["length"], param["before_fall"],
                                                 param["refresh_time"],
                                                 param["falling_time"]))
-            elif block[0] == "Fire Maker\\Moving.png":
+            elif block[0] == "Fire Maker\\Idle.png":
                 param = eval(block[3])
-                block_group.add(FireMaker(int(block[1]), int(block[2]), param["before_start"], param["shot_delay"],
+                trap_group.add(FireMaker(int(block[1]), int(block[2]), param["before_start"], param["shot_delay"],
                                           param["warning_time"], param["damaging_time"]))
-            elif block[0] == "Jump Refresher\\Moving.png":
+            elif block[0] == "Jump Refresher\\Idle.png":
                 param = eval(block[3])
-                block_group.add(JumpRefresher(int(block[1]), int(block[2]), param["refresh_time"]))
-            elif block[0] == "Platform\\Moving.png":
+                trap_group.add(JumpRefresher(int(block[1]), int(block[2]), param["refresh_time"]))
+            elif block[0] == "Platform\\Idle.png":
                 param = eval(block[3])
-                block_group.add(Platform(int(block[1]), int(block[2]), param["traectory"],
+                trap_group.add(Platform(int(block[1]), int(block[2]), param["traectory"],
                                          param["velocity"], param["before_start"], param["length"],
                                          param["variation"]))
-            elif block[0] == "Saw\\Moving.png":
+            elif block[0] == "Saw\\Idle.png":
                 param = eval(block[3])
-                block_group.add(Saw(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
+                trap_group.add(Saw(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
                                     param["before_start"], param["length"]))
-            elif block[0] == "Spike\\Moving.png":
+            elif block[0] == "Spike\\Idle.png":
                 param = eval(block[3])
-                block_group.add(Spike(int(block[1]), int(block[2])))
-            elif block[0] == "Spiked Ball\\Moving.png":
+                trap_group.add(Spike(int(block[1]), int(block[2])))
+            elif block[0] == "Spiked Ball\\Idle.png":
                 param = eval(block[3])
-                block_group.add(SpikedBall(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
+                trap_group.add(SpikedBall(int(block[1]), int(block[2]), param["traectory"], param["velocity"],
                                            param["before_start"], param["length"]))
-            elif block[0] == "Trampoline\\Moving.png":
+            elif block[0] == "Trampoline\\Idle.png":
                 param = eval(block[3])
-                block_group.add(Trampoline(int(block[1]), int(block[2]), param["direction"], param["bounce_speed"]))
-            elif block[0] == "Angry Pig\\Moving.png":
-                block_group.add(AngryPig(int(block[1]), int(block[2])))
-            elif block[0] == "Blue Bird\\Moving.png":
-                block_group.add(BlueBird(int(block[1]), int(block[2])))
-            elif block[0] == "Bunny\\Moving.png":
-                block_group.add(Bunny(int(block[1]), int(block[2])))
-            elif block[0] == "Chicken\\Moving.png":
-                block_group.add(Chicken(int(block[1]), int(block[2])))
-            elif block[0] == "Ghost\\Moving.png":
-                block_group.add(Ghost(int(block[1]), int(block[2])))
-            elif block[0] == "Plant\\Moving.png":
-                block_group.add(Plant(int(block[1]), int(block[2])))
-            elif block[0] == "Skull\\Moving.png":
-                block_group.add(Skull(int(block[1]), int(block[2])))
+                trap_group.add(Trampoline(int(block[1]), int(block[2]), param["direction"], param["bounce_speed"]))
+            elif block[0] == "Angry Pig\\Idle.png":
+                enemy_group.add(AngryPig(int(block[1]), int(block[2])))
+            elif block[0] == "Blue Bird\\Idle.png":
+                enemy_group.add(BlueBird(int(block[1]), int(block[2])))
+            elif block[0] == "Bunny\\Idle.png":
+                enemy_group.add(Bunny(int(block[1]), int(block[2])))
+            elif block[0] == "Chicken\\Idle.png":
+                enemy_group.add(Chicken(int(block[1]), int(block[2])))
+            elif block[0] == "Ghost\\Idle.png":
+                enemy_group.add(Ghost(int(block[1]), int(block[2])))
+            elif block[0] == "Plant\\Idle.png":
+                enemy_group.add(Plant(int(block[1]), int(block[2])))
+            elif block[0] == "Skull\\Idle.png":
+                enemy_group.add(Skull(int(block[1]), int(block[2])))
 
 
 def main_game():
     cur_level = 1
+    upload_level("lvl1")
     camera = Camera()
     death_bg = Background("bg_3", 0, -HEIGHT)
     running = True

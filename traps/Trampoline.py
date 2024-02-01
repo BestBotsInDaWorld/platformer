@@ -23,13 +23,13 @@ class Trampoline(Trap):
         self.cur_frame = 1
         self.hit_type = "Inactive"
         if self.direction == "Up":
-            object.dy += -self.bounce_speed  # TODO изменить если потребуется
+            object.dy = -self.bounce_speed  # TODO изменить если потребуется
         elif self.direction == "Down":
-            object.dy += self.bounce_speed
+            object.dy = self.bounce_speed
         elif self.direction == "Left":
-            object.dx += -self.bounce_speed
+            object.dx = -self.bounce_speed
         else:
-            object.dx += self.bounce_speed
+            object.dx = self.bounce_speed
         if hasattr(object, 'jump_number'):
             object.jump_number = min(object.jump_number, 1)
         sound_lib["trampoline"].play()

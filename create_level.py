@@ -412,4 +412,3 @@ def save_level():
         else:
             level_file.write(f"{block_name};{x};{y};{unit.parameters}\n")
     level_file.close()
-create_level()

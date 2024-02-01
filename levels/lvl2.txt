@@ -1,3 +1,0 @@
-Grass Big;12;338
-Grass Big;818;325
-Grass Big;1270;355

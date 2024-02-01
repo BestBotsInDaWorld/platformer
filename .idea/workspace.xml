@@ -7,7 +7,15 @@
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/Ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Ghost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels/lvl4.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/Platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Platform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/Trampoline.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trampoline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706722231868</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706759646861</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706759646861</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -39,6 +39,7 @@ class Platform(Trap):
                 self.change_collision_x(hero)
 
             for object in self.standing_objects:
+
                 object.rect = object.rect.move(self.dx, self.dy)
             copy_rect = self.rect.move(self.dx, self.dy)
             self.cur_way += hypot(self.rect.right - copy_rect.right, self.rect.bottom - copy_rect.bottom)
@@ -56,7 +57,7 @@ class Platform(Trap):
         self.before_start = max(self.before_start - 1, 0)
 
     def fix_standing(self, object):
-        if object.rect.colliderect(self.rect.move(0, -1)):
+        if object.rect.colliderect(self.rect.move(0, -3)):
             if object not in self.standing_objects:
                 self.standing_objects.append(object)
             return True
