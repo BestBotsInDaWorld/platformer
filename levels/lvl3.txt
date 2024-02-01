@@ -1,0 +1,263 @@
+Jade Big;8;433
+Jade Big;56;433
+Jade Big;104;433
+Jade Big;8;385
+Jade Big;8;337
+Start\Idle.png;96;369
+Jade Big;152;433
+Jade Big;200;433
+Jade Big;248;433
+Jade Big;248;385
+Jade Big;344;337
+Jade Big;392;337
+Jade Big;440;337
+Jade Big;488;337
+Jade Big;536;337
+Chicken\Idle.png;544;303
+Jade Big;632;255
+Jade Big;536;207
+Jump Refresher\Idle.png;389;163;{'refresh_time': 300}
+Jade Small;16;49
+Falling Platform\Idle.png;232;159;{'traectory': (-1, -1), 'velocity': 1, 'before_start': 0, 'length': 100, 'before_fall': 30, 'refresh_time': 300, 'falling_time': 300}
+Wood Big;96;-47
+Chicken\Idle.png;496;303
+Chicken\Idle.png;448;303
+Wood Big;144;-47
+Wood Big;192;-47
+Dart Trap\Idle.png;160;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 60, 'shot_delay': 120}
+Dart Trap\Idle.png;144;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 60, 'shot_delay': 120}
+Dart Trap\Idle.png;128;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;112;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;96;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;176;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 60, 'shot_delay': 120}
+Dart Trap\Idle.png;192;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;208;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;224;-143;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Wood Big;96;-191
+Wood Big;144;-191
+Wood Big;192;-191
+Spike\Idle.png;256;-63;{}
+Spike\Idle.png;240;-63;{}
+Spike\Idle.png;272;-63;{}
+Wood Big;384;-47
+Wood Big;432;-47
+Wood Big;480;-47
+Wood Big;240;-47
+Angry Pig\Idle.png;486;-77
+Angry Pig\Idle.png;390;-77
+Plant\Idle.png;194;-233
+Wood Big;672;-47
+Wood Big;720;-47
+Wood Big;768;-47
+Ghost\Idle.png;770;-277
+Ghost\Idle.png;722;-277
+Ghost\Idle.png;674;-277
+Spiked Ball\Idle.png;583;-199;{'traectory': (0, 1), 'velocity': 2, 'before_start': 0, 'length': 100}
+Spiked Ball\Idle.png;611;-199;{'traectory': (0, 1), 'velocity': 2, 'before_start': 0, 'length': 100}
+Spiked Ball\Idle.png;555;-199;{'traectory': (0, 1), 'velocity': 2, 'before_start': 0, 'length': 100}
+Stone Small;976;-39
+Trampoline\Idle.png;1008;-37;{'direction': 'Right', 'bounce_speed': 10}
+Stone Big;1420;145
+Stone Big;1468;145
+Stone Big;1516;145
+Stone Big;1564;145
+Stone Big;1612;145
+Stone Big;1660;145
+Stone Big;1708;145
+Stone Big;1756;145
+Trampoline\Idle.png;1622;117;{'direction': 'Up', 'bounce_speed': 10}
+Stone Big;1708;-47
+Trampoline\Idle.png;1718;-75;{'direction': 'Up', 'bounce_speed': 10}
+Stone Big;1756;97
+Stone Big;1756;49
+Stone Big;1756;1
+Stone Big;1756;-47
+Stone Big;1756;-95
+Stone Big;1756;-143
+Stone Big;1756;-191
+Stone Big;1756;-239
+Stone Big;1756;-287
+Stone Big;1756;-335
+Stone Big;1756;-383
+Stone Big;1756;-431
+Stone Big;1612;-287
+Trampoline\Idle.png;1622;-315;{'direction': 'Up', 'bounce_speed': 10}
+Stone Big;1708;-479
+Stone Big;1756;-479
+Stone Big;1756;-527
+Stone Big;1756;-575
+Stone Big;1804;-575
+Stone Big;1852;-575
+Stone Big;1900;-575
+Stone Big;1948;-575
+Stone Big;1996;-575
+Stone Big;2044;-575
+Stone Big;2092;-575
+Stone Big;2140;-575
+Stone Big;2188;-575
+Stone Big;2236;-575
+Stone Big;2284;-575
+Stone Big;2332;-575
+Stone Small;1797;-737
+Stone Small;1765;-737
+Stone Small;1765;-769
+Stone Small;1765;-801
+Stone Small;1765;-833
+Stone Small;1829;-865
+Stone Small;1797;-865
+Stone Small;1829;-737
+Stone Small;1861;-769
+Stone Small;1861;-801
+Stone Small;1829;-801
+Stone Small;1925;-769
+Stone Small;1925;-801
+Stone Small;1925;-833
+Stone Small;1957;-865
+Stone Small;1989;-865
+Stone Small;2021;-833
+Stone Small;2021;-801
+Stone Small;2021;-769
+Stone Small;1957;-737
+Stone Small;1989;-737
+Stone Small;2085;-833
+Stone Small;2085;-801
+Stone Small;2085;-769
+Stone Small;2117;-865
+Stone Small;2149;-865
+Stone Small;2181;-833
+Stone Small;2181;-801
+Stone Small;2181;-769
+Stone Small;2117;-737
+Stone Small;2149;-737
+Stone Small;2245;-833
+Stone Small;2245;-865
+Stone Small;2245;-801
+Stone Small;2245;-769
+Stone Small;2245;-737
+Stone Small;2277;-737
+Stone Small;2277;-865
+Stone Small;2309;-737
+Stone Small;2341;-769
+Stone Small;2341;-801
+Stone Small;2309;-865
+Stone Small;2341;-833
+Stone Small;2469;-833
+Stone Small;2469;-865
+Stone Small;2469;-801
+Stone Small;2469;-769
+Stone Small;2469;-737
+Stone Small;2501;-737
+Stone Small;2533;-737
+Stone Small;2565;-737
+Stone Small;2629;-769
+Stone Small;2629;-801
+Stone Small;2629;-833
+Stone Small;2629;-865
+Stone Small;2661;-737
+Stone Small;2693;-737
+Stone Small;2725;-769
+Stone Small;2725;-801
+Stone Small;2725;-833
+Stone Small;2725;-865
+Stone Small;2789;-865
+Stone Small;2821;-865
+Stone Small;2853;-865
+Stone Small;2885;-865
+Stone Small;2789;-833
+Stone Small;2789;-801
+Stone Small;2789;-769
+Stone Small;2789;-737
+Stone Small;2821;-737
+Stone Small;2853;-737
+Stone Small;2885;-737
+Stone Small;2949;-865
+Stone Small;2949;-833
+Stone Small;2949;-801
+Stone Small;2949;-769
+Stone Small;2949;-737
+Stone Small;2629;-737
+Stone Small;2725;-737
+Stone Small;2981;-801
+Stone Small;3013;-833
+Stone Small;3045;-865
+Stone Small;3013;-769
+Stone Small;3045;-737
+Stone Big;2380;-575
+Stone Big;2476;-575
+Stone Big;2524;-575
+Stone Big;2572;-575
+Stone Big;2620;-575
+Stone Big;2668;-575
+Stone Big;2716;-575
+Stone Big;2764;-575
+Stone Big;2812;-575
+Stone Big;2860;-575
+Stone Big;2908;-575
+Stone Big;2956;-575
+Stone Big;3004;-575
+Stone Big;3052;-575
+Stone Big;3100;-575
+Stone Big;2380;-527
+Stone Big;2380;-479
+Stone Big;2380;-431
+Stone Big;2380;-383
+Stone Big;2380;-335
+Stone Big;2380;-287
+Stone Big;2380;-239
+Stone Big;2380;-191
+Stone Big;2476;-527
+Stone Big;2476;-479
+Stone Big;2476;-431
+Stone Big;2476;-383
+Stone Big;2476;-335
+Stone Big;2476;-287
+Stone Big;2476;-239
+Stone Big;2476;-191
+Stone Big;2380;-143
+Stone Big;2476;-143
+Stone Big;2380;-95
+Stone Big;2380;-47
+Stone Big;2380;1
+Stone Big;2476;-95
+Stone Big;2380;49
+Stone Big;2428;49
+Stone Big;2476;49
+Trampoline\Idle.png;2428;11;{'direction': 'Right', 'bounce_speed': 10}
+Stone Big;2476;-47
+Stone Big;2476;97
+Stone Big;2476;145
+Stone Big;2524;145
+Stone Big;2572;145
+Stone Big;2620;145
+Stone Big;2668;145
+Stone Big;2716;145
+Stone Big;2764;145
+Stone Big;2812;145
+Stone Big;2860;145
+Stone Big;2908;145
+Stone Big;2956;145
+Stone Big;3004;145
+Stone Big;3052;145
+Checkpoint\Idle.png;2372;-639
+Skull\Idle.png;2671;-493
+Stone Big;3100;145
+Stone Big;3148;145
+Stone Big;3148;97
+Stone Big;3148;49
+Stone Big;3148;1
+Stone Big;3148;-47
+Stone Big;3148;-95
+Stone Big;3148;-143
+Stone Big;3148;-575
+Stone Big;3148;-623
+Stone Big;3148;-671
+Stone Big;3148;-719
+Stone Big;3148;-767
+Stone Big;3148;-527
+Stone Big;3148;-479
+Stone Big;3148;-431
+Stone Big;3148;-383
+Stone Big;3148;-335
+Stone Big;3148;-287
+Stone Big;3148;-239
+Stone Big;3148;-191

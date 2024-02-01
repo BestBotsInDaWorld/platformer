@@ -1,0 +1,106 @@
+Grass Big;68;442
+Grass Big;20;442
+Grass Big;20;394
+Grass Big;20;346
+Grass Big;20;298
+Grass Big;20;250
+Grass Big;116;442
+Start\Idle.png;108;378
+Grass Big;164;442
+Grass Big;212;442
+Grass Big;260;442
+Spike\Idle.png;276;426;{}
+Spike\Idle.png;260;426;{}
+Spike\Idle.png;292;426;{}
+Grass Big;356;442
+Grass Big;404;442
+Grass Big;452;442
+Grass Big;500;442
+Grass Big;308;442
+Spike\Idle.png;516;426;{}
+Spike\Idle.png;500;426;{}
+Spike\Idle.png;532;426;{}
+Grass Big;548;442
+Grass Big;596;442
+Spike\Idle.png;484;426;{}
+Spike\Idle.png;468;426;{}
+Spike\Idle.png;452;426;{}
+Spike\Idle.png;548;426;{}
+Spike\Idle.png;564;426;{}
+Spike\Idle.png;580;426;{}
+Grass Big;740;442
+Grass Big;932;442
+Grass Big;1124;442
+Fire Maker\Idle.png;756;425;{'before_start': 0, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;740;425;{'before_start': 0, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;772;425;{'before_start': 0, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;932;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;964;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;948;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;1140;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;1124;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Fire Maker\Idle.png;1156;425;{'before_start': 60, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Grass Big;1268;442
+Grass Big;1316;442
+Grass Big;1316;394
+Grass Big;1316;346
+Grass Big;1316;298
+Trampoline\Idle.png;1278;414;{'direction': 'Up', 'bounce_speed': 10}
+Grass Big;1316;154
+Dart Trap\Idle.png;1332;202;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;1316;202;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Dart Trap\Idle.png;1348;202;{'direction': 'Down', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Platform\Idle.png;1364;298;{'traectory': (1, 0), 'velocity': 1, 'before_start': 0, 'length': 75, 'variation': 'Brown'}
+Platform\Idle.png;1717;298;{'traectory': (-1, 0), 'velocity': 1, 'before_start': 0, 'length': 75, 'variation': 'Brown'}
+Saw\Idle.png;1550;379;{'traectory': (0, -1), 'velocity': 2, 'before_start': 0, 'length': 300}
+Saw\Idle.png;1588;379;{'traectory': (0, -1), 'velocity': 2, 'before_start': 0, 'length': 300}
+Grass Big;1749;302
+Grass Big;1797;302
+Checkpoint\Idle.png;1789;238
+Grass Big;1845;302
+Grass Small;1900;118
+Plant\Idle.png;1894;76
+Grass Small;2149;182
+Jump Refresher\Idle.png;2031;87;{'refresh_time': 300}
+Grass Small;2021;246
+Grass Small;1868;118
+Grass Small;1836;118
+Grass Small;1772;54
+Grass Small;1772;-42
+Trampoline\Idle.png;1774;-70;{'direction': 'Up', 'bounce_speed': 10}
+Falling Platform\Idle.png;1864;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;1896;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;1928;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;1960;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;1992;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;2024;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Falling Platform\Idle.png;2056;-138;{'traectory': (0, 0), 'velocity': 1, 'before_start': 0, 'length': 300, 'before_fall': 15, 'refresh_time': 300, 'falling_time': 300}
+Spiked Ball\Idle.png;1867;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 0, 'length': 300}
+Spiked Ball\Idle.png;1895;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 15, 'length': 300}
+Spiked Ball\Idle.png;1923;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 30, 'length': 300}
+Spiked Ball\Idle.png;1951;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 45, 'length': 300}
+Spiked Ball\Idle.png;1979;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 60, 'length': 300}
+Spiked Ball\Idle.png;2007;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 75, 'length': 300}
+Spiked Ball\Idle.png;2035;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 90, 'length': 300}
+Spiked Ball\Idle.png;2063;-266;{'traectory': (0, 1), 'velocity': 2, 'before_start': 105, 'length': 300}
+Stone Big;2232;-138
+Stone Big;2280;-138
+Stone Big;2328;-138
+Stone Big;2376;-138
+Ghost\Idle.png;2700;-200
+Ghost\Idle.png;2700;-250
+Ghost\Idle.png;2700;-300
+Ghost\Idle.png;2700;-350
+Ghost\Idle.png;2700;-400
+Ghost\Idle.png;2700;-450
+Stone Big;2424;-138
+Stone Big;2472;-138
+Stone Big;2520;-138
+Stone Big;2568;-138
+Stone Big;2616;-138
+Stone Big;2664;-138
+Stone Big;2712;-138
+Stone Big;2760;-138
+Stone Big;2808;-138
+Stone Big;2856;-138
+End\Idle.png;2760;-202
