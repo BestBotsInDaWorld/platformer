@@ -48,29 +48,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Ghost.executor": "Run",
-    "Python.Hero.executor": "Run",
-    "Python.Skull.executor": "Run",
-    "Python.Trap.executor": "Run",
-    "Python.a.executor": "Run",
-    "Python.base.executor": "Run",
-    "Python.create_level.executor": "Run",
-    "Python.dragon.executor": "Run",
-    "Python.new.executor": "Run",
-    "Python.particles.executor": "Run",
-    "Python.settings.executor": "Run",
-    "Python.start.executor": "Run",
-    "Python.traps.executor": "Run",
-    "Python.useful_funcs.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/pythonprojects/platformer/new.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Ghost.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Hero.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Skull.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Trap.executor&quot;: &quot;Run&quot;,
+    &quot;Python.a.executor&quot;: &quot;Run&quot;,
+    &quot;Python.base.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_level.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dragon.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new.executor&quot;: &quot;Run&quot;,
+    &quot;Python.particles.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.start.executor&quot;: &quot;Run&quot;,
+    &quot;Python.traps.executor&quot;: &quot;Run&quot;,
+    &quot;Python.useful_funcs.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/pythonprojects/platformer/new.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\pythonprojects\platformer\data\Osts" />

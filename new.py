@@ -163,7 +163,7 @@ running = False
 
 def main_game():
     global state, running, start_point
-    cur_level = 3
+    cur_level = 1
     running = True
     reload = False
     while running:

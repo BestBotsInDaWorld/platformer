@@ -45,7 +45,7 @@ class Hero(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.is_active = True
 
-        self.cur_checkpoint = 1
+        self.cur_checkpoint = 0
         self.level_state = "Alive"
 
     def check_masks(self, other):
