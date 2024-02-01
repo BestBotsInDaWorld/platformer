@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
-      <change afterPath="$PROJECT_DIR$/levels/lvl2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Sounds/start_5.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Bunny.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Bunny.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Ghost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Skull.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Skull.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hero/Hero.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero/Hero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/special/Checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Checkpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/special/End.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/End.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/special/Special.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Special.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/special/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +21,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -315,7 +302,39 @@
       <option name="project" value="LOCAL" />
       <updated>1706793017256</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706809768795</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1706809768795</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706809779045</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1706809779045</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706809787889</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1706809787889</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706809884134</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1706809884134</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

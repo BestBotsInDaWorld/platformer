@@ -84,6 +84,7 @@ IFRAMES = 20
 CONSTUCTOR_CAMERA_X = 5
 CONSTUCTOR_CAMERA_Y = 5
 screen = pygame.display.set_mode((WIDTH, HEIGHT))  # экран
+pygame.display.set_caption("Challenge Seeker")
 clock = pygame.time.Clock()
 
 all_sprites = pygame.sprite.Group()
