@@ -1,9 +1,10 @@
 from useful_funcs import terminate
-from settings import clock, screen, FPS
+from settings import clock, screen, FPS, state
 from background import *
 
 
 def start_screen():
+    global state
     gen_background()
     buttons = pygame.sprite.Group()
     font = pygame.font.Font(None, 30)
@@ -35,7 +36,11 @@ def start_screen():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if play_rect.collidepoint(event.pos):
-                    return
+                    state = "game"
+                    return state
+                elif settings_rect.collidepoint(event.pos):
+                    state = "settings"
+                    return state
                 elif quit_rect.collidepoint(event.pos):
                     terminate()
             elif event.type == pygame.QUIT:

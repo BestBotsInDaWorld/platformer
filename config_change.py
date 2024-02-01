@@ -1,5 +1,7 @@
+import pygame
+
 from background import *
-from settings import KEY_BINDINGS, screen, FPS, clock
+from settings import KEY_BINDINGS, screen, FPS, clock, state
 from useful_funcs import terminate
 import os
 
@@ -15,7 +17,7 @@ def save_settings():
 
 
 def set_settings(*args):
-    global selected_button, menu_active, start
+    global selected_button, menu_active, start, state
     gen_background()
     font = pygame.font.Font(None, 30)
 
@@ -61,6 +63,10 @@ def set_settings(*args):
 
     while True:
         for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if to_lobby_rect.collidepoint(event.pos):
+                    state = "menu"
+                    return state
             if event.type == pygame.KEYDOWN and menu_active and selected_button:
                 key = pygame.key.name(event.key)
                 if key == "down" or key == "up" or key == "left" or key == "right":

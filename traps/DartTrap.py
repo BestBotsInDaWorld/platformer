@@ -2,13 +2,14 @@ from traps.Trap import *
 
 
 class DartTrap(Trap):
-    def __init__(self, pos_x, pos_y, direction="Right", arrow_velocity=5, before_start=0, shot_delay=120):
+    def __init__(self, pos_x, pos_y, direction="Right",
+                 arrow_velocity=5, before_start=0, shot_delay=120):
         super().__init__("Dart Trap", pos_x, pos_y)
         self.image = self.frames[direction][0]
         self.hit_type = 'Static_Hit'
         self.direction = direction
-        self.arrow_velocity = arrow_velocity * WIDTH_COEF if direction in ["Left",
-                                                                           "Right"] else arrow_velocity * HEIGHT_COEF
+        self.arrow_velocity = arrow_velocity * WIDTH_COEF \
+            if direction in ["Left", "Right"] else arrow_velocity * HEIGHT_COEF
         self.before_start = before_start
         self.shot_delay = shot_delay
         self.cur_shot_delay = 0

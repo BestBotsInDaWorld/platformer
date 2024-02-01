@@ -2,25 +2,29 @@ from traps.Trap import *
 
 
 class Platform(Trap):
-    def __init__(self, pos_x, pos_y, traectory=(1, 0), velocity=2, before_start=0, length=300, variation='Brown'):
+    def __init__(self, pos_x, pos_y, traectory=(1, 0),
+                 velocity=2, before_start=0, length=300, variation='Brown'):
         super().__init__("Platform", pos_x, pos_y)
         self.image = self.frames[f'{variation} On'][0]
         self.variation = variation
 
         self.edge = (pos_x, pos_y)
-        self.dx, self.dy = traectory[0] * velocity * WIDTH_COEF, traectory[1] * velocity * HEIGHT_COEF
+        self.dx, self.dy = traectory[0] * velocity * WIDTH_COEF, \
+            traectory[1] * velocity * HEIGHT_COEF
         if abs(self.dx) > abs(self.dy):
             if self.dy == 0:
                 coef = 0
             else:
                 coef = abs(self.dx / self.dy)
-            self.length = length * (1 / (coef + 1)) * WIDTH_COEF + length * (coef / (coef + 1)) * HEIGHT_COEF
+            self.length = length * (1 / (coef + 1)) * WIDTH_COEF + \
+                          length * (coef / (coef + 1)) * HEIGHT_COEF
         else:
             if self.dx == 0:
                 coef = 0
             else:
                 coef = abs(self.dy / self.dx)
-            self.length = length * (coef / (coef + 1)) * WIDTH_COEF + length * (1 / (coef + 1)) * HEIGHT_COEF
+            self.length = length * (coef / (coef + 1)) * WIDTH_COEF + \
+                          length * (1 / (coef + 1)) * HEIGHT_COEF
         self.cur_way = 0
 
         self.hit_type = False

@@ -4,6 +4,7 @@ import pygame
 
 pygame.init()
 
+state = "menu"
 
 def get_keys():
     with open("key_bindings.txt", "r") as f:

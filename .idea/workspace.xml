@@ -6,15 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/Chicken.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Chicken.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemies/Ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Ghost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hero/Hero.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero/Hero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/DartTrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/DartTrap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/FallingPlatform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FallingPlatform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/FireMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FireMaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/traps/Platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Platform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/Saw.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Saw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/traps/SpikedBall.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/SpikedBall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/traps/Trampoline.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trampoline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +88,6 @@
   <component name="RunManager">
     <configuration name="start" type="PythonConfigurationType" factoryName="Python">
       <module name="platformer" />
-      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -292,15 +296,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706722231868</updated>
     </task>
-    <task id="LOCAL-00023" summary="fon">
-      <option name="closed" value="true" />
-      <created>1706759646861</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1706759646861</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

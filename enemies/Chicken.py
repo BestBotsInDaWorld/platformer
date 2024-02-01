@@ -2,7 +2,8 @@ from enemies.Enemy import *
 
 
 class Chicken(Enemy):
-    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=300, targeting_range_y=300, max_running_time=60):
+    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=300,
+                 targeting_range_y=300, max_running_time=60):
         super().__init__("Chicken", pos_x, pos_y)
         self.dx = -velocity * WIDTH_COEF
         self.walk_velocity = velocity * WIDTH_COEF

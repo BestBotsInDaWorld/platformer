@@ -2,7 +2,7 @@ from enemies.Enemy import *
 
 
 class Ghost(Enemy):
-    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=100, targeting_range_y=100, frames_dashing=60):
+    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=400, targeting_range_y=400, frames_dashing=60):
         super().__init__("Ghost", pos_x, pos_y)
         self.velocity = velocity * WIDTH_COEF
         self.cur_dash_time = 0

@@ -2,7 +2,8 @@ from traps.Trap import *
 
 
 class FireMaker(Trap):
-    def __init__(self, pos_x, pos_y, before_start=0, shot_delay=60, warning_time=32, damaging_time=60):
+    def __init__(self, pos_x, pos_y, before_start=0,
+                 shot_delay=60, warning_time=32, damaging_time=60):
         super().__init__("Fire Maker", pos_x, pos_y)
         self.hit_type = False
         self.before_start = before_start

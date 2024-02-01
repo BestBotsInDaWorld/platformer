@@ -2,9 +2,9 @@ import pygame
 from useful_funcs import load_image, cut_sheet
 from settings import (all_sprites, hero_group, nearest_blocks, nearest_traps, nearest_enemies,
                       MAX_JUMP_HEIGHT, MAX_DX, MAX_DY, IFRAMES, GROUND_DX, AIR_DX, GRAVITY, KEY_BINDINGS, RESISTANCE,
-                      ENEMY_DEFEAT_BOUNCE, WIDTH_COEF, HEIGHT_COEF, sound_lib)
+                      ENEMY_DEFEAT_BOUNCE, WIDTH_COEF, HEIGHT_COEF, sound_lib, get_keys)
 
-
+KEY_BINDINGS = get_keys()
 class Hero(pygame.sprite.Sprite):
     def __init__(self, character, pos_x, pos_y):
         super().__init__(hero_group, all_sprites)
