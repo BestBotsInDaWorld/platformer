@@ -140,6 +140,7 @@ def main_game():
     death_bg = Background("bg_3", 0, -HEIGHT)
     running = True
     while running:
+
         camera.update(hero)
         nearest_traps.empty()
         nearest_blocks.empty()

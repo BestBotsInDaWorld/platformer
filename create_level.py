@@ -29,6 +29,9 @@ class Camera:
         if obj_type == "sprite":
             obj.rect.x += int(self.dx)
             obj.rect.y += int(self.dy)
+        elif obj_type == "param_coord":
+            obj = (obj[0] + int(self.dx), obj[1] + int(self.dy))
+            return obj
         else:
             obj.x += int(self.dx)
             obj.y += int(self.dy)
@@ -198,6 +201,7 @@ def create_level():
     block_sur = []
     block_name = []
     can_add = True
+    parameter_change_coord = (0, 0)
 
     next.image = load_image(rf"menu\buttons\play.png")
     next.image = pygame.transform.scale(next.image, (50, 50))
@@ -283,7 +287,7 @@ def create_level():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     for block in block_group:
-                        if not block.isBlock:
+                        if block.rect.collidepoint(parameter_change_coord) and not block.isBlock:
                             block.save_parameter()
                             for field in input_fields:
                                 field.kill()
@@ -384,6 +388,7 @@ def create_level():
         # Отрисовка интерфейса pygame_gui
         for sprite in block_group:
             camera.apply(sprite)
+        parameter_change_coord = camera.apply(parameter_change_coord, obj_type="param_coord")
         camera.apply(contructor_start_point, obj_type='rect')
         block_group.draw(screen)
         screen.blit(surf, (0, 500))
