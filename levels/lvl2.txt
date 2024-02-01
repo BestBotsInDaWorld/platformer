@@ -1,0 +1,299 @@
+Grass Big;227;399
+Grass Big;275;399
+Grass Big;179;399
+Grass Big;131;399
+Grass Big;83;399
+Grass Big;35;399
+Grass Big;-13;399
+Grass Big;323;399
+Grass Big;371;399
+Grass Big;419;399
+Grass Big;467;399
+Grass Big;515;399
+Grass Big;563;399
+Grass Big;611;399
+Grass Big;659;399
+Grass Big;707;399
+Grass Big;755;399
+Grass Big;803;399
+Grass Big;851;399
+Grass Big;899;399
+Grass Big;947;399
+Grass Small;431;290
+Grass Small;463;290
+Grass Small;463;258
+Grass Small;431;258
+Grass Small;495;258
+Grass Small;495;290
+Plant\Idle.png;277;357
+Plant\Idle.png;709;357
+Chicken\Idle.png;907;365
+Spike\Idle.png;483;383;{}
+Grass Big;995;399
+Grass Big;1043;399
+Grass Big;1091;399
+Grass Big;1091;447
+Grass Big;1091;495
+Grass Big;1139;543
+Grass Big;1091;543
+Grass Big;1187;543
+Grass Big;1235;543
+Grass Big;1283;543
+Grass Big;1331;543
+Grass Big;1379;543
+Grass Big;1427;543
+Falling Platform\Idle.png;1147;533;{'traectory': (1, 0), 'velocity': 4, 'before_start': 0, 'length': 300, 'before_fall': 150, 'refresh_time': 300, 'falling_time': 300}
+Grass Big;1475;543
+Grass Big;1523;543
+Chicken\Idle.png;1339;509
+Plant\Idle.png;1477;501
+Blue Bird\Idle.png;1163;300
+Start\Idle.png;27;335
+Grass Big;-61;399
+Grass Big;-61;351
+Grass Big;-61;303
+Grass Big;-61;255
+Grass Big;-61;207
+Grass Big;-61;159
+Grass Big;1571;543
+Grass Big;1619;543
+Grass Big;1667;543
+Grass Big;1715;543
+Grass Big;1763;495
+Grass Big;1811;495
+Grass Big;1859;495
+Grass Big;1763;543
+Grass Big;1907;495
+Grass Big;1955;495
+Wood Big;1955;447
+Wood Big;1955;303
+Wood Big;1955;255
+Jade Big;2003;255
+Jade Big;2051;255
+Jade Big;2099;255
+Jade Big;2147;255
+Jade Big;2003;495
+Jade Big;2051;495
+Jade Big;2099;495
+Jade Big;2147;495
+Jade Big;2195;495
+Jade Big;2195;207
+Jade Big;2195;159
+Jade Big;2243;159
+Jade Big;2291;159
+Jade Big;2339;159
+Jade Big;2243;495
+Jade Big;2291;495
+Jade Big;2339;495
+Jade Small;2283;399
+Jade Small;2315;399
+Jade Small;2283;367
+Jade Small;2315;367
+Spike\Idle.png;2307;479;{}
+Dart Trap\Idle.png;2115;460;{'direction': 'Left', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Saw\Idle.png;1647;414;{'traectory': (1, 0), 'velocity': 2, 'before_start': 3, 'length': 300}
+Jade Big;2387;495
+Jade Big;2435;495
+Jade Big;2483;495
+Jade Big;2339;111
+Jade Big;2387;111
+Jade Big;2435;111
+Jade Big;2483;111
+Jade Big;2531;111
+Jade Big;2531;495
+Jade Big;2579;495
+Jade Big;2579;111
+Jade Small;2495;322
+Jade Small;2495;354
+Jade Small;2527;354
+Jade Small;2527;322
+Jade Small;2559;354
+Jade Small;2559;322
+Fire Maker\Idle.png;2547;478;{'before_start': 0, 'shot_delay': 60, 'warning_time': 32, 'damaging_time': 60}
+Jade Small;2591;354
+Jade Small;2591;322
+Jade Small;2623;354
+Jade Small;2623;322
+Jade Big;2627;495
+Jade Big;2675;495
+Jade Big;2627;111
+Jade Big;2675;111
+Jade Big;2723;111
+Jade Big;2771;111
+Jade Big;2819;111
+Jade Big;2723;495
+Jade Big;2771;495
+Blue Bird\Idle.png;2700;261
+Ghost\Idle.png;2725;465
+Ghost\Idle.png;2437;465
+Ghost\Idle.png;2555;655
+Jade Big;2819;495
+Jade Big;2867;495
+Jade Big;2915;495
+Jade Big;2963;495
+Jade Big;3011;495
+Jade Big;3059;495
+Jade Big;2867;111
+Jade Big;2915;111
+Jade Big;2963;111
+Jade Big;3011;111
+Jade Big;3059;111
+Fire Maker\Idle.png;2931;478;{'before_start': 0, 'shot_delay': 64, 'warning_time': 32, 'damaging_time': 60}
+Spike\Idle.png;3027;479;{}
+Spike\Idle.png;3075;479;{}
+Jade Big;3107;495
+Jade Big;3155;495
+Jade Big;3107;111
+Jade Big;3155;111
+Jade Big;3203;111
+Jade Big;3203;159
+Jade Big;3251;159
+Jade Big;3251;207
+Jade Big;3203;495
+Jade Big;3251;495
+Jade Big;3251;447
+Jade Big;3299;447
+Jade Big;3299;207
+Jade Big;3347;207
+Jade Big;3347;447
+Jade Big;3395;447
+Jade Big;3443;447
+Jade Big;3395;207
+Jade Big;3443;207
+Wood Big;3491;255
+Wood Big;3491;207
+Wood Big;3491;447
+Wood Big;3491;303
+Wood Big;3539;447
+Fantasy Big;3635;543
+Fantasy Big;3683;543
+Fantasy Big;3731;543
+Fantasy Big;3779;543
+Fantasy Big;3827;543
+Fantasy Big;3875;543
+Fantasy Big;3923;543
+Fantasy Big;3971;543
+Fantasy Big;4019;543
+Fantasy Big;4067;543
+Fantasy Big;4115;543
+Bunny\Idle.png;3835;499
+Bunny\Idle.png;4123;499
+Fantasy Small;3979;415
+Fantasy Small;4011;415
+Fantasy Small;3947;415
+Spike\Idle.png;3987;527;{}
+Blue Bird\Idle.png;3744;442
+Fantasy Big;4163;543
+Fantasy Big;4211;543
+Fantasy Big;4259;543
+Fantasy Big;4307;543
+Fantasy Big;4355;543
+Fantasy Big;4403;543
+Angry Pig\Idle.png;4409;513
+Dart Trap\Idle.png;4275;527;{'direction': 'Right', 'arrow_velocity': 5, 'before_start': 0, 'shot_delay': 120}
+Fantasy Small;4227;393
+Fantasy Small;4259;393
+Fantasy Small;4291;393
+Fantasy Small;4291;425
+Fantasy Small;4323;425
+Fantasy Small;4323;393
+Fantasy Small;4355;393
+Fantasy Small;4387;393
+Fantasy Small;4419;393
+Fantasy Big;4451;543
+Fantasy Big;4499;543
+Fantasy Big;4547;543
+Fantasy Big;4595;543
+Fantasy Big;4643;543
+Saw\Idle.png;4571;440;{'traectory': (1, 0), 'velocity': 2, 'before_start': 0, 'length': 305}
+Fantasy Big;4691;543
+Fantasy Big;4739;543
+Fantasy Big;4787;495
+Fantasy Big;4835;495
+Fantasy Big;4787;543
+Fantasy Big;4883;495
+Fantasy Big;4931;495
+Fantasy Big;4979;495
+Fantasy Big;5027;495
+Fantasy Big;5075;495
+Fantasy Big;5123;495
+Fantasy Big;5171;495
+Spiked Ball\Idle.png;4955;445;{'traectory': (1, 0), 'velocity': 2, 'before_start': 0, 'length': 300}
+Trampoline\Idle.png;4893;467;{'direction': 'Up', 'bounce_speed': 15}
+Bunny\Idle.png;5131;451
+Blue Bird\Idle.png;5004;336
+Fantasy Big;5219;495
+Fantasy Big;5267;495
+Fantasy Big;5315;543
+Fantasy Big;5363;543
+Fantasy Big;5411;543
+Fantasy Big;5459;543
+Fantasy Big;5507;543
+Fantasy Big;5267;543
+Fantasy Big;5555;543
+Fantasy Big;5603;495
+Fantasy Big;5603;543
+Fantasy Big;5651;495
+Fantasy Big;5699;495
+Fantasy Big;5747;495
+Fantasy Big;5795;495
+Saw\Idle.png;5455;417;{'traectory': (1, 0), 'velocity': 2, 'before_start': 0, 'length': 300}
+Fantasy Big;5843;495
+Fantasy Big;5891;495
+Wood Big;5891;447
+Wood Big;5891;303
+Wood Big;5891;255
+Stone Big;5939;495
+Stone Big;5987;495
+Stone Big;6035;495
+Stone Big;5939;255
+Stone Big;5987;255
+Stone Big;6035;255
+Stone Big;6035;207
+Stone Big;6083;207
+Stone Big;6083;159
+Stone Big;6131;159
+Stone Big;6131;111
+Stone Big;6179;111
+Stone Big;6083;495
+Stone Big;6131;495
+Stone Big;6179;495
+Stone Big;6227;495
+Stone Big;6275;495
+Stone Big;6179;63
+Stone Big;6227;63
+Stone Big;6275;63
+Stone Big;6323;63
+Stone Big;6371;63
+Stone Big;6419;63
+Stone Big;6467;63
+Stone Big;6323;495
+Stone Big;6371;495
+Stone Big;6419;495
+Stone Big;6467;495
+Stone Big;6515;495
+Stone Big;6515;63
+Stone Big;6563;495
+Stone Big;6515;15
+Stone Big;6563;15
+Stone Big;6563;-33
+Stone Big;6611;-33
+Stone Big;6659;-33
+Stone Big;6707;-33
+Stone Big;6611;495
+Stone Big;6659;495
+Stone Big;6707;495
+Stone Big;6755;-33
+Stone Big;6803;-33
+
+Stone Big;6755;495
+Stone Big;6803;495
+Stone Big;6851;495
+Stone Big;6899;495
+Stone Big;6947;495
+Stone Big;6995;495
+Stone Big;7043;495
+Stone Big;7091;495
+Stone Big;7139;495
+Stone Big;7187;495
+End\Idle.png;7069;431

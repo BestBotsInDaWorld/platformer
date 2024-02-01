@@ -8,6 +8,6 @@ class Start(Special):
 
     def update(self, **kwargs):
         if not self.activated:
-            sound_lib[f"start{randint(1, 5)}"].play()
+            sound_lib[f"start_{randint(1, 4)}"].play()
             self.activated = True
         self.animation("Moving")

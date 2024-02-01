@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db432080-e122-48bf-876e-ff341894dc7c" name="Changes" comment="fon">
+      <change afterPath="$PROJECT_DIR$/levels/lvl2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config_change.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_change.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemies/Chicken.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Chicken.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Sounds/start_5.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/Bunny.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Bunny.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemies/Ghost.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Ghost.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemies/Skull.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemies/Skull.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hero/Hero.py" beforeDir="false" afterPath="$PROJECT_DIR$/hero/Hero.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new.py" beforeDir="false" afterPath="$PROJECT_DIR$/new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/DartTrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/DartTrap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/FallingPlatform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FallingPlatform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/FireMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/FireMaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Platform.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Platform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Saw.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Saw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/SpikedBall.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/SpikedBall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/traps/Trampoline.py" beforeDir="false" afterPath="$PROJECT_DIR$/traps/Trampoline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/special/Checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/special/End.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/End.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/special/Special.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Special.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/special/Start.py" beforeDir="false" afterPath="$PROJECT_DIR$/special/Start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,26 +48,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Trap.executor&quot;: &quot;Run&quot;,
-    &quot;Python.a.executor&quot;: &quot;Run&quot;,
-    &quot;Python.base.executor&quot;: &quot;Run&quot;,
-    &quot;Python.create_level.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dragon.executor&quot;: &quot;Run&quot;,
-    &quot;Python.new.executor&quot;: &quot;Run&quot;,
-    &quot;Python.particles.executor&quot;: &quot;Run&quot;,
-    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
-    &quot;Python.start.executor&quot;: &quot;Run&quot;,
-    &quot;Python.traps.executor&quot;: &quot;Run&quot;,
-    &quot;Python.useful_funcs.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/pythonprojects/platformer/new.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Ghost.executor": "Run",
+    "Python.Hero.executor": "Run",
+    "Python.Skull.executor": "Run",
+    "Python.Trap.executor": "Run",
+    "Python.a.executor": "Run",
+    "Python.base.executor": "Run",
+    "Python.create_level.executor": "Run",
+    "Python.dragon.executor": "Run",
+    "Python.new.executor": "Run",
+    "Python.particles.executor": "Run",
+    "Python.settings.executor": "Run",
+    "Python.start.executor": "Run",
+    "Python.traps.executor": "Run",
+    "Python.useful_funcs.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/pythonprojects/platformer/new.py",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\pythonprojects\platformer\data\Osts" />
@@ -88,6 +90,7 @@
   <component name="RunManager">
     <configuration name="start" type="PythonConfigurationType" factoryName="Python">
       <module name="platformer" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -296,7 +299,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706722231868</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706759646861</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1706759646861</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fon">
+      <option name="closed" value="true" />
+      <created>1706793017256</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706793017256</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

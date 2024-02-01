@@ -2,7 +2,7 @@ from enemies.Enemy import *
 
 
 class Ghost(Enemy):
-    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=400, targeting_range_y=400, frames_dashing=60):
+    def __init__(self, pos_x, pos_y, velocity=2, targeting_range_x=200, targeting_range_y=200, frames_dashing=60):
         super().__init__("Ghost", pos_x, pos_y)
         self.velocity = velocity * WIDTH_COEF
         self.cur_dash_time = 0
@@ -21,7 +21,7 @@ class Ghost(Enemy):
         elif self.state == "Not Triggered":
             self.animation("Ghost Particles")
             if abs(self.rect.x - hero.rect.x) <= self.targeting_range_x and abs(
-                    self.rect.x - hero.rect.x) <= self.targeting_range_y:
+                    self.rect.y - hero.rect.y) <= self.targeting_range_y:
                 self.state = "Appearing"
                 sound_lib["ghost_appear"].play()
                 self.direction = 'left' if self.rect.x > hero.rect.x else 'right'

@@ -2,15 +2,17 @@ import pygame
 from useful_funcs import load_image, cut_sheet
 from settings import (all_sprites, hero_group, nearest_blocks, nearest_traps, nearest_enemies,
                       MAX_JUMP_HEIGHT, MAX_DX, MAX_DY, IFRAMES, GROUND_DX, AIR_DX, GRAVITY, KEY_BINDINGS, RESISTANCE,
-                      ENEMY_DEFEAT_BOUNCE, WIDTH_COEF, HEIGHT_COEF, sound_lib, get_keys)
+                      ENEMY_DEFEAT_BOUNCE, WIDTH_COEF, HEIGHT_COEF, sound_lib, get_keys, HEIGHT, HP_CAP)
+
 
 KEY_BINDINGS = get_keys()
+
+
 class Hero(pygame.sprite.Sprite):
     def __init__(self, character, pos_x, pos_y):
         super().__init__(hero_group, all_sprites)
 
         path = rf"Main Characters\{character}\\"
-
         self.frames_forward = {"Run": cut_sheet(load_image(path + "Run.png"), 12, 1),
                                "Fall": cut_sheet(load_image(path + "Fall.png"), 1, 1),
                                "Hit": cut_sheet(load_image(path + "Hit.png"), 7, 1),
@@ -34,7 +36,7 @@ class Hero(pygame.sprite.Sprite):
         self.MAX_JUMP_HEIGHT = MAX_JUMP_HEIGHT
         self.frequency = 1
 
-        self.hp = 5
+        self.hp = HP_CAP
         self.invincible = 0
 
         self.cur_frame = 0
@@ -43,7 +45,8 @@ class Hero(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.is_active = True
 
-        self.cur_checkpoint = 0
+        self.cur_checkpoint = 1
+        self.level_state = "Alive"
 
     def check_masks(self, other):
         if self.rect.colliderect(other.rect):
@@ -170,8 +173,11 @@ class Hero(pygame.sprite.Sprite):
             self.rect.y = object.rect.bottom
         self.cur_jump_height = MAX_JUMP_HEIGHT
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         scancode: pygame.key.ScancodeWrapper = args[0]
+        start = kwargs['start']
+        if self.rect.y - start.y > 0:
+            self.level_state = "Dead"
 
         has_resistance = 1
         has_gravity = 1
@@ -257,3 +263,6 @@ class Hero(pygame.sprite.Sprite):
 
         self.set_image()
         self.invincible = max(0, self.invincible - 1)
+        if self.hp <= 0:
+            self.hp = 0
+            self.level_state = "Dead"

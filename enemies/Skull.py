@@ -3,7 +3,7 @@ from enemies.Enemy import *
 
 class Skull(Enemy):
     def __init__(self, pos_x, pos_y, velocity=4, bullet_velocity=1, top_centre_y=-400, recovery_cooldown=240,
-                 dash_wall_x=300, berserk_speed_up=2, attacks_before_dash=2, aim_acceleration=0.25,
+                 dash_wall_x=200, berserk_speed_up=2, attacks_before_dash=2, aim_acceleration=0.25,
                  bullet_acceleration=(0.25, 0.25), max_bullet_dx=5, max_bullet_dy=5, dash_time=60, preparation_wait=120,
                  aim_particles_spawn_rate=24, dash_particles_spawn_rate=36, wall_knockback=(3, -3)):
         super().__init__("Skull", pos_x, pos_y)
@@ -12,6 +12,8 @@ class Skull(Enemy):
         self.dx = self.initial_dx * WIDTH_COEF
         self.dy = self.initial_dy * HEIGHT_COEF
         self.aim_acceleration = aim_acceleration * HEIGHT_COEF
+
+        self.in_focus = False
 
         self.hp = 3
         self.in_knockback = False
@@ -49,6 +51,8 @@ class Skull(Enemy):
 
         self.cur_recovery_cooldown = 0
         self.recovery_cooldown = recovery_cooldown
+
+        self.first_attack = False
 
         self.attack_cooldowns = {
             "Rain_Attack": 12,
@@ -137,7 +141,10 @@ class Skull(Enemy):
     def update(self, **kwargs):
         hero, start = kwargs['hero'], kwargs['start']
         shift_x, shift_y = start.x, start.y
-        if not self.alive:
+        if not self.in_focus:
+            if abs(self.rect.x - hero.rect.x) < WIDTH // 10 and self.rect.y < hero.rect.y:
+                self.in_focus = True
+        elif not self.alive:
             self.death(shift_x, shift_y)
             return
         elif self.shieldless:
@@ -195,10 +202,12 @@ class Skull(Enemy):
             if key != "Aim_Attack" and key != "Death":
                 self.attack_cooldowns[key] //= self.berserk_speed_up
         for key in self.attack_attempts.keys():
-            if key != "Death":
+            if key != "Death" and key != "Aimed_Dash_Attack" and key != "Aim_Attack":
                 self.attack_attempts[key] *= self.berserk_speed_up
         if self.hp == 2:
             self.aim_particles_spawn_rate //= self.berserk_speed_up
+            self.attack_attempts["Aimed_Dash_Attack"] *= self.berserk_speed_up
+            self.attack_attempts["Aim_Attack"] *= self.berserk_speed_up
         if self.hp == 1:
             self.attack_cooldowns["Aim_Attack"] //= self.berserk_speed_up
             self.dash_particles_spawn_rate //= self.berserk_speed_up
@@ -212,12 +221,16 @@ class Skull(Enemy):
             self.cur_attack_count = 0
             self.state = "Chaotic_Dash_Attack"
         else:
-            self.state = choice(["Rain_Attack", "Bullet_Spam_Attack", "Aim_Attack", "Aimed_Dash_Attack"])
+            if not self.first_attack:
+                self.state = "Rain_Attack"
+                self.first_attack = True
+            else:
+                self.state = choice(["Rain_Attack", "Bullet_Spam_Attack", "Aim_Attack", "Aimed_Dash_Attack"])
             self.cur_attack_count += 1
         if self.state == "Rain_Attack" or self.state == "Bullet_Spam_Attack":
             self.preparation_pos = self.top_centre
         elif self.state == "Aim_Attack":
-            self.preparation_pos = (self.rect.x, self.top_centre[1])
+            self.preparation_pos = self.top_centre
         elif self.state == "Aimed_Dash_Attack":
             self.preparation_pos = (self.rect.x - shift_x, self.rect.y - shift_y)
         elif self.state == "Chaotic_Dash_Attack":

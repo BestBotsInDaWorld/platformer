@@ -12,10 +12,11 @@ class Checkpoint(Special):
         hero = kwargs["hero"]
         if not self.activated and self.rect.colliderect(hero.rect):
             hero.cur_checkpoint = self.number
+            hero.hp = HP_CAP
             self.activated = True
         elif self.activated and not self.triggered:
             self.animation("Hit")
             if not self.cur_frame:
                 self.triggered = True
-        else:
+        elif self.activated and self.triggered:
             self.animation("Moving")

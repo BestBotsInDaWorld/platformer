@@ -2,7 +2,7 @@ from enemies.Enemy import *
 
 
 class Bunny(Enemy):
-    def __init__(self, pos_x, pos_y, velocity=2, targeting_range=300, max_dy=5, jump_dy=7, target_jump=50):
+    def __init__(self, pos_x, pos_y, velocity=2, targeting_range=300, max_dy=5, jump_dy=7, target_jump=30):
         super().__init__("Bunny", pos_x, pos_y)
         self.dx = -velocity * WIDTH_COEF
         self.walk_velocity = velocity * WIDTH_COEF

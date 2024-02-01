@@ -3,7 +3,6 @@ from tkinter import Tk
 import pygame
 
 pygame.init()
-
 state = "menu"
 
 def get_keys():
@@ -77,8 +76,9 @@ GROUND_DX = 0.15 * WIDTH_COEF
 AIR_DX = 0.1 * WIDTH_COEF
 MAX_DX = 4.0 * WIDTH_COEF
 MAX_DY = 5.0 * HEIGHT_COEF
-MAX_JUMP_HEIGHT = 30 * HEIGHT_COEF
+MAX_JUMP_HEIGHT = 20 * HEIGHT_COEF
 ENEMY_DEFEAT_BOUNCE = 4 * HEIGHT_COEF
+HP_CAP = 20
 RESISTANCE = 0.25 * WIDTH_COEF
 IFRAMES = 20
 CONSTUCTOR_CAMERA_X = 5

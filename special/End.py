@@ -15,3 +15,4 @@ class End(Special):
             self.animation("Hit")
             if not self.cur_frame:
                 self.triggered = True
+                hero.level_state = "Win"

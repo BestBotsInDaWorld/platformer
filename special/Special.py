@@ -1,7 +1,7 @@
 import pygame
 import os
 from math import hypot
-from settings import all_sprites, special_group, WIDTH, HEIGHT, sound_lib, WIDTH_COEF, HEIGHT_COEF
+from settings import all_sprites, special_group, WIDTH, HEIGHT, sound_lib, WIDTH_COEF, HEIGHT_COEF, HP_CAP
 from useful_funcs import load_image, cut_sheet
 from random import randint
 # ссылки на изображения ловушек
@@ -19,10 +19,11 @@ with open(rf"special_sheet_cuts.txt", "r") as image_file:
 
 # TODO прописывать в sheet_cuts спрайты
 class Special(pygame.sprite.Sprite):
-    def __init__(self, trap_type, pos_x, pos_y):
+    def __init__(self, special_type, pos_x, pos_y):
         super().__init__(special_group, all_sprites)
-        self.frames = special_group[trap_type]
+        self.frames = special_images[special_type]
         self.image = self.frames["Idle"][0]
+        self.rect: pygame.Rect = self.image.get_rect().move(pos_x, pos_y)
         self.mask = pygame.mask.from_surface(self.image)
         self.cur_frame = 0
         self.frequency = 2
